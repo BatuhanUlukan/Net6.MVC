@@ -1,0 +1,63 @@
+﻿@model List<PortfolioDto>
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4">
+        <span class="text-muted fw-light">Çöp Kutusu /</span> Portfolio
+    </h4>
+
+    <!-- Basic Bootstrap Table -->
+    <div class="card">
+        <div class="table-responsive text-nowrap m-5">
+
+            <table class="table table-bordered" id="portfoliosTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Başlık</th>
+                        <th>Kategori</th>
+                        <th>Oluşturulma Tarihi</th>
+                        <th>Oluşturan</th>
+                        <th>Durum</th>
+                        <th>İşlemler</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Başlık</th>
+                        <th>Kategori</th>
+                        <th>Oluşturulma Tarihi</th>
+                        <th>Oluşturan</th>
+                        <th>Durum</th>
+                        <th>İşlemler</th>
+                    </tr>
+                </tfoot>
+                <tbody class="table-border-bottom-0">
+                    @foreach (var portfolio in Model)
+                    {
+                        <tr name="@portfolio.Id">
+                            <td>@portfolio.Title</td>
+                            <td>@portfolio.Category.Name</td>
+                            <td>@portfolio.CreatedDate.ToShortDateString()</td>
+                            <td>@portfolio.CreatedBy</td>
+                            <td>@(portfolio.IsDeleted ? "Aktif Değil" : "Aktif")</td>
+                            <td>
+                                <a class="btn btn-warning btn-sm" data-id="@portfolio.Id" asp-area="Admin" asp-controller="Portfolio" asp-action="UndoDelete" asp-route-portfolioId="@portfolio.Id"><i class='bx bx-undo'></i></a>
+                                @*<a class="btn btn-danger btn-sm" data-id="@article.Id" asp-area="Admin" asp-controller="Article" asp-action="Delete" asp-route-articleId="@article.Id"><i class="bx bx-minus-circle"></i></a>*@
+
+
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!--/ Basic Bootstrap Table -->
+
+
+
+
+</div>
+
+@section Scripts{
+    <script src="~/js/portfolioIndex.js" type="application/ecmascript"></script>
+}
