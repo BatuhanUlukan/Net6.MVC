@@ -14,6 +14,7 @@ namespace NET6.Service.Helpers.Images
         private const string imgFolder = "images";
         private const string articleImagesFolder = "article-images";
         private const string portfolioImagesFolder = "portfolio-images";
+        private const string pageImagesFolder = "page-images";
         private const string userImagesFolder = "user-images";
 
 
@@ -39,6 +40,7 @@ namespace NET6.Service.Helpers.Images
                 ImageType.User => userImagesFolder,
                 ImageType.Post => articleImagesFolder,
                 ImageType.Work => portfolioImagesFolder,
+                ImageType.MPage => pageImagesFolder,
                 _ => imgFolder,
             }
             : ReplaceInvalidChars(folderName);
@@ -70,10 +72,13 @@ namespace NET6.Service.Helpers.Images
             string message = imageType == ImageType.User
                  ? $"{newFileName} isimli kullanıcı resmi başarı ile eklenmiştir."
                  : imageType == ImageType.Post
-                     ? $"{newFileName} isimli makale resmi başarı ile eklenmiştir."
-                     : imageType == ImageType.Work
-                         ? $"{newFileName} isimli portföy resmi başarı ile eklenmiştir."
-                             : "Resim başarı ile yüklendi.";
+                 ? $"{newFileName} isimli makale resmi başarı ile eklenmiştir."
+                 : imageType == ImageType.Work
+                 ? $"{newFileName} isimli portföy resmi başarı ile eklenmiştir."
+                 : imageType == ImageType.MPage
+                 ? $"{newFileName} isimli anasayfa resmi başarı ile eklenmiştir."
+                 : "Resim eklenmiştir";
+
 
             return new ImageUploadedDto()
             {

@@ -15,6 +15,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Areas\Admin\Views\Main\Index.cshtml" />
+    <Content Remove="Areas\Admin\Views\Main\Update.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="Areas\Admin\Views\Article\Add.cshtml" />
     <None Include="Areas\Admin\Views\Article\DeletedArticle.cshtml" />
     <None Include="Areas\Admin\Views\Article\Index.cshtml" />
@@ -26,6 +31,8 @@
     <None Include="Areas\Admin\Views\Category\Index.cshtml" />
     <None Include="Areas\Admin\Views\Category\Update.cshtml" />
     <None Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <None Include="Areas\Admin\Views\Main\Index.cshtml" />
+    <None Include="Areas\Admin\Views\Main\Update.cshtml" />
     <None Include="Areas\Admin\Views\Shared\Components\DashboardHeader\Default.cshtml" />
     <None Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <None Include="Areas\Admin\Views\User\Add.cshtml" />
@@ -114,6 +121,13 @@
     <Folder Include="wwwroot\js\ckfinder\App_Data\" />
     <Folder Include="wwwroot\js\ckfinder\src\CKFinder.Connector.WebApp\userfiles\" />
     <Folder Include="wwwroot\js\ckfinder\userfiles\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="wwwroot\js\articleIndex.js">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
   </ItemGroup>
 	
 

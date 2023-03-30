@@ -95,6 +95,13 @@
                 return $"{historyTitle} başlıklı geçmiş başarıyla geri alınmıştır.";
             }
         }
+        public static class Main
+        {
+            public static string Update(string mainTitle)
+            {
+                return $"{mainTitle} başlıklı anasayfa başarıyla güncellenmiştir.";
+            }
+        }
     }
 
 }

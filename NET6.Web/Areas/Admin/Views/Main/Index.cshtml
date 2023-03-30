@@ -1,0 +1,75 @@
+﻿@using NET6.Web.Consts
+@model List<MainDto>
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4">
+        <span class="text-muted fw-light">Makale Yönetimi /</span> Makaleler
+    </h4>
+
+    <!-- Basic Bootstrap Table -->
+    <div class="card">
+        <div class="table-responsive text-nowrap m-5">
+
+            <table class="table table-bordered" id="mainTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Başlık</th>
+                        <th>İçerik</th>
+                        <th>İş</th>
+                        @{
+                            @if (!User.IsInRole($"{RoleConsts.User}"))
+                            {
+                                <th>İşlemler</th>
+                            }
+                        }
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Başlık</th>
+                        <th>İçerik</th>
+                        <th>İş</th>
+                        @{
+                            @if (!User.IsInRole($"{RoleConsts.User}"))
+                            {
+                                <th>İşlemler</th>
+                            }
+                        }
+
+                    </tr>
+                </tfoot>
+                <tbody class="table-border-bottom-0">
+                    @foreach (var main in Model)
+                    {
+                        <tr name="@main.Id">
+                            <td>@main.Title</td>
+                            <td>@main.Content</td>
+                            <td>@main.Job</td>
+
+                            @{
+                                @if (!User.IsInRole($"{RoleConsts.User}"))
+                                {
+
+                                    <td>
+
+                                        <a class="btn btn-primary btn-sm" data-id="@main.Id" asp-area="Admin" asp-controller="Main" asp-action="Update" asp-route-mainId="@main.Id"><i class="bx bxs-edit"></i></a>
+
+                                    </td>
+                                }
+                            }
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!--/ Basic Bootstrap Table -->
+
+
+
+
+</div>
+
+@section Scripts{
+    <script src="~/js/mainIndex.js" type="application/ecmascript"></script>
+}

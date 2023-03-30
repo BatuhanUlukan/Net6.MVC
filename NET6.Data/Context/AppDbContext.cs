@@ -21,6 +21,8 @@ namespace NET6.Data.Context
         public DbSet<Image> Images { get; set; }
         public DbSet<History> Histories { get; set; }
         public DbSet<Visitor> Visitors { get; set; }
+        public DbSet<Main> Mains { get; set; }
+
         public DbSet<ArticleVisitor> ArticleVisitors { get; set; }
         public DbSet<PortfolioVisitor> PortfolioVisitors { get; set; }
 

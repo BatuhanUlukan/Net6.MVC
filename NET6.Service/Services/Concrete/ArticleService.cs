@@ -104,14 +104,14 @@ namespace NET6.Service.Services.Concrete
 
                 article.ImageId = image.Id;
 
-                if(articleUpdateDto.Image != article.Image)
+                if (articleUpdateDto.Image != article.Image)
                 {
                     articleUpdateDto.Image = image;
                 }
-               
+
 
             }
-            
+
             //Map the DTO to the entity:
             //The code uses AutoMapper to map the properties in the DTO to the properties in the article entity.
             //

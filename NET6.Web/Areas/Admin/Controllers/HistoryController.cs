@@ -32,7 +32,7 @@ namespace NET6.Web.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = $"{RoleConsts.Superadmin}, {RoleConsts.Admin}, {RoleConsts.User}")]
+        [Authorize(Roles = $"{RoleConsts.Superadmin}, {RoleConsts.Admin}")]
         public async Task<IActionResult> Index()
         {
             var histories = await historyService.GetAllHistoriesWithCategoryNonDeletedAsync();

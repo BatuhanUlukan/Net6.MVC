@@ -8,7 +8,6 @@ using NET6.Entity.Enums;
 using NET6.Service.Extensions;
 using NET6.Service.Helpers.Images;
 using NET6.Service.Services.Abstractions;
-using NET6.Entity.DTOs.Articles;
 
 
 namespace NET6.Service.Services.Concrete
