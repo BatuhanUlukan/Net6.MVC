@@ -11,7 +11,7 @@ namespace NET6.Data.Mappings
             builder.HasData(new Image
             {
                 Id = Guid.Parse("F71F4B9A-AA60-461D-B398-DE31001BF214"),
-                FileName = "images/testimage",
+                FileName = "images/testimage.jpg",
                 FileType = "jpg",
                 CreatedBy = "Admin Test",
                 CreatedDate = DateTime.Now,
@@ -20,7 +20,7 @@ namespace NET6.Data.Mappings
             new Image
             {
                 Id = Guid.Parse("D16A6EC7-8C50-4AB0-89A5-02B9A551F0FA"),
-                FileName = "images/vstest",
+                FileName = "images/vstest.jpg",
                 FileType = "png",
                 CreatedBy = "Admin Test",
                 CreatedDate = DateTime.Now,

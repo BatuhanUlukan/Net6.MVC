@@ -22,6 +22,7 @@ namespace NET6.Entity.Entities
         public ICollection<Article> Articles { get; set; }
         public ICollection<Portfolio> Portfolios { get; set; }
         public ICollection<AppUser> Users { get; set; }
-        public ICollection<Main> Mains { get; set; }
+        public ICollection<About> Abouts { get; set; }
+
     }
 }

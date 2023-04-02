@@ -12,7 +12,7 @@ using NET6.Web.ResultMessages;
 
 
 
-namespace YoutubeBlog.Web.Areas.Admin.Controllers
+namespace NET6.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
     public class PortfolioController : Controller

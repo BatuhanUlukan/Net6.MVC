@@ -1,0 +1,83 @@
+﻿@using NET6.Web.Consts
+@using NET6.Entity.DTOs.Abouts
+@model List<AboutDto>
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4">
+        <span class="text-muted fw-light">Hakkında Yönetimi /</span> Hakkında
+    </h4>
+
+    <!-- Basic Bootstrap Table -->
+    <div class="card">
+        <div class="table-responsive text-nowrap m-5">
+
+            <div class="table-responsive text-nowrap">
+                <table class="table table-bordered" id="T" width="100%" cellspacing="5">
+                    <thead>
+                        <tr>
+                            <th>İsim</th>
+                            <th>İş Bilgisi</th>
+                            <th>Oluşturulma Tarihi</th>
+                            <th>Oluşturan</th>
+                            <th>Durum</th>
+                            @{
+                                @if (!User.IsInRole($"{RoleConsts.Superadmin}"))
+                                {
+                                    <th>İşlemler</th>
+                                }
+                            }
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>İsim</th>
+                            <th>İş Bilgisi</th>
+                            <th>Oluşturulma Tarihi</th>
+                            <th>Oluşturan</th>
+                            <th>Durum</th>
+                            @{
+                                @if (!User.IsInRole($"{RoleConsts.User}"))
+                                {
+                                    <th>İşlemler</th>
+                                }
+                            }
+
+                        </tr>
+                    </tfoot>
+                    <tbody class="table-border-bottom-0">
+                        @foreach (var about in Model)
+                        {
+                            <tr name="@about.Id">
+                                <td>@about.Title</td>
+                                <td>@about.Job</td>
+                                <td>@about.CreatedDate.ToShortDateString()</td>
+                                <td>@about.CreatedBy</td>
+                                <td>@(about.IsDeleted ? "Aktif Değil" : "Aktif")</td>
+                                @{
+                                    @if (!User.IsInRole($"{RoleConsts.User}"))
+                                    {
+
+                                        <td>
+
+                                            <a class="btn btn-primary btn-sm" data-id="@about.Id" asp-area="Admin" asp-controller="About" asp-action="Update" asp-route-aboutId="@about.Id"><i class="bx bxs-edit"></i></a>
+
+                                        </td>
+                                    }
+                                }
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!--/ Basic Bootstrap Table -->
+
+
+
+
+</div>
+
+@section Scripts{
+    <script src="~/js/tIndex.js" type="application/ecmascript"></script>
+}

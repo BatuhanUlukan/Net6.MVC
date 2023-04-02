@@ -1,0 +1,51 @@
+﻿@model PortfolioDto
+
+@{
+    Layout = "_LayoutPortfolio";
+}
+<!-- site-content -->
+<div id="content" class="site-content" role="main">
+    <!-- .portfolio-single -->
+    <div class="portfolio-single page-layout">
+        <!-- .hentry -->
+        <article class="hentry">
+
+            <!-- .entry-header -->
+
+            <!-- .entry-header -->
+            <!-- .entry-content -->
+            <div class="entry-content">
+                <!-- .portfolio-desc -->
+                <div class="portfolio-desc">
+
+                    <div class="portfolio-meta">
+                        <span><strong>Client</strong> @Model.Category.Name</span>
+                        <span><strong>Date</strong> @Model.CreatedDate.ToString("dd/MM/yyyy")</span>
+                        <span><strong>Creator</strong> @Model.User.FirstName @Model.User.LastName</span>
+                    </div>
+               
+                    <p>
+                        @Html.Raw(Model.Content)
+                    </p>
+                    <p>
+                        <a href=""
+                           target="_blank" class="button primary">LAUNCH PROJECT</a>
+                    </p>
+
+                </div>
+                <!-- .portfolio-desc -->
+                <p>
+                    <img src="~/images/@Model.Image.FileName" alt="@Model.Title"><br />
+                    <img src="~/PlainHtml/images/portfolio/single/02.jpg" alt="project"><br />
+                    <img src="~/PlainHtml/images/portfolio/single/03.jpg" alt="project"><br />
+                </p>
+
+            </div>
+            <!-- .entry-content -->
+        </article>
+        <!-- .hentry -->
+    </div>
+    <!-- .portfolio-single -->
+
+</div>
+<!-- site-content -->

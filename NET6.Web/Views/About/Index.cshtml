@@ -1,0 +1,33 @@
+﻿@{
+    Layout = "_LayoutAbout";
+}
+@model AboutListDto
+
+
+@foreach (var image in Model.Abouts)
+{
+    <div class="home-bg" style="background-image:url(/images/@image.Image.FileName)"></div>
+}
+<!-- HOME BG IMAGE -->
+<!-- HOME BG LOGO -->
+<div class="home-bg-logo">
+    <img src="~/PlainHtml/images/home/icon-bg3.svg" alt="icon" />
+</div>
+<nav class="home-menu">
+    <a href="about.html" data-slug="about">
+        <span class="item-name">About</span>
+    </a>
+    <a href="resume.html" data-slug="resume">
+        <span class="item-name">Resume</span>
+    </a>
+    <a asp-controller="Portfolio" asp-action="Index">
+        <span class="item-name">Portfolio</span>
+    </a>
+    <a asp-controller="Home" asp-action="Index">
+        <span class="item-name">Blog</span>
+    </a>
+    <a href="contact.html" data-slug="contact">
+        <span class="item-name">Contact</span>
+    </a>
+</nav>
+}

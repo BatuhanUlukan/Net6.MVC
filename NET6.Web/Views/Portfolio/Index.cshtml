@@ -1,0 +1,77 @@
+﻿@model PortfolioListDto
+
+@{
+    Layout = "_LayoutPortfolio";
+}
+<!-- site-content -->
+<div id="content" class="site-content" role="main">
+    <!-- .page-single -->
+    <div class="page-single page-layout">
+
+
+        <!-- .hentry -->
+        <article class="page hentry">
+
+            <!-- .entry-header -->
+            <header class="entry-header">
+                <h1 class="entry-title">Portfolio</h1>
+            </header>
+            <!-- .entry-header -->
+            <!-- .entry-content -->
+            <div class="entry-content">
+
+                <!--FILTERS-->
+                <ul id="filters" class="filters">
+                    <li class="current">
+                        <a href="#" data-filter="*">all</a>
+                    </li>
+
+                    <li>
+                        <a href="#" data-filter=".media">Media</a>
+                    </li>
+                    <li>
+                        <a href="#" data-filter=".illustration">Illustration</a>
+                    </li>
+                    <li>
+                        <a href="#" data-filter=".video">Video</a>
+                    </li>
+                </ul>
+                <!--FILTERS-->
+                <!-- PORTFOLIO -->
+                <div class="portfolio-items media-grid masonry" data-layout="masonry" data-item-width="360">
+                    @foreach (var item in Model.Portfolios)
+                    {
+                        <!-- portfolio-item -->
+                        <div class="media-cell  hentry">
+
+                            <div class="media-box">
+                                <img src="~/images/@item.Image.FileName" alt="portfolio-post">
+                                <div class="mask"></div>
+                                <a asp-controller="Portfolio" asp-action="Detail" asp-route-id="@item.Id"> </a>
+                            </div>
+
+                            <div class="media-cell-desc">
+                                <h3>@item.Title</h3>
+                                <p class="category">by @item.User.FirstName @item.User.LastName</p>
+                            </div>
+
+                        </div>
+                        <!-- portfolio-item -->
+                    }
+
+                </div>
+                <!-- PORTFOLIO -->
+
+            </div>
+            <!-- .entry-content -->
+
+        </article>
+        <!-- .hentry -->
+
+
+    </div>
+    <!-- .page-single -->
+
+
+</div>
+<!-- site-content -->

@@ -11,7 +11,7 @@ using NET6.Web.Consts;
 using NET6.Web.ResultMessages;
 
 
-namespace YoutubeBlog.Web.Areas.Admin.Controllers
+namespace NET6.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
     public class ArticleController : Controller
@@ -134,6 +134,8 @@ namespace YoutubeBlog.Web.Areas.Admin.Controllers
 
             return RedirectToAction("Index", "Article", new { Area = "Admin" });
         }
+
+
 
 
     }

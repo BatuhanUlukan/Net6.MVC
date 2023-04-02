@@ -95,11 +95,43 @@
                 return $"{historyTitle} başlıklı geçmiş başarıyla geri alınmıştır.";
             }
         }
-        public static class Main
+
+        public static class Testimonial
         {
-            public static string Update(string mainTitle)
+            public static string Add(string testimonialTitle)
             {
-                return $"{mainTitle} başlıklı anasayfa başarıyla güncellenmiştir.";
+                return $"{testimonialTitle} başlıklı tavsiye  başarıyla eklenmiştir.";
+            }
+            public static string Update(string testimonialTitle)
+            {
+                return $"{testimonialTitle} başlıklı tavsiye  başarıyla güncellenmiştir.";
+            }
+            public static string Delete(string testimonialTitle)
+            {
+                return $"{testimonialTitle} başlıklı tavsiye  başarıyla silinmiştir.";
+            }
+            public static string UndoDelete(string testimonialTitle)
+            {
+                return $"{testimonialTitle} başlıklı tavsiye  başarıyla geri alınmıştır.";
+            }
+        }
+        public static class About
+        {
+            public static string Add(string aboutTitle)
+            {
+                return $"{aboutTitle} başlıklı tavsiye  başarıyla eklenmiştir.";
+            }
+            public static string Update(string aboutTitle)
+            {
+                return $"{aboutTitle} başlıklı tavsiye  başarıyla güncellenmiştir.";
+            }
+            public static string Delete(string aboutTitle)
+            {
+                return $"{aboutTitle} başlıklı tavsiye  başarıyla silinmiştir.";
+            }
+            public static string UndoDelete(string aboutTitle)
+            {
+                return $"{aboutTitle} başlıklı tavsiye  başarıyla geri alınmıştır.";
             }
         }
     }

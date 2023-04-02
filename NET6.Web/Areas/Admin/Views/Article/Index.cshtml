@@ -20,65 +20,65 @@
             }
 
 
-
-            <table class="table table-bordered" id="articlesTable" width="100%" cellspacing="0">
-                <thead>
-                    <tr>
-                        <th>Başlık</th>
-                        <th>Kategori</th>
-                        <th>Oluşturulma Tarihi</th>
-                        <th>Oluşturan</th>
-                        <th>Durum</th>
-                        @{
-                            @if (!User.IsInRole($"{RoleConsts.User}"))
-                            {
-                                <th>İşlemler</th>
-                            }
-                        }
-                    </tr>
-                </thead>
-                <tfoot>
-                    <tr>
-                        <th>Başlık</th>
-                        <th>Kategori</th>
-                        <th>Oluşturulma Tarihi</th>
-                        <th>Oluşturan</th>
-                        <th>Durum</th>
-                        @{
-                            @if (!User.IsInRole($"{RoleConsts.User}"))
-                            {
-                                <th>İşlemler</th>
-                            }
-                        }
-
-                    </tr>
-                </tfoot>
-                <tbody class="table-border-bottom-0">
-                    @foreach (var article in Model)
-                    {
-                        <tr name="@article.Id">
-                            <td>@article.Title</td>
-                            <td>@article.Category.Name</td>
-                            <td>@article.CreatedDate.ToShortDateString()</td>
-                            <td>@article.CreatedBy</td>
-                            <td>@(article.IsDeleted ? "Aktif Değil" : "Aktif")</td>
+            <div class="table-responsive text-nowrap">
+                <table class="table table-bordered" id="T" width="100%" cellspacing="5">
+                    <thead>
+                        <tr>
+                            <th>Başlık</th>
+                            <th>Kategori</th>
+                            <th>Oluşturulma Tarihi</th>
+                            <th>Oluşturan</th>
+                            <th>Durum</th>
                             @{
                                 @if (!User.IsInRole($"{RoleConsts.User}"))
                                 {
-
-                                    <td>
-
-                                        <a class="btn btn-primary btn-sm" data-id="@article.Id" asp-area="Admin" asp-controller="Article" asp-action="Update" asp-route-articleId="@article.Id"><i class="bx bxs-edit"></i></a>
-                                        <a class="btn btn-danger btn-sm" data-id="@article.Id" asp-area="Admin" asp-controller="Article" asp-action="Delete" asp-route-articleId="@article.Id"><i class="bx bx-minus-circle"></i></a>
-
-
-                                    </td>
+                                    <th>İşlemler</th>
                                 }
                             }
                         </tr>
-                    }
-                </tbody>
-            </table>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Başlık</th>
+                            <th>Kategori</th>
+                            <th>Oluşturulma Tarihi</th>
+                            <th>Oluşturan</th>
+                            <th>Durum</th>
+                            @{
+                                @if (!User.IsInRole($"{RoleConsts.User}"))
+                                {
+                                    <th>İşlemler</th>
+                                }
+                            }
+
+                        </tr>
+                    </tfoot>
+                    <tbody class="table-border-bottom-0">
+                        @foreach (var article in Model)
+                        {
+                            <tr name="@article.Id">
+                                <td>@article.Title</td>
+                                <td>@article.Category.Name</td>
+                                <td>@article.CreatedDate.ToShortDateString()</td>
+                                <td>@article.CreatedBy</td>
+                                <td>@(article.IsDeleted ? "Aktif Değil" : "Aktif")</td>
+                                @{
+                                    @if (!User.IsInRole($"{RoleConsts.User}"))
+                                    {
+
+                                        <td>
+
+                                            <a class="btn btn-primary btn-sm" data-id="@article.Id" asp-area="Admin" asp-controller="Article" asp-action="Update" asp-route-articleId="@article.Id"><i class="bx bxs-edit"></i></a>
+                                            <a class="btn btn-danger btn-sm" data-id="@article.Id" asp-area="Admin" asp-controller="Article" asp-action="Delete" asp-route-articleId="@article.Id"><i class="bx bx-minus-circle"></i></a>
+
+                                        </td>
+                                    }
+                                }
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
     <!--/ Basic Bootstrap Table -->
@@ -89,5 +89,5 @@
 </div>
 
 @section Scripts{
-    <script src="~/js/articleIndex.js" type="application/ecmascript"></script>
+    <script src="~/js/tIndex.js" type="application/ecmascript"></script>
 }

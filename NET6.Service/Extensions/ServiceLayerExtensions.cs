@@ -23,7 +23,8 @@ namespace NET6.Service.Extensions
             services.AddScoped<IDashbordService, DashboardService>();
             services.AddScoped<IPortfolioService, PortfolioService>();
             services.AddScoped<IHistoryService, HistoryService>();
-            services.AddScoped<IMainService, MainService>();
+            services.AddScoped<IAboutService, AboutService>();
+            services.AddScoped<ITestimonialService, TestimonialService>();
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
@@ -52,12 +53,18 @@ namespace NET6.Service.Extensions
                     opt.ValidatorOptions.LanguageManager.Culture = new CultureInfo("tr");
                 });
             services.AddControllersWithViews()
-                .AddFluentValidation(opt =>
-                {
-                    opt.RegisterValidatorsFromAssemblyContaining<MainValidator>();
-                    opt.DisableDataAnnotationsValidation = true;
-                    opt.ValidatorOptions.LanguageManager.Culture = new CultureInfo("tr");
-                });
+              .AddFluentValidation(opt =>
+              {
+                  opt.RegisterValidatorsFromAssemblyContaining<TestimonialValidator>();
+                  opt.DisableDataAnnotationsValidation = true;
+                  opt.ValidatorOptions.LanguageManager.Culture = new CultureInfo("tr");
+              }); services.AddControllersWithViews()
+              .AddFluentValidation(opt =>
+              {
+                  opt.RegisterValidatorsFromAssemblyContaining<AboutValidator>();
+                  opt.DisableDataAnnotationsValidation = true;
+                  opt.ValidatorOptions.LanguageManager.Culture = new CultureInfo("tr");
+              });
 
             return services;
         }

@@ -89,10 +89,13 @@ namespace NET6.Service.Services.Concrete
         public async Task<string> UpdatePortfolioAsync(PortfolioUpdateDto portfolioUpdateDto)
         {
             var userEmail = _user.GetLoggedInEmail();
+
             var portfolio = await unitOfWork.GetRepository<Portfolio>().GetAsync(x => !x.IsDeleted && x.Id == portfolioUpdateDto.Id, x => x.Category, i => i.Image);
+
 
             if (portfolioUpdateDto.Photo != null)
             {
+
                 imageHelper.Delete(portfolio.Image.FileName);
 
                 var imageUpload = await imageHelper.Upload(portfolioUpdateDto.Title, portfolioUpdateDto.Photo, ImageType.Work);
@@ -108,10 +111,13 @@ namespace NET6.Service.Services.Concrete
 
 
             }
+
+
             mapper.Map(portfolioUpdateDto, portfolio);
 
             portfolio.ModifiedDate = DateTime.Now;
             portfolio.ModifiedBy = userEmail;
+
 
             await unitOfWork.GetRepository<Portfolio>().UpdateAsync(portfolio);
             await unitOfWork.SaveAsync();

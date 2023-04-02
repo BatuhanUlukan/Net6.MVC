@@ -82,23 +82,16 @@ namespace NET6.Service.Services.Concrete
         public async Task<string> UpdateArticleAsync(ArticleUpdateDto articleUpdateDto)
         {
             var userEmail = _user.GetLoggedInEmail();
-            /*
-            Retrieve the article to be updated:
-            The method retrieves the article to be updated using the unit of work pattern and the repository pattern.
-            It checks that the article is not deleted and that its ID matches the ID in the DTO.
-            */
+
             var article = await unitOfWork.GetRepository<Article>().GetAsync(x => !x.IsDeleted && x.Id == articleUpdateDto.Id, x => x.Category, i => i.Image);
 
-            //Update the image:
-            //If the DTO contains a new image (i.e. if the Photo property is not null),
-            //the code first deletes the existing image (if any) and then uploads the new image using an imageHelper object.
-            //The new Image object is then added to the unit of work and its ID is assigned to the article's ImageId property.
+
             if (articleUpdateDto.Photo != null)
             {
 
                 imageHelper.Delete(article.Image.FileName);
 
-                var imageUpload = await imageHelper.Upload(articleUpdateDto.Title, articleUpdateDto.Photo, ImageType.Work);
+                var imageUpload = await imageHelper.Upload(articleUpdateDto.Title, articleUpdateDto.Photo, ImageType.Post);
                 Image image = new(imageUpload.FullName, articleUpdateDto.Photo.ContentType, userEmail);
                 await unitOfWork.GetRepository<Image>().AddAsync(image);
 
@@ -112,18 +105,13 @@ namespace NET6.Service.Services.Concrete
 
             }
 
-            //Map the DTO to the entity:
-            //The code uses AutoMapper to map the properties in the DTO to the properties in the article entity.
-            //
+
             mapper.Map(articleUpdateDto, article);
 
-            //Update the remaining properties:
-            //The code updates the remaining properties of the article entity,including modified date, and modified by.
             article.ModifiedDate = DateTime.Now;
             article.ModifiedBy = userEmail;
 
-            //Save the changes:
-            //Finally, the code updates the article in the unit of work and saves the changes to the database using the SaveAsync method.
+
             await unitOfWork.GetRepository<Article>().UpdateAsync(article);
             await unitOfWork.SaveAsync();
 
