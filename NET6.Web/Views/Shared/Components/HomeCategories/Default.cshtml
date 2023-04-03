@@ -4,7 +4,7 @@
 <ul>
     @foreach (var category in Model)
     {
-        <li class="cat-item"><a asp-controller="Home" asp-action="Index" asp-route-categoryId="@category.Id">- @category.Name</a></li>
+        <li class="cat-item"><a asp-controller="Article" asp-action="Index" asp-route-categoryId="@category.Id">- @category.Name</a></li>
     }
 </ul>
 

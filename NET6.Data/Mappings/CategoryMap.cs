@@ -24,6 +24,23 @@ namespace NET6.Data.Mappings
                 CreatedDate = DateTime.Now,
                 IsDeleted = false
 
+            }, new Category
+            {
+                Id = Guid.Parse("1BD1D873-A5FF-43E1-AA04-F86DD78495EE"),
+                Name = "Coding",
+                CreatedBy = "Admin Test",
+                CreatedDate = DateTime.Now,
+                IsDeleted = false
+
+            },
+            new Category
+            {
+                Id = Guid.Parse("1266EE22-B956-4FD2-BCD1-FA55D33A77DA"),
+                Name = "Design",
+                CreatedBy = "Admin Test",
+                CreatedDate = DateTime.Now,
+                IsDeleted = false
+
             });
 
         }

@@ -23,6 +23,7 @@ namespace NET6.Entity.Entities
         public ICollection<Portfolio> Portfolios { get; set; }
         public ICollection<AppUser> Users { get; set; }
         public ICollection<About> Abouts { get; set; }
+        public ICollection<Process> Processes { get; set; }
 
     }
 }

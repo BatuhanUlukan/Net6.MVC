@@ -18,6 +18,7 @@ namespace NET6.Service.Helpers.Images
         private const string userImagesFolder = "user-images";
         private const string testimonialImagesFolder = "testimonial-images";
         private const string aboutImagesFolder = "about-images";
+        private const string serviceImagesFolder = "service-images";
 
 
         public ImageHelper(IWebHostEnvironment env)
@@ -45,6 +46,7 @@ namespace NET6.Service.Helpers.Images
                 ImageType.MPage => pageImagesFolder,
                 ImageType.Tstmnal => testimonialImagesFolder,
                 ImageType.About => aboutImagesFolder,
+                ImageType.Service => serviceImagesFolder,
                 _ => imgFolder,
             }
             : ReplaceInvalidChars(folderName);
@@ -85,6 +87,8 @@ namespace NET6.Service.Helpers.Images
                  ? $"{newFileName} isimli tavsiye resmi başarı ile eklenmiştir."
                  : imageType == ImageType.About
                  ? $"{newFileName} isimli anasayfa resmi başarı ile eklenmiştir."
+                 : imageType == ImageType.Service
+                 ? $"{newFileName} isimli servis resmi başarı ile eklenmiştir."
                  : "Resim eklendi.";
 
 

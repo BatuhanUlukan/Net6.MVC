@@ -1,0 +1,91 @@
+﻿@using NET6.Web.Consts
+@using NET6.Entity.DTOs.Processes
+@model List<ProcessDto>
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4">
+        <span class="text-muted fw-light">Servis Yönetimi /</span> Servisler
+    </h4>
+
+    <!-- Basic Bootstrap Table -->
+    <div class="card">
+        <div class="table-responsive text-nowrap m-5">
+
+            @{
+                @if (!User.IsInRole($"{RoleConsts.User}"))
+                {
+                    <a class="btn btn-success mb-3" asp-area="Admin" asp-controller="Service" asp-action="Add">
+                        Servis Ekle <i class="bx bx-plus"></i>
+                    </a>
+                }
+            }
+
+
+            <div class="table-responsive text-nowrap">
+                <table class="table table-bordered" id="T" width="100%" cellspacing="5">
+                    <thead>
+                        <tr>
+                            <th>Başlık</th>
+                            <th>Oluşturulma Tarihi</th>
+                            <th>Oluşturan</th>
+                            <th>Durum</th>
+                            @{
+                                @if (!User.IsInRole($"{RoleConsts.User}"))
+                                {
+                                    <th>İşlemler</th>
+                                }
+                            }
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Başlık</th>
+                            <th>Oluşturulma Tarihi</th>
+                            <th>Oluşturan</th>
+                            <th>Durum</th>
+                            @{
+                                @if (!User.IsInRole($"{RoleConsts.User}"))
+                                {
+                                    <th>İşlemler</th>
+                                }
+                            }
+
+                        </tr>
+                    </tfoot>
+                    <tbody class="table-border-bottom-0">
+                        @foreach (var process in Model)
+                        {
+                            <tr name="@process.Id">
+                                <td>@process.Title</td>
+                                <td>@process.CreatedDate.ToShortDateString()</td>
+                                <td>@process.CreatedBy</td>
+                                <td>@(process.IsDeleted ? "Aktif Değil" : "Aktif")</td>
+                                @{
+                                    @if (!User.IsInRole($"{RoleConsts.User}"))
+                                    {
+
+                                        <td>
+
+                                            <a class="btn btn-primary btn-sm" data-id="@process.Id" asp-area="Admin" asp-controller="Service" asp-action="Update" asp-route-processId="@process.Id"><i class="bx bxs-edit"></i></a>
+                                            <a class="btn btn-danger btn-sm" data-id="@process.Id" asp-area="Admin" asp-controller="Service" asp-action="Delete" asp-route-processId="@process.Id"><i class="bx bx-minus-circle"></i></a>
+
+                                        </td>
+                                    }
+                                }
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!--/ Basic Bootstrap Table -->
+
+
+
+
+</div>
+
+@section Scripts{
+    <script src="~/js/tIndex.js" type="application/ecmascript"></script>
+}

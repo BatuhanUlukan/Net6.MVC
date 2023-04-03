@@ -134,6 +134,44 @@
                 return $"{aboutTitle} başlıklı tavsiye  başarıyla geri alınmıştır.";
             }
         }
+        public static class Process
+        {
+            public static string Add(string processTitle)
+            {
+                return $"{processTitle} başlıklı tavsiye  başarıyla eklenmiştir.";
+            }
+            public static string Update(string processTitle)
+            {
+                return $"{processTitle} başlıklı tavsiye  başarıyla güncellenmiştir.";
+            }
+            public static string Delete(string processTitle)
+            {
+                return $"{processTitle} başlıklı tavsiye  başarıyla silinmiştir.";
+            }
+            public static string UndoDelete(string processTitle)
+            {
+                return $"{processTitle} başlıklı tavsiye  başarıyla geri alınmıştır.";
+            }
+        }
+        public static class Skill
+        {
+            public static string Add(string skillTitle)
+            {
+                return $"{skillTitle} başlıklı yetenek  başarıyla eklenmiştir.";
+            }
+            public static string Update(string skillTitle)
+            {
+                return $"{skillTitle} başlıklı yetenek  başarıyla güncellenmiştir.";
+            }
+            public static string Delete(string skillTitle)
+            {
+                return $"{skillTitle} başlıklı yetenek  başarıyla silinmiştir.";
+            }
+            public static string UndoDelete(string skillTitle)
+            {
+                return $"{skillTitle} başlıklı yetenek  başarıyla geri alınmıştır.";
+            }
+        }
     }
 
 }

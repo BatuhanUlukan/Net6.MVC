@@ -16,6 +16,7 @@ namespace NET6.Entity.Entities
         public ICollection<History> Histories { get; set; }
         public ICollection<About> Abouts { get; set; }
         public ICollection<Testimonial> Testimonials { get; set; }
+        public ICollection<Process> Processes { get; set; }
 
     }
 }

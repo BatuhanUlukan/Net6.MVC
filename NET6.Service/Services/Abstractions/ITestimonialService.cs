@@ -1,4 +1,5 @@
-﻿using NET6.Entity.DTOs.Testimonials;
+﻿
+using NET6.Entity.DTOs.Testimonials;
 
 namespace NET6.Service.Services.Abstractions
 {
@@ -11,6 +12,8 @@ namespace NET6.Service.Services.Abstractions
         Task<string> UpdateTestimonialAsync(TestimonialUpdateDto testimonialUpdateDto);
         Task<string> SafeDeleteTestimonialAsync(Guid articleId);
         Task<string> UndoDeleteTestimonialAsync(Guid articleId);
+        Task<TestimonialListDto> GetAllByPagingAsync();
+
 
     }
 }

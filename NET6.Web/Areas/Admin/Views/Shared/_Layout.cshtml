@@ -128,9 +128,6 @@
                 </div>
 
                 <div class="menu-inner-shadow"></div>
-
-
-
                 <ul class="menu-inner py-1">
 
                     <!-- Dashboard -->
@@ -140,54 +137,58 @@
                             <div data-i18n="Analytics">Gösterge Paneli</div>
                         </a>
                     </li>
-
-
-                    <li class="menu-header small text-uppercase">
-                        <span class="menu-header-text">SAYFA YÖNETİMİ</span>
-                    </li>
+                    <!-- Misc -->
+                    <li class="menu-header small text-uppercase"><span class="menu-header-text">Sayfa Yönetimi</span></li>
                     <li class="menu-item">
-                        <a asp-area="Admin" asp-controller="About" asp-action="Index" class="menu-link">
-                            <i class='menu-icon bx bx-home'></i>
-                            <div data-i18n="Analytics">Ana Sayfa Yönetimi</div>
+                        <a href="javascript:void(0);" class="menu-link menu-toggle">
+                            <i class="menu-icon tf-icons bx bx-book-content"></i>
+                            <div data-i18n="Account Settings">Sayfalar</div>
                         </a>
+                        <ul class="menu-sub">
+                            <li class="menu-item">
+                                <a asp-area="Admin" asp-controller="About" asp-action="Index" class="menu-link">
+                                    <i class='menu-icon bx bx-home'></i>
+                                    <div data-i18n="Analytics">AnaSayfa Yönetimi</div>
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a asp-area="Admin" asp-controller="History" asp-action="Index" class="menu-link">
+                                    <i class='menu-icon bx bx-face'></i>
+                                    <div data-i18n="Analytics">ÖzGeçmiş Yönetimi</div>
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a asp-area="Admin" asp-controller="Category" asp-action="Index" class="menu-link">
+                                    <i class='menu-icon bx bx-category'></i>
+                                    <div data-i18n="Analytics">Kategori Yönetimi</div>
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a asp-area="Admin" asp-controller="Article" asp-action="Index" class="menu-link">
+                                    <i class='menu-icon bx bx-book-open'></i>
+                                    <div data-i18n="Analytics">Makale Yönetimi</div>
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a asp-area="Admin" asp-controller="Portfolio" asp-action="Index" class="menu-link">
+                                    <i class='menu-icon bx bx-notepad'></i>
+                                    <div data-i18n="Analytics">Portfolio Yönetimi</div>
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a asp-area="Admin" asp-controller="Service" asp-action="Index" class="menu-link">
+                                    <i class='menu-icon bx bx-category'></i>
+                                    <div data-i18n="Analytics">Servis Yönetimi</div>
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a asp-area="Admin" asp-controller="Testimonial" asp-action="Index" class="menu-link">
+                                    <i class='menu-icon bx bx-user-voice'></i>
+                                    <div data-i18n="Analytics">Tavsiye Yönetimi</div>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
-                    <li class="menu-item">
-                        <a asp-area="Admin" asp-controller="About" asp-action="Index" class="menu-link">
-                            <i class='menu-icon bx bx-face'></i>
-                            <div data-i18n="Analytics">Hakkımda Yönetimi</div>
-                        </a>
-                    </li>
-                    <li class="menu-item">
-                        <a asp-area="Admin" asp-controller="Category" asp-action="Index" class="menu-link">
-                            <i class='menu-icon bx bx-category'></i>
-                            <div data-i18n="Analytics">Kategori Yönetimi</div>
-                        </a>
-                    </li>
-                    <li class="menu-item">
-                        <a asp-area="Admin" asp-controller="Article" asp-action="Index" class="menu-link">
-                            <i class='menu-icon bx bx-book-open'></i>
-                            <div data-i18n="Analytics">Makale Yönetimi</div>
-                        </a>
-                    </li>
-                    <li class="menu-item">
-                        <a asp-area="Admin" asp-controller="Portfolio" asp-action="Index" class="menu-link">
-                            <i class='menu-icon bx bx-notepad'></i>
-                            <div data-i18n="Analytics">Portfolio Yönetimi</div>
-                        </a>
-                    </li>
-                    <li class="menu-item">
-                        <a asp-area="Admin" asp-controller="Category" asp-action="Index" class="menu-link">
-                            <i class='menu-icon bx bx-category'></i>
-                            <div data-i18n="Analytics">Kategori Yönetimi</div>
-                        </a>
-                    </li>
-                    <li class="menu-item">
-                        <a asp-area="Admin" asp-controller="Testimonial" asp-action="Index" class="menu-link">
-                            <i class='menu-icon bx bx-user-voice'></i>
-                            <div data-i18n="Analytics">Tavsiye Yönetimi</div>
-                        </a>
-                    </li>
-                  
 
                     <!-- Components -->
                     <li class="menu-header small text-uppercase"><span class="menu-header-text">KULLANICILAR</span></li>
@@ -223,10 +224,16 @@
                             <i class="menu-icon tf-icons bx bx-trash"></i>
                             <div data-i18n="Account Settings">Silinmiş Öğeler</div>
                         </a>
+
                         <ul class="menu-sub">
                             <li class="menu-item">
-                                <a asp-area="Admin" asp-controller="Article" asp-action="DeletedArticle" class="menu-link">
-                                    <div data-i18n="Account">Makale</div>
+                                <a asp-area="Admin" asp-controller="History" asp-action="DeletedHistory" class="menu-link">
+                                    <div data-i18n="Notifications">Öz Geçmiş</div>
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a asp-area="Admin" asp-controller="Service" asp-action="DeletedProcess" class="menu-link">
+                                    <div data-i18n="Notifications">Servis</div>
                                 </a>
                             </li>
                             <li class="menu-item">
@@ -235,15 +242,21 @@
                                 </a>
                             </li>
                             <li class="menu-item">
-                                <a asp-area="Admin" asp-controller="Portfolio" asp-action="DeletedPortfolio" class="menu-link">
-                                    <div data-i18n="Notifications">Portfolio</div>
+                                <a asp-area="Admin" asp-controller="Article" asp-action="DeletedArticle" class="menu-link">
+                                    <div data-i18n="Account">Makale</div>
                                 </a>
                             </li>
                             <li class="menu-item">
-                                <a asp-area="Admin" asp-controller="History" asp-action="DeletedPortfolio" class="menu-link">
-                                    <div data-i18n="Notifications">Öz Geçmiş</div>
+                                <a asp-area="Admin" asp-controller="Portfolio" asp-action="DeletedPortfolio" class="menu-link">
+                                    <div data-i18n="Notifications">Portfolio</div>
+                                </a>
+                            </li>                            
+                            <li class="menu-item">
+                                <a asp-area="Admin" asp-controller="Testimonial" asp-action="DeletedTestimonial" class="menu-link">
+                                    <div data-i18n="Notifications">Tavsiye</div>
                                 </a>
                             </li>
+
                         </ul>
                     </li>
                 </ul>

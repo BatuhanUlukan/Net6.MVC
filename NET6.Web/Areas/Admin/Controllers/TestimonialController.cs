@@ -37,7 +37,7 @@ namespace NET6.Web.Areas.Admin.Controllers
         }
         [HttpGet]
         [Authorize(Roles = $"{RoleConsts.Superadmin}, {RoleConsts.Admin}")]
-        public async Task<IActionResult> DeletedArticle()
+        public async Task<IActionResult> DeletedTestimonial()
         {
             var testimonials = await testimonialService.GetAllTestimonialsDeletedAsync();
             return View(testimonials);

@@ -26,14 +26,14 @@
                             <span asp-validation-for="CategoryId" class="text-danger"></span>
 
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" style="margin-top:10px">
                             <label asp-for="Title" id="defaultFormControlInput" class="form-label">Başlık</label>
                             <input asp-for="Title" type="text" class="form-control mb-3" id="defaultFormControlInput" placeholder="Lütfen başlık giriniz." aria-describedby="defaultFormControlHelp">
                             <span asp-validation-for="Title" class="text-danger"></span>
                         </div>
                         <div class="form-group">
                             <label asp-for="Content" class="form-label">İçerik</label>
-                            <textarea asp-for="Content" id="editor" class="form-control" placeholder="İçerik"></textarea>
+                            <textarea asp-for="Content" id="editor" class="editor" placeholder="İçerik"></textarea>
                             <span asp-validation-for="Content" class="text-danger"></span>
                         </div>
                         <div class="form-group" style="margin-top:20px">
@@ -85,15 +85,7 @@
     {
 
     <script>
-        CKFinder.setupCKEditor();
-
-        CKEDITOR.replace('editor1',
-            {
-                filebrowserBrowseUrl: '/ckfinder/ckfinder.html',
-                filebrowserImageBrowseUrl: '/ckfinder/ckfinder.html?type=Images',
-                filebrowserUploadUrl: '/ckfinder/connector?command=QuickUpload&type=Files&currentFolder=/archive/',
-                filebrowserImageUploadUrl: '/ckfinder/connector?command=QuickUpload&type=Images&currentFolder=/cars/'
-            });
+        CKEDITOR.replace('editor');
     </script>
 
     <script src="~/js/categoryAdd.js"></script>

@@ -13,29 +13,15 @@
                 <div class="header-wrap layout-full">
 
                     <img src="images/article-images/blog.jpg" alt="profile-image">
+                    <div class="home-heading">
+                        @await Component.InvokeAsync("Header")
 
-                    @await Component.InvokeAsync("Header")
-
-
-                    <!-- HOME BG LOGO -->
-                    <div class="home-bg-logo">
-                        <img src="~/PlainHtml/images/home/icon-bg2.svg" alt="icon" />
+                        <!-- HOME BG LOGO -->
+                        <div class="home-bg-logo">
+                            <img src="~/PlainHtml/images/home/icon-bg2.svg" alt="icon" />
+                        </div>
+                        <!-- HOME BG LOGO -->
                     </div>
-                    <!-- HOME BG LOGO -->
-
-                    <!-- SEARCH -->
-                    <div class="header-search">
-                        <form role="search" method="get" class="search-form" action="#">
-                            <label>
-                                <span class="screen-reader-text">Search for:</span>
-                                <input type="search" class="search-field" placeholder="Enter Keyword" value="" name="s">
-                            </label>
-                            <input type="submit" class="search-submit" value="Search">
-                        </form>
-                    </div>
-                    <!-- SEARCH -->
-
-
             </header>
             <!-- HEADER -->
             <!-- HEADER -->

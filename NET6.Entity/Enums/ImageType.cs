@@ -8,5 +8,6 @@
         MPage = 3,
         Tstmnal = 4,
         About = 5,
+        Service = 6,
     }
 }

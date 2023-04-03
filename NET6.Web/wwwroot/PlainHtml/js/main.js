@@ -52,15 +52,6 @@
 
       autoplay = $('#play-music').hasClass('autoplay') ? true : false;
 
-      // add hash to links
-      $(".home-menu a").each(function (index, element) {
-        var menu_link = $(this);
-        var file_url = menu_link.attr("href");
-        var slug = menu_link.data("slug");
-
-        menu_link.attr("href", "#/" + slug);
-        menu_link.data("file-url", file_url);
-      });
 
       $(".close-page").on("click", function (event) {
         // event.preventDefault();

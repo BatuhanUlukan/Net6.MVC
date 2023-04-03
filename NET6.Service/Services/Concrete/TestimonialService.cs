@@ -139,5 +139,14 @@ namespace NET6.Service.Services.Concrete
 
             return testimonial.Title;
         }
+        public async Task<TestimonialListDto> GetAllByPagingAsync()
+        {
+            var testimonials = await unitOfWork.GetRepository<Testimonial>().GetAllAsync(a => !a.IsDeleted, i => i.Image, u => u.User);
+
+            return new TestimonialListDto
+            {
+                Testimonials = testimonials
+            };
+        }
     }
 }

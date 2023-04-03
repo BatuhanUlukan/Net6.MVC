@@ -1,0 +1,19 @@
+﻿@using NET6.Entity.DTOs.Testimonials;
+@model TestimonialListDto
+
+@foreach (var testimonial in Model.Testimonials)
+{
+
+
+    <div class="col-xs-6 col-sm-3">
+
+        <!-- client -->
+        <div class="client">
+            <a href="#">
+                <img src="images/@testimonial.Image.FileName" alt="client">
+            </a>
+        </div>
+        <!-- client -->
+
+    </div>
+}

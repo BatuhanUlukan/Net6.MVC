@@ -17,5 +17,6 @@ namespace NET6.Entity.Entities
         public ICollection<Article> Articles { get; set; }
         public ICollection<Portfolio> Portfolios { get; set; }
         public ICollection<History> Histories { get; set; }
+        public ICollection<Skill> Skills { get; set; }
     }
 }

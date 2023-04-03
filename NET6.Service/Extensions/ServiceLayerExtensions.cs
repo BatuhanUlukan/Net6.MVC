@@ -25,6 +25,8 @@ namespace NET6.Service.Extensions
             services.AddScoped<IHistoryService, HistoryService>();
             services.AddScoped<IAboutService, AboutService>();
             services.AddScoped<ITestimonialService, TestimonialService>();
+            services.AddScoped<IProcessService, ProcessService>();
+            services.AddScoped<ISkillService, SkillService>();
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
@@ -58,13 +60,28 @@ namespace NET6.Service.Extensions
                   opt.RegisterValidatorsFromAssemblyContaining<TestimonialValidator>();
                   opt.DisableDataAnnotationsValidation = true;
                   opt.ValidatorOptions.LanguageManager.Culture = new CultureInfo("tr");
-              }); services.AddControllersWithViews()
+              });
+            services.AddControllersWithViews()
               .AddFluentValidation(opt =>
               {
                   opt.RegisterValidatorsFromAssemblyContaining<AboutValidator>();
                   opt.DisableDataAnnotationsValidation = true;
                   opt.ValidatorOptions.LanguageManager.Culture = new CultureInfo("tr");
               });
+            services.AddControllersWithViews()
+              .AddFluentValidation(opt =>
+              {
+                  opt.RegisterValidatorsFromAssemblyContaining<ProcessValidator>();
+                  opt.DisableDataAnnotationsValidation = true;
+                  opt.ValidatorOptions.LanguageManager.Culture = new CultureInfo("tr");
+              });
+            services.AddControllersWithViews()
+           .AddFluentValidation(opt =>
+           {
+               opt.RegisterValidatorsFromAssemblyContaining<SkillValidator>();
+               opt.DisableDataAnnotationsValidation = true;
+               opt.ValidatorOptions.LanguageManager.Culture = new CultureInfo("tr");
+           });
 
             return services;
         }

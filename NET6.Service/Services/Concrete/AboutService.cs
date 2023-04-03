@@ -35,7 +35,7 @@ namespace NET6.Service.Services.Concrete
         public async Task<List<AboutDto>> GetAllAboutsNonDeletedAsync()
         {
 
-            var abouts = await unitOfWork.GetRepository<About>().GetAllAsync(x => !x.IsDeleted);
+            var abouts = await unitOfWork.GetRepository<About>().GetAllAsync();
             var map = mapper.Map<List<AboutDto>>(abouts);
 
             return map;
@@ -146,8 +146,7 @@ namespace NET6.Service.Services.Concrete
 
             return new AboutListDto
             {
-                Abouts = abouts,
-                Image = abouts.Select(a => a.Image).ToList()
+                Abouts = abouts
             };
         }
     }

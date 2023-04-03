@@ -9,6 +9,9 @@ using NET6.Service.Services.Abstractions;
 using NET6.Web.Consts;
 using NET6.Web.ResultMessages;
 using NET6.Entity.DTOs.Abouts;
+using NET6.Entity.DTOs.Articles;
+using NET6.Service.Services.Concrete;
+using NET6.Entity.DTOs.Processes;
 
 namespace NET6.Web.Areas.Admin.Controllers
 {
@@ -94,6 +97,37 @@ namespace NET6.Web.Areas.Admin.Controllers
 
 
             return RedirectToAction("Index", "About", new { Area = "Admin" });
+        }
+        [HttpGet]
+        [Authorize(Roles = $"{RoleConsts.Superadmin}, {RoleConsts.Admin}")]
+        public async Task<IActionResult> Add()
+        {
+            var abouts = await aboutService.GetAllAboutsNonDeletedAsync();
+            return View();
+        }
+        [HttpPost]
+        [Authorize(Roles = $"{RoleConsts.Superadmin}, {RoleConsts.Admin}")]
+        public async Task<IActionResult> Add(AboutAddDto aboutAddDto)
+        {
+
+            var map = mapper.Map<About>(aboutAddDto);
+            var result = await validator.ValidateAsync(map);
+
+
+            if (result.IsValid)
+            {
+                await aboutService.CreateAboutAsync(aboutAddDto);
+                toast.AddSuccessToastMessage(Messages.About.Add(aboutAddDto.Title), new ToastrOptions { Title = "İşlem Başarılı" });
+
+                return RedirectToAction("Index", "About", new { Area = "Admin" });
+
+            }
+            else
+            {
+                result.AddToModelState(this.ModelState);
+            }
+
+            return View();
         }
 
 
