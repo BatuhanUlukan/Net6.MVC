@@ -3,6 +3,7 @@ Used İkonik Template for Home https://themeforest.net/item/ikonik-resumecv-anim
 Used Sneat Template for Admin https://themeselection.com/item/sneat-bootstrap-html-admin-template/
 
 Project Pages:<br>
+Abot Page +<br>
 Home Page +<br>
 Resume Page -<br>
 Blog Page +<br>

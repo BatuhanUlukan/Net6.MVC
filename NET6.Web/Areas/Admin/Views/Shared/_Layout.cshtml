@@ -1,6 +1,4 @@
 ﻿
-
-
 <html lang="en" class="light-style layout-menu-fixed " dir="ltr" data-theme="theme-default" data-template="vertical-menu-template-free">
 
 <head>
@@ -70,16 +68,9 @@
     <div class="layout-wrapper layout-content-navbar  ">
         <div class="layout-container">
 
-
-
-
-
-
-
             <!-- Menu -->
 
             <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
-
 
                 <div class="app-brand demo ">
                     <a href="index.html" class="app-brand-link">
@@ -258,7 +249,7 @@
                                 </a>
                             </li>
                             <li class="menu-item">
-                                <a asp-area="Admin" asp-controller="Skill" asp-action="DeletedTestimonial" class="menu-link">
+                                <a asp-area="Admin" asp-controller="Skill" asp-action="DeletedSkill" class="menu-link">
                                     <div data-i18n="Notifications">Tavsiye</div>
                                 </a>
                             </li>
@@ -272,32 +263,14 @@
                     </li>
                 </ul>
 
-
             </aside>
             <!-- / Menu -->
             <!-- Layout container -->
             <div class="layout-page">
 
-
-
-
-
                 <!-- Navbar -->
 
-
-
-
                 <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme" id="layout-navbar">
-
-
-
-
-
-
-
-
-
-
 
                     <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0   d-xl-none ">
                         <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
@@ -305,12 +278,7 @@
                         </a>
                     </div>
 
-
                     <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
-
-
-
-
 
                         <!-- Search -->
                         <div class="navbar-nav align-items-center">
@@ -321,32 +289,22 @@
                         </div>
                         <!-- /Search -->
 
-
                         <ul class="navbar-nav flex-row align-items-center ms-auto">
-
-
 
                             <!-- Place this tag where you want the button to render. -->
                             <li class="nav-item lh-1 me-3">
                                 <a class="github-button" href="https://github.com/themeselection/sneat-html-admin-template-free" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star themeselection/sneat-html-admin-template-free on GitHub">Star</a>
                             </li>
 
-
-
                             <!-- User -->
                             @await Component.InvokeAsync("DashboardHeader")
 
                             <!--/ User -->
 
-
                         </ul>
                     </div>
 
-
-
                 </nav>
-
-
 
                 <!-- / Navbar -->
                 <!-- Content wrapper -->
@@ -357,24 +315,11 @@
             <!-- / Layout page -->
         </div>
 
-
-
         <!-- Overlay -->
         <div class="layout-overlay layout-menu-toggle"></div>
 
-
     </div>
     <!-- / Layout wrapper -->
-
-
-
-
-    <div class="buy-now">
-        <a href="https://themeselection.com/products/sneat-bootstrap-html-admin-template/" target="_blank" class="btn btn-danger btn-buy-now">Upgrade to Pro</a>
-    </div>
-
-
-
 
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
@@ -401,8 +346,6 @@
     @await Component.InvokeAsync("NToastNotify")
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
-
-
 
 </body>
 
