@@ -10,5 +10,5 @@ Blog Page +<br>
 Portfolio Page +<br>
 Contact Page -<br>
 
-Stmp Setting not completed<br>
+Smpt Setting not completed<br>
 
