@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
-using System.Security.Claims;
 using NET6.Data.UnitOfWorks;
 using NET6.Entity.DTOs.Articles;
 using NET6.Entity.Entities;
@@ -8,6 +7,7 @@ using NET6.Entity.Enums;
 using NET6.Service.Extensions;
 using NET6.Service.Helpers.Images;
 using NET6.Service.Services.Abstractions;
+using System.Security.Claims;
 
 
 namespace NET6.Service.Services.Concrete
@@ -33,8 +33,7 @@ namespace NET6.Service.Services.Concrete
             pageSize = pageSize > 20 ? 20 : pageSize;
             var articles = categoryId == null
                 ? await unitOfWork.GetRepository<Article>().GetAllAsync(a => !a.IsDeleted, a => a.Category, i => i.Image, u => u.User)
-                : await unitOfWork.GetRepository<Article>().GetAllAsync(a => a.CategoryId == categoryId && !a.IsDeleted,
-                    a => a.Category, i => i.Image, u => u.User);
+                : await unitOfWork.GetRepository<Article>().GetAllAsync(a => a.CategoryId == categoryId && !a.IsDeleted, a => a.Category, i => i.Image, u => u.User);
             var sortedArticles = isAscending
                 ? articles.OrderBy(a => a.CreatedDate).Skip((currentPage - 1) * pageSize).Take(pageSize).ToList()
                 : articles.OrderByDescending(a => a.CreatedDate).Skip((currentPage - 1) * pageSize).Take(pageSize).ToList();

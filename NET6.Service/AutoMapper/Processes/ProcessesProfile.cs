@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using NET6.Entity.Entities;
 using NET6.Entity.DTOs.Processes;
+using NET6.Entity.Entities;
 
 namespace NET6.Service.AutoMapper.Processes
 {

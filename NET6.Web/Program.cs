@@ -1,6 +1,5 @@
 
 using Microsoft.AspNetCore.Identity;
-using NToastNotify;
 using NET6.Data.Context;
 using NET6.Data.Extensions;
 using NET6.Entity.Entities;
@@ -8,6 +7,7 @@ using NET6.Service.Describers;
 using NET6.Service.Extensions;
 using NET6.Web.Filters.ArticleVisitors;
 using NET6.Web.Filters.PortfolioVisitors;
+using NToastNotify;
 internal class Program
 {
     private static void Main(string[] args)

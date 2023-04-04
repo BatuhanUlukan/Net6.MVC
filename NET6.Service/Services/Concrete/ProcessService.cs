@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
-using System.Security.Claims;
 using NET6.Data.UnitOfWorks;
 using NET6.Entity.DTOs.Processes;
 using NET6.Entity.Entities;
@@ -8,6 +7,7 @@ using NET6.Entity.Enums;
 using NET6.Service.Extensions;
 using NET6.Service.Helpers.Images;
 using NET6.Service.Services.Abstractions;
+using System.Security.Claims;
 
 
 
@@ -135,7 +135,7 @@ namespace NET6.Service.Services.Concrete
             Image image = new(imageUpload.FullName, processAddDto.Photo.ContentType, userEmail);
             await unitOfWork.GetRepository<Image>().AddAsync(image);
 
-            var process = new Process(processAddDto.Title, processAddDto.Content,userId, userEmail, image.Id);
+            var process = new Process(processAddDto.Title, processAddDto.Content, userId, userEmail, image.Id);
 
             await unitOfWork.GetRepository<Process>().AddAsync(process);
             await unitOfWork.SaveAsync();

@@ -1,5 +1,5 @@
-﻿using System.Linq.Expressions;
-using NET6.Core.Entities;
+﻿using NET6.Core.Entities;
+using System.Linq.Expressions;
 
 namespace NET6.Data.Repositories.Abstractions
 {

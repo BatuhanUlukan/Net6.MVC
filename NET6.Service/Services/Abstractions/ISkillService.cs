@@ -1,6 +1,4 @@
-﻿using NET6.Entity.DTOs.Abouts;
-using NET6.Entity.DTOs.Histories;
-using NET6.Entity.DTOs.Skills;
+﻿using NET6.Entity.DTOs.Skills;
 
 namespace NET6.Service.Services.Abstractions
 {
@@ -13,6 +11,6 @@ namespace NET6.Service.Services.Abstractions
         Task<string> UpdateSkillAsync(SkillUpdateDto skillUpdateDto);
         Task<string> SafeDeleteSkillAsync(Guid skillId);
         Task<string> UndoDeleteSkillAsync(Guid skillId);
-
+        Task<SkillListDto> GetSkillsByCategory(Guid? categoryId, bool isAscending = false);
     }
 }

@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System.Linq.Expressions;
 using NET6.Core.Entities;
 using NET6.Data.Context;
 using NET6.Data.Repositories.Abstractions;
+using System.Linq.Expressions;
 
 namespace NET6.Data.Repositories.Concretes
 {

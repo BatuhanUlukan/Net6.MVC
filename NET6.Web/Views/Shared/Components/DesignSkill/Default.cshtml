@@ -1,13 +1,17 @@
-﻿@using NET6.Entity.DTOs.Skills;
+﻿@using NET6.Entity.DTOs.Skills
 @model SkillListDto
 
 @foreach (var skill in Model.Skills)
 {
-
-    <div class="skill-unit">
-        <h4>@skill.Title</h4>
-        <div class="bar" data-percent="@skill.Percent">
-            <div class="progress"></div>
+    @if (skill.CategoryId == Guid.Parse("1266ee22-b956-4fd2-bcd1-fa55d33a77da"))
+    {
+        <div class="skill-unit">
+            <h4>@skill.Title</h4>
+            <div class="bar" data-percent="@skill.Percent">
+                <div class="progress" style="width: @skill.Percent%;">
+                    <span>@skill.Percent</span>
+                </div>
+            </div>
         </div>
-    </div>
+    }
 }

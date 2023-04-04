@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using System.Security.Claims;
 using NET6.Data.UnitOfWorks;
 using NET6.Entity.DTOs.Users;
 using NET6.Entity.Entities;
@@ -10,6 +9,7 @@ using NET6.Entity.Enums;
 using NET6.Service.Extensions;
 using NET6.Service.Helpers.Images;
 using NET6.Service.Services.Abstractions;
+using System.Security.Claims;
 
 namespace NET6.Service.Services.Concrete
 {

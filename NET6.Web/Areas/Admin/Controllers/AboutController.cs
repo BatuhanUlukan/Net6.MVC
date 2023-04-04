@@ -2,16 +2,13 @@
 using FluentValidation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using NToastNotify;
+using NET6.Entity.DTOs.Abouts;
 using NET6.Entity.Entities;
 using NET6.Service.Extensions;
 using NET6.Service.Services.Abstractions;
 using NET6.Web.Consts;
 using NET6.Web.ResultMessages;
-using NET6.Entity.DTOs.Abouts;
-using NET6.Entity.DTOs.Articles;
-using NET6.Service.Services.Concrete;
-using NET6.Entity.DTOs.Processes;
+using NToastNotify;
 
 namespace NET6.Web.Areas.Admin.Controllers
 {

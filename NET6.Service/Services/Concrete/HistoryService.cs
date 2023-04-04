@@ -1,11 +1,13 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
-using System.Security.Claims;
 using NET6.Data.UnitOfWorks;
 using NET6.Entity.DTOs.Histories;
+using NET6.Entity.DTOs.Skills;
 using NET6.Entity.Entities;
 using NET6.Service.Extensions;
 using NET6.Service.Services.Abstractions;
+using System.Linq.Expressions;
+using System.Security.Claims;
 
 namespace NET6.Service.Services.Concrete
 {
@@ -109,6 +111,22 @@ namespace NET6.Service.Services.Concrete
 
             return history.Title;
         }
+        public async Task<HistoryListDto> GetHistoriesByCategory(Guid? categoryId, bool isAscending = false)
+        {
+
+            var histories = categoryId == null
+                ? await unitOfWork.GetRepository<History>().GetAllAsync(a => !a.IsDeleted, a => a.Category, u => u.User)
+                : await unitOfWork.GetRepository<History>().GetAllAsync(a => a.CategoryId == categoryId && !a.IsDeleted, a => a.Category, u => u.User);
+
+            return new HistoryListDto
+            {
+                Histories = histories,
+                CategoryId = categoryId == null ? null : categoryId.Value,
+                IsAscending = isAscending
+            };
+        }
+
+
 
     }
 }

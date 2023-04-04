@@ -1,13 +1,11 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
-using System.Security.Claims;
 using NET6.Data.UnitOfWorks;
 using NET6.Entity.DTOs.Skills;
 using NET6.Entity.Entities;
 using NET6.Service.Extensions;
 using NET6.Service.Services.Abstractions;
-using NET6.Data.Migrations;
-using NET6.Entity.DTOs.Processes;
+using System.Security.Claims;
 
 namespace NET6.Service.Services.Concrete
 {
@@ -33,7 +31,7 @@ namespace NET6.Service.Services.Concrete
             var userEmail = _user.GetLoggedInEmail();
 
 
-            var skill = new Skill(skillAddDto.Title, skillAddDto.Percent, userEmail, userId,skillAddDto.CategoryId);
+            var skill = new Skill(skillAddDto.Title, skillAddDto.Percent, userEmail, userId, skillAddDto.CategoryId);
 
 
             await unitOfWork.GetRepository<Skill>().AddAsync(skill);
@@ -111,6 +109,21 @@ namespace NET6.Service.Services.Concrete
 
             return skill.Title;
         }
+        public async Task<SkillListDto> GetSkillsByCategory(Guid? categoryId, bool isAscending = false)
+        {
+
+            var skills = categoryId == null
+                ? await unitOfWork.GetRepository<Skill>().GetAllAsync(a => !a.IsDeleted, a => a.Category, u => u.User)
+                : await unitOfWork.GetRepository<Skill>().GetAllAsync(a => a.CategoryId == categoryId && !a.IsDeleted, a => a.Category, u => u.User);
+
+            return new SkillListDto
+            {
+                Skills = skills,
+                CategoryId = categoryId == null ? null : categoryId.Value,
+                IsAscending = isAscending
+            };
+        }
+
 
     }
 }

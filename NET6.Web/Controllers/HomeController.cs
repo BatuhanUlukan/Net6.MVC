@@ -1,9 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using NET6.Data.UnitOfWorks;
-using NET6.Entity.DTOs.Abouts;
-using NET6.Entity.Entities;
 using NET6.Service.Services.Abstractions;
-using NET6.Service.Services.Concrete;
 
 namespace NET6.Web.Controllers
 {

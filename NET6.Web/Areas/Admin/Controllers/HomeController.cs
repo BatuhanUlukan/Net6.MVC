@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 using NET6.Service.Services.Abstractions;
+using Newtonsoft.Json;
 
 namespace NET6.Web.Areas.Admin.Controllers
 {

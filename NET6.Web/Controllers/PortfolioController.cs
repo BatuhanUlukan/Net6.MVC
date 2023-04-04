@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
 using NET6.Data.UnitOfWorks;
 using NET6.Entity.Entities;
 using NET6.Service.Services.Abstractions;
 using NET6.Web.Models;
+using System.Diagnostics;
 
 
 namespace NET6.Web.Controllers

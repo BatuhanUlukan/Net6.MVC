@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using NET6.Entity.DTOs.Categories;
+﻿using NET6.Entity.DTOs.Categories;
 
 namespace NET6.Entity.DTOs.Skills
 {

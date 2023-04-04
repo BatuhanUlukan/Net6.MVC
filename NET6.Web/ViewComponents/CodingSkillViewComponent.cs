@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using NET6.Service.Services.Abstractions;
-using NET6.Service.Services.Concrete;
 
 namespace NET6.Web.ViewComponents
 {
@@ -11,10 +10,11 @@ namespace NET6.Web.ViewComponents
         {
             this.skillService = skillService;
         }
-        public async Task<IViewComponentResult> InvokeAsync()
+        public async Task<IViewComponentResult> InvokeAsync(Guid? categoryId, bool isAscending = false)
         {
-            var skills = await skillService.GetAllSkillsWithCategoryNonDeletedAsync();
-            return View(skills);
+            var skillListDto = await skillService.GetSkillsByCategory(categoryId, isAscending);
+            return View(skillListDto);
         }
+
     }
 }

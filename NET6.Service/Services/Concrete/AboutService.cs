@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
-using System.Security.Claims;
 using NET6.Data.UnitOfWorks;
 using NET6.Entity.DTOs.Abouts;
 using NET6.Entity.Entities;
@@ -8,6 +7,7 @@ using NET6.Entity.Enums;
 using NET6.Service.Extensions;
 using NET6.Service.Helpers.Images;
 using NET6.Service.Services.Abstractions;
+using System.Security.Claims;
 
 
 
@@ -52,7 +52,7 @@ namespace NET6.Service.Services.Concrete
         {
             var userEmail = _user.GetLoggedInEmail();
 
-            var about = await unitOfWork.GetRepository<About>().GetAsync(x => !x.IsDeleted && x.Id == aboutUpdateDto.Id,i => i.Image);
+            var about = await unitOfWork.GetRepository<About>().GetAsync(x => !x.IsDeleted && x.Id == aboutUpdateDto.Id, i => i.Image);
 
 
             if (aboutUpdateDto.Photo != null)
@@ -134,7 +134,7 @@ namespace NET6.Service.Services.Concrete
             Image image = new(imageUpload.FullName, aboutAddDto.Photo.ContentType, userEmail);
             await unitOfWork.GetRepository<Image>().AddAsync(image);
 
-            var about = new About(aboutAddDto.Title, aboutAddDto.Content,aboutAddDto.Job ,userId, userEmail, image.Id);
+            var about = new About(aboutAddDto.Title, aboutAddDto.Content, aboutAddDto.Job, userId, userEmail, image.Id);
 
             await unitOfWork.GetRepository<About>().AddAsync(about);
             await unitOfWork.SaveAsync();

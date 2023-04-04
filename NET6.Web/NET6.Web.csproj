@@ -25,6 +25,7 @@
     <Content Remove="Areas\Admin\Views\Service\Update.cshtml" />
     <Content Remove="Areas\Admin\Views\Skill\Add.cshtml" />
     <Content Remove="Areas\Admin\Views\Skill\Update.cshtml" />
+    <Content Remove="Views\Shared\_LayoutAbout.cshtml" />
     <Content Remove="Views\Shared\_LayoutHome.cshtml" />
   </ItemGroup>
 
@@ -60,6 +61,7 @@
     <None Include="Views\Article\Privacy.cshtml" />
     <None Include="Views\Shared\Error.cshtml" />
     <None Include="Views\Shared\_Layout.cshtml" />
+    <None Include="Views\Shared\_LayoutAbout.cshtml" />
     <None Include="Views\Shared\_LayoutHome.cshtml" />
     <None Include="Views\Shared\_ValidationScriptsPartial.cshtml" />
     <None Include="Views\_ViewImports.cshtml" />
@@ -198,6 +200,14 @@
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Shared\_LayoutAbout.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\Shared\_LayoutAbout.cshtml" />
   </ItemGroup>
 	
 

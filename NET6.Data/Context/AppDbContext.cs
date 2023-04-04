@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System.Reflection;
 using NET6.Entity.Entities;
+using System.Reflection;
 
 namespace NET6.Data.Context
 {

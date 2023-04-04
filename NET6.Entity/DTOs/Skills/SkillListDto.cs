@@ -7,7 +7,6 @@ namespace NET6.Entity.DTOs.Skills
     {
         public IList<Skill> Skills { get; set; }
         public Guid? CategoryId { get; set; }
-
         public virtual bool IsAscending { get; set; } = false;
 
 

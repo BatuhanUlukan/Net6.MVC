@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
 <html lang="en" class="no-js classic-page-layout " data-audio-tick="audio/tick.mp3" data-click-ripple-animation="yes">
 
 <head>
@@ -17,28 +21,6 @@
         <!-- .site-main -->
         <main id="main" class="site-main cd-main">
 
-            <!-- HEADER -->
-            <header id="masthead" class="header" role="banner">
-
-                <!-- header-wrap -->
-                <div class="header-wrap layout-full">
-
-                    <img src="images/home/cover.jpg" alt="profile-image">
-
-                    <div class="home-heading">
-                        @await Component.InvokeAsync("Header")
-                    </div>
-
-                    <!-- HOME BG LOGO -->
-                    <div class="home-bg-logo">
-                        <img src="images/home/icon-bg2.svg" alt="icon" />
-                    </div>
-
-                </div>
-                <!-- header-wrap -->
-
-            </header>
-            <!-- HEADER -->
             <!-- site-middle -->
             <div class="site-middle">
                 <div class="layout-medium">
@@ -72,8 +54,8 @@
                                                         <!--<img src="images/site/icon-03.png" alt="image"/>-->
                                                     </p>
                                                 </div>
-
                                                 @await Component.InvokeAsync("WorkHistory")
+
 
                                                 <div class="event">
                                                     <h2>EDUCATION</h2>
@@ -82,8 +64,8 @@
                                                         <!--<img src="images/site/icon-03.png" alt="image"/>-->
                                                     </p>
                                                 </div>
+                                                @await Component.InvokeAsync("EduHistory")
 
-                                                @await Component.InvokeAsync("EducationHistory")
 
                                                 <p>
                                                     <a href="#" class="button  primary">
@@ -107,7 +89,6 @@
                                                 <!-- section-title -->
                                                 <!-- .skill-unit -->
                                                 @await Component.InvokeAsync("DesignSkill")
-
                                                 <!-- .skill-unit -->
 
 

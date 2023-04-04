@@ -19,7 +19,7 @@ namespace NET6.Service.FluentValidations
                 .NotEmpty()
                 .NotNull()
                 .MinimumLength(2)
-                .MaximumLength(3)
+                .MaximumLength(5)
                 .WithName("Değer");
 
 
