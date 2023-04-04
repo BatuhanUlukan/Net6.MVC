@@ -5,9 +5,10 @@ Used Sneat Template for Admin https://themeselection.com/item/sneat-bootstrap-ht
 Project Pages:<br>
 Abot Page +<br>
 Home Page +<br>
-Resume Page -<br>
+Resume Page +<br>
 Blog Page +<br>
 Portfolio Page +<br>
 Contact Page -<br>
 
+Stmp Setting not completed
 Not All Completed
