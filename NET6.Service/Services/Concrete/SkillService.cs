@@ -124,6 +124,18 @@ namespace NET6.Service.Services.Concrete
             };
         }
 
+        public async Task<SkillListDto> GetSkillsByCategoryName(string categoryName, bool isAscending = false)
+        {
+            var skills = categoryName == null
+            ? await unitOfWork.GetRepository<Skill>().GetAllAsync(a => !a.IsDeleted, a => a.Category, u => u.User)
+            : await unitOfWork.GetRepository<Skill>().GetAllAsync(a => a.Category.Name == categoryName && !a.IsDeleted, a => a.Category, u => u.User);
 
+            return new SkillListDto
+            {
+                Skills = skills,
+                CategoryName = categoryName,
+                IsAscending = isAscending
+            };
+        }
     }
 }

@@ -44,13 +44,13 @@ namespace NET6.Web.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-        public async Task<IActionResult> Detail(Guid id)
+        public async Task<IActionResult> Detail(Guid articleId)
         {
             var ipAddress = httpContextAccessor.HttpContext.Connection.RemoteIpAddress.MapToIPv4().ToString();
             var articeVisitors = await unitOfWork.GetRepository<ArticleVisitor>().GetAllAsync(null, x => x.Visitor, y => y.Article);
-            var article = await unitOfWork.GetRepository<Article>().GetAsync(x => x.Id == id);
+            var article = await unitOfWork.GetRepository<Article>().GetAsync(x => x.Id == articleId);
 
-            var result = await articleService.GetArticleWithCategoryNonDeletedAsync(id);
+            var result = await articleService.GetArticleWithCategoryNonDeletedAsync(articleId);
 
             var visitor = await unitOfWork.GetRepository<Visitor>().GetAsync(x => x.IpAddress == ipAddress);
 

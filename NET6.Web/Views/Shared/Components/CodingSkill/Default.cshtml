@@ -3,7 +3,7 @@
 
 @foreach (var skill in Model.Skills)
 {
-    @if (skill.CategoryId == Guid.Parse("1bd1d873-a5ff-43e1-aa04-f86dd78495ee"))
+    @if (skill.Category.Name == "Coding")
     {
         <div class="skill-unit">
             <h4>@skill.Title</h4>

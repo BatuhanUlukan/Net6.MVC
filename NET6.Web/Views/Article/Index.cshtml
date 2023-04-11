@@ -1,4 +1,5 @@
 ﻿@model ArticleListDto
+@using NET6.Mvc.Extensions
 
 <!-- site-content -->
 <div id="content" class="site-content" role="main">
@@ -23,7 +24,7 @@
 
 
                     <!-- .entry-title -->
-                    <h2 class="entry-title"><a asp-controller="Article" asp-action="Detail" asp-route-id="@item.Id">@item.Title</a></h2>
+                    <h2 class="entry-title"><a href="/@Url.FriendlyUrlHelper(@item.Title)/@item.Id">@item.Title</a></h2>
 
                     <!-- .entry-meta -->
                     <div class="entry-meta">
@@ -48,7 +49,7 @@
                 <!-- .featured-image -->
                 <div class="featured-image">
 
-                    <a asp-controller="Article" asp-action="Detail" asp-route-id="@item.Id">
+                    <a href="/@Url.FriendlyUrlHelper(@item.Title)/@item.Id">
                         <img src="~/images/@item.Image.FileName" alt="blog-image">
                     </a>
                 </div>
@@ -58,7 +59,7 @@
                     <p>
                         @Html.Raw(item.Content.Length > 280 ? item.Content.Substring(0, 280) : item.Content)
                     </p>
-                    <p><a asp-controller="Article" asp-action="Detail" asp-route-id="@item.Id">Read More</a></p>
+                    <p><a href="/@Url.FriendlyUrlHelper(@item.Title)/@item.Id">Read More</a></p>
                 </div>
                 <!-- .entry-content -->
 

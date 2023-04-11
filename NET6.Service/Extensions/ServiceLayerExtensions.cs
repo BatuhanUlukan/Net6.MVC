@@ -27,6 +27,7 @@ namespace NET6.Service.Extensions
             services.AddScoped<ITestimonialService, TestimonialService>();
             services.AddScoped<IProcessService, ProcessService>();
             services.AddScoped<ISkillService, SkillService>();
+            services.AddTransient<IEmailService, EmailService>();
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 

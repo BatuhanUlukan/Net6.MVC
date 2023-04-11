@@ -10,9 +10,9 @@ namespace NET6.Web.ViewComponents
         {
             this.skillService = skillService;
         }
-        public async Task<IViewComponentResult> InvokeAsync(Guid? categoryId, bool isAscending = false)
+        public async Task<IViewComponentResult> InvokeAsync(string categoryName, bool isAscending = false)
         {
-            var skillListDto = await skillService.GetSkillsByCategory(categoryId, isAscending);
+            var skillListDto = await skillService.GetSkillsByCategoryName(categoryName, isAscending);
             return View(skillListDto);
         }
 

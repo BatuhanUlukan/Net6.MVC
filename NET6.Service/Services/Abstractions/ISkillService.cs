@@ -12,5 +12,6 @@ namespace NET6.Service.Services.Abstractions
         Task<string> SafeDeleteSkillAsync(Guid skillId);
         Task<string> UndoDeleteSkillAsync(Guid skillId);
         Task<SkillListDto> GetSkillsByCategory(Guid? categoryId, bool isAscending = false);
+        Task<SkillListDto> GetSkillsByCategoryName(string categoryName, bool isAscending = false);
     }
 }

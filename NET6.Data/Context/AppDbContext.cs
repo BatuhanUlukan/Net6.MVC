@@ -24,6 +24,7 @@ namespace NET6.Data.Context
         public DbSet<Testimonial> Testimonials { get; set; }
         public DbSet<Process> Processes { get; set; }
         public DbSet<Skill> Skills { get; set; }
+        public DbSet<Log> Logs { get; set; }
 
         public DbSet<About> Abouts { get; set; }
 
