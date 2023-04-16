@@ -1,51 +1,46 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+﻿using System.Text.RegularExpressions;
 
-namespace NET6.Mvc.Extensions
+namespace NET6.Web.Extensions
 {
-    public static class UrlExtensions
+    public class UrlExtensions
     {
-        //@Url.link @Url.FriendlyUrlHelper()
-        public static string FriendlyUrlHelper(this Microsoft.AspNetCore.Mvc.IUrlHelper helper, string url)
+        public static string FriendlyUrlHelper(object a)
         {
-            if (string.IsNullOrEmpty(url)) return "";
-            url = url.ToLower();
-            url = url.Trim();
-            if (url.Length > 100)
+            string s = a.ToString();
+
+            //s = oncul + id + "-" + s;
+            if (string.IsNullOrEmpty(s)) //string yok veya boş ise true döndürür
             {
-                url = url.Substring(0, 100);
+                return "";
             }
-            url = url.Replace("İ", "I");
-            url = url.Replace("ı", "i");
-            url = url.Replace("ğ", "g");
-            url = url.Replace("Ğ", "G");
-            url = url.Replace("ç", "c");
-            url = url.Replace("Ç", "C");
-            url = url.Replace("ö", "o");
-            url = url.Replace("Ö", "O");
-            url = url.Replace("ş", "s");
-            url = url.Replace("Ş", "S");
-            url = url.Replace("ü", "u");
-            url = url.Replace("Ü", "U");
-            url = url.Replace("'", "");
-            url = url.Replace("\"", "");
-            char[] replacerList = @"$%#@!*?;:~`+=()[]{}|\'<>,/^&"".".ToCharArray();
-            for (int i = 0; i < replacerList.Length; i++)
+
+            if (s.Length > 80)
             {
-                string strChr = replacerList[i].ToString();
-                if (url.Contains(strChr))
-                {
-                    url = url.Replace(strChr, string.Empty);
-                }
+                s = s.Substring(0, 80); //string den belli karakter alır.
             }
-            Regex regex = new Regex("[^a-zA-Z0-9_-]");
-            url = regex.Replace(url, "-");
-            while (url.IndexOf("--", StringComparison.Ordinal) > -1)
-                url = url.Replace("--", "-");
-            return url;
+            s = s.Replace("ş", "s"); //karakter değişimi için kullanılır
+            s = s.Replace("Ş", "S");
+            s = s.Replace("ğ", "g");
+            s = s.Replace("Ğ", "G");
+            s = s.Replace("İ", "I");
+            s = s.Replace("ı", "i");
+            s = s.Replace("ç", "c");
+            s = s.Replace("Ç", "C");
+            s = s.Replace("ö", "o");
+            s = s.Replace("Ö", "O");
+            s = s.Replace("ü", "u");
+            s = s.Replace("Ü", "U");
+            s = s.Replace("'", "");
+            s = s.Replace("\"", "");
+            Regex r = new Regex("[^a-zA-Z0-9_-]");
+            //if (r.IsMatch(s))
+            s = r.Replace(s, "-");
+            if (!string.IsNullOrEmpty(s))
+                while (s.IndexOf("--") > -1)
+                    s = s.Replace("--", "-");
+            if (s.StartsWith("-")) s = s.Substring(1);
+            if (s.EndsWith("-")) s = s.Substring(0, s.Length - 1);
+            return s;
         }
     }
 

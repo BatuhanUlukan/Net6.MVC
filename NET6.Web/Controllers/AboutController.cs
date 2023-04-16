@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using NET6.Data.UnitOfWorks;
 using NET6.Service.Services.Abstractions;
-using NET6.Web.Areas.Admin.Controllers;
 
 namespace NET6.Web.Controllers
 {
@@ -21,7 +20,7 @@ namespace NET6.Web.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            var abouts = await aboutService.GetAllAboutsNonDeletedAsync();
+            var abouts = await aboutService.GetAboutsAsync();
             return View(abouts);
         }
 

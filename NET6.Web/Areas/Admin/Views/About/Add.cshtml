@@ -14,6 +14,17 @@
 
                     <div asp-validation-summary="ModelOnly"></div>
                     <div class="card-body">
+                        <div class="form-group" style="margin-top:5px;">
+                            <label asp-for="SeoId">Seo</label>
+
+                            <a class="btn text-primary float-end" data-bs-toggle="modal" data-bs-target="#seoModalCenter">
+                               Seo Ekle <i class="bx bx-plus"></i>
+                            </a>
+
+                            <select id="seoList" class="form-control" asp-for="SeoId" asp-items="@(new SelectList(Model.Seos,"Id", "Description", "Keywords"))"></select>                           
+                            <span asp-validation-for="SeoId" class="text-danger"></span>
+
+                        </div>
 
                         <div class="form-group">
                             <label asp-for="Title" id="defaultFormControlInput" class="form-label">Ad ve Soyad</label>
@@ -48,14 +59,59 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="seoModalCenter" tabindex="-1" role="dialog" aria-labelledby="seoModalCenter" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Seo Ekleme</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label class="d-block form-label">Seo Author</label>
+                        <input class="form-control" type="text" id="seoAuthor" />
+                    </div>  
+                    <div class="form-group">
+                        <label class="d-block form-label">Seo Description</label>
+                        <input class="form-control" type="text" id="seoDescription" />
+                    </div>  
+                    <div class="form-group">
+                        <label class="d-block form-label">Seo Keywords</label>
+                        <input class="form-control" type="text" id="seoKeywords" />
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+                <button type="button" data-keyboard="false" class="btn btn-primary" id="seoSave">Kaydet</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 
 
 @section Scripts
     {
-    <script>
-        CKEDITOR.replace('editor');
-    </script>
-    }
+            <script>
+                CKEDITOR.replace('editor');
+            </script>
+
+            <script src="~/js/seoAdd.js"></script>
+
+        <script>
+            var app = app || {};
+            app.Urls = app.Urls || {};
+
+            app.Urls.baseUrl = '@Url.Content("~")';
+            app.Urls.seoAddUrl = "@(Url.Action("AddWithAjax", "Seo"))";
+                app.Urls.redirectUrl = "@(Url.Action("Add", "About"))";
+        </script>
+}
+
 
 

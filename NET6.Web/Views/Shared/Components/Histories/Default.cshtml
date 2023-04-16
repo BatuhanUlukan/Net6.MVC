@@ -1,0 +1,52 @@
+﻿
+
+@using NET6.Entity.DTOs.Histories
+@model HistoryListDto
+
+<div class="event">
+    <h2>WORK HISTORY</h2>
+    <p>
+        <i class="pw-icon-badge"></i>
+        <!--<img src="images/site/icon-03.png" alt="image"/>-->
+    </p>
+
+    @foreach (var history in Model.Histories)
+    {
+        @if (history.Category.Name == "Work")
+        {
+            <div class="event">
+                <h3>@history.SFDate</h3>
+                <h4>@history.Title</h4>
+                <h5>@history.Name</h5>
+                <p>
+                    @Html.Raw(@history.Content)
+                </p>
+            </div>
+        }
+    }
+</div>
+
+
+<div class="event">
+    <h2>EDUCATION</h2>
+    <p>
+        <i class="pw-icon-education"></i>
+        <!--<img src="images/site/icon-03.png" alt="image"/>-->
+    </p>
+
+    @foreach (var history in Model.Histories)
+    {
+        @if (history.Category.Name == "Education")
+        {
+            <div class="event">
+                <h3>@history.SFDate</h3>
+                <h4>@history.Title</h4>
+                <h5>@history.Name</h5>
+                <p>
+                    @Html.Raw(@history.Content)
+                </p>
+            </div>
+        }
+    }
+</div>
+

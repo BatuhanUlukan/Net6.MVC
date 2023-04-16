@@ -1,58 +1,187 @@
-﻿
-@model ArticleDto
+﻿@model ArticleDto
 
-<!-- site-content -->
-<div id="content" class="site-content" role="main">
-    <!-- .blog-single -->
-    <div class="blog-single page-layout">
+@{
+    Layout = null;
+}
 
-        <!-- .hentry -->
-        <article class="post type-post hentry">
+<!DOCTYPE html>
 
-            <!-- .entry-header -->
-            <header class="entry-header">
-                <h1 class="entry-title">@Model.Title</h1>
+<html lang="en" class="no-js classic-page-layout " data-audio-tick="~/PlainHtml/audio/tick.mp3" data-click-ripple-animation="yes">
+<head>
 
-                <!-- .entry-meta -->
-                <div class="entry-meta">
-                    <span class="entry-date">
-                        <time class="entry-date" datetime="2014-07-13T04:34:10+00:00">
-                            @Model.CreatedDate.ToString("dd/MM/yyyy")<br />
-                            @Model.User.FirstName @Model.User.LastName
-                        </time>
-                    </span>
-                    <span class="comment-link">
-                        <a href="blog-single.html#comments"> @Model.ViewCount</a>
-                    </span>
-                    <span class="cat-links">
-                        <a href="#" title="View all posts in Travel" rel="category tag">@Model.Category.Name</a>
-                    </span>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="@Model.Seo.Description">
+    <meta name="keywords" content="@Model.Seo.Keywords">
+    <meta name="author" content="@Model.Seo.Author">
+    <meta name="theme-color" content="#1755cf" />
 
+    <title>@Model.Title</title>
+    @await Component.InvokeAsync("Css")
+</head>
+<body>
+    <!-- HEADER -->
+    <header id="masthead" class="header" role="banner">
+
+        <!-- header-wrap -->
+        <div class="header-wrap layout-full">
+
+            <!-- header-social -->
+            <div class="header-bottom">
+
+                <a class="social-link facebook" href="#"></a>
+                <a class="social-link twitter" href="#"></a>
+                <a class="social-link linkedin" href="#"></a>
+                <a class="social-link instagram" href="#"></a>
+
+            </div>
+            <!-- header-social -->
+            <!-- NAV MENU -->
+            <nav id="primary-navigation" class="site-navigation primary-navigation" role="navigation">
+                <div class="nav-menu menu-with-icons">
+                    <ul>
+
+                        <!-- InstanceBeginEditable name="Menu-Content" -->
+
+                        <li>@Html.ActionLink("Home", "Index", "Home", null, new { @class = "home" })</li>
+                        <li>@Html.ActionLink("Back To Blog", "Index", "Article", null, new { @class = "return" })</li>
+                        <li><a class="search-toggle">Search</a></li>
+
+                        <!-- InstanceEndEditable -->
+                    </ul>
                 </div>
-                <!-- .entry-meta -->
-
-            </header>
-        </article>
-        <!-- .entry-header -->
-        <!-- .featured-image -->
-        <div class="featured-image">
-            <img src="~/images/@Model.Image.FileName" alt="blog-image">
+            </nav>
+            <!-- NAV MENU -->
+            <!-- SEARCH -->
+            <div class="header-search">
+                <form role="search" method="get" class="search-form" action="#">
+                    <label>
+                        <span class="screen-reader-text">Search for:</span>
+                        <input type="search" class="search-field" placeholder="Enter Keyword" value="" name="s">
+                    </label>
+                    <input type="submit" class="search-submit" value="Search">
+                </form>
+            </div>
+            <!-- SEARCH -->
         </div>
-        <!-- .featured-image -->
-        <!-- .entry-content -->
-        <div class="entry-content">
-            @Html.Raw(Model.Content)
-            <!-- .entry-meta -->
-            <footer class="entry-meta tags">
-                <a href="#" rel="tag">design</a> <a href="#" rel="tag">responsive</a> <a href="#" rel="tag">think</a>
-            </footer>
-            <!-- .entry-meta -->
+        <!-- header-wrap -->
+    </header>
+    <!-- HEADER -->
+    <div id="page" class="hfeed site">
 
-        </div>
-        <!-- .entry-content -->
+        <!-- .site-main -->
+        <main id="main" class="site-main cd-main">
 
+
+            <div class="site-middle">
+                <div class="layout-medium">
+                    <div id="primary" class="content-area with-sidebar">
+                    
+                        <!-- site-content -->
+                        <div id="content" class="site-content" role="main">
+                            <!-- .blog-single -->
+                            <div class="blog-single page-layout">
+
+                                <!-- .hentry -->
+                                <article class="post type-post hentry">
+
+                                    <!-- .entry-header -->
+                                    <header class="entry-header">
+                                        <h1 class="entry-title">@Model.Title</h1>
+
+                                        <!-- .entry-meta -->
+                                        <div class="entry-meta">
+                                            <span class="entry-date">
+                                                <time class="entry-date" datetime="2014-07-13T04:34:10+00:00">
+                                                    @Model.CreatedDate.ToString("dd/MM/yyyy")<br />
+                                                    @Model.User.FirstName @Model.User.LastName
+                                                </time>
+                                            </span>
+                                            <span class="cat-links">
+                                                <a rel="category tag"> @Model.ViewCount Views</a>
+                                            </span>
+                                            <span class="cat-links">
+                                                <a rel="category tag">@Model.Category.Name</a>
+                                            </span>
+
+                                        </div>
+                                        <!-- .entry-meta -->
+
+                                    </header>
+                                </article>
+                                <!-- .entry-header -->
+                                <!-- .featured-image -->
+                                <div class="featured-image">
+                                    <img src="~/images/@Model.Image.FileName" alt="blog-image">
+                                </div>
+                                <!-- .featured-image -->
+                                <!-- .entry-content -->
+                                <div class="entry-content">
+                                    @Html.Raw(Model.Content)
+                                    <!-- .entry-meta -->
+                                    <footer class="entry-meta tags">
+                                        <a href="#" rel="tag">design</a> <a href="#" rel="tag">responsive</a> <a href="#" rel="tag">think</a>
+                                    </footer>
+                                    <!-- .entry-meta -->
+
+                                </div>
+                                <!-- .entry-content -->
+
+                            </div>
+                            <!-- .hentry -->
+
+                        </div>
+                        <!-- .blog-single -->
+                    </div>
+                    <!-- #secondary -->
+                    <div id="secondary" class="widget-area sidebar" role="complementary">
+
+
+                        <!-- widget : categories -->
+                        <aside class="widget widget_categories">
+                            <h3 class="widget-title">Categories</h3>
+                            @await Component.InvokeAsync("HomeCategories")
+
+                        </aside>
+
+                        <!-- widget : popular-posts -->
+                        <!-- widget : text -->
+                        <aside class="widget widget_text">
+                            <!--<h3 class="widget-title">Advertisement</h3>-->
+                            <div class="textwidget">
+                                <a href="#"><img src="~/PlainHtml/images/blog/banner.jpg" alt="banner"></a>
+                            </div>
+                        </aside>
+                        <!-- widget : text -->
+
+                    </div>
+                </div>
+            </div>
+            <!-- #secondary -->
+
+        </main>
     </div>
-    <!-- .hentry -->
 
-</div>
-<!-- .blog-single -->
+
+
+
+    <!-- ALERT : used for contact form mail delivery alert -->
+    <div class="site-alert animated"></div>
+    <!-- .site-footer -->
+    <footer id="colophon" class="site-footer" role="contentinfo">
+
+        <!-- .site-info -->
+        <div class="site-info">
+            <div class="textwidget">
+                <p><a href="http://pixelwars.org/">Copyright &copy; 2017 by Pixelwars</a></p>
+            </div>
+        </div>
+        <!-- .site-info -->
+
+    </footer>
+    <!-- .site-footer -->
+    <a href="#" id="back-to-top" class="show">↑ <span>Scroll to top</span></a>
+
+    @await Component.InvokeAsync("Script")
+</body>
+</html>

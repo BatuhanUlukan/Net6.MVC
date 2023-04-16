@@ -18,7 +18,8 @@ namespace NET6.Data.Mappings
                 CreatedBy = "Admin Test",
                 CreatedDate = DateTime.Now,
                 IsDeleted = false,
-                UserId = Guid.Parse("3AA42229-1C0F-4630-8C1A-DB879ECD0427")
+                UserId = Guid.Parse("3AA42229-1C0F-4630-8C1A-DB879ECD0427") ,
+                SeoId = Guid.Parse("a7f5670d-31eb-4eea-ba51-a5e924135542")
             });
         }
     }

@@ -1,0 +1,44 @@
+﻿@model SeoUpdateDto
+<div class="container-xxl flex-grow-1 container-p-y">
+
+
+    <h4 class="fw-bold py-3 mb-4">
+        <span class="text-muted fw-light">Seo Yönetimi /</span> Seo Güncelle
+    </h4>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card mb-4">
+                <h5 class="card-header"></h5>
+                <form asp-controller="Seo" asp-action="Update" method="post" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly"></div>
+                    <div class="card-body">
+                        <input type="hidden" asp-for="Id" />
+                        <div class="form-group">
+                            <label asp-for="Author" id="defaultFormControlInput" class="form-label">Seo Author</label>
+                            <input asp-for="Author" type="text" class="form-control mb-3" id="editor" placeholder="Lütfen seo yazarı giriniz." aria-describedby="defaultFormControlHelp">
+                            <span asp-validation-for="Author" class="text-danger"></span>
+                        </div>                 
+                        <div class="form-group">
+                            <label asp-for="Description" id="defaultFormControlInput" class="form-label">Seo Description</label>
+                            <input asp-for="Description" type="text" class="form-control mb-3" id="editor" placeholder="Lütfen seo konu giriniz." aria-describedby="defaultFormControlHelp">
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>           
+                        <div class="form-group">
+                            <label asp-for="Keywords" id="defaultFormControlInput" class="form-label">Seo Keywords</label>
+                            <input asp-for="Keywords" type="text" class="form-control mb-3" id="editor" placeholder="Lütfen seo kelimeleri giriniz." aria-describedby="defaultFormControlHelp">
+                            <span asp-validation-for="Keywords" class="text-danger"></span>
+                        </div>
+
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-block">Kaydet</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+</div>

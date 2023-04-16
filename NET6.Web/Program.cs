@@ -6,14 +6,10 @@ using NET6.Entity.Entities;
 using NET6.Service.Describers;
 using NET6.Service.Extensions;
 using NET6.Web.Filters.ArticleVisitors;
-using NET6.Web.Filters.PortfolioVisitors;
-using NLog.Web;
 using NToastNotify;
 using NLog;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
-
+using NET6.Web.Filters.ExceptionFilter;
+using NLog.Web;
 
 internal class Program
 {
@@ -26,17 +22,16 @@ internal class Program
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Configure SMTP settings
-            builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
-
             object value = builder.Services.LoadDataLayerExtension(builder.Configuration);
             builder.Services.LoadServiceLayerExtension();
             builder.Services.AddSession();
             // Add services to the container.
             builder.Services.AddControllersWithViews(opt =>
             {
+                opt.Filters.Add<MvcExceptionFilter>();
                 opt.Filters.Add<ArticleVisitorFilter>();
                 opt.Filters.Add<PortfolioVisitorFilter>();
+
             })
                 .AddNToastNotifyToastr(new ToastrOptions()
                 {
@@ -102,19 +97,14 @@ internal class Program
                 endpoints.MapAreaControllerRoute(
                     name: "Admin",
                     areaName: "Admin",
-                    pattern: "Admin/{controller=Home}/{action=Index}/{id?}"
-                );
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}"
-                    );
+                    pattern: "Admin/{controller=Home}/{action=Index}/{id?}");
 
                 endpoints.MapControllerRoute(
-                    name: "article",
-                    pattern: "{title}/{articleId}",
-                    defaults: new { controller = "Article", action = "Detail" }
-                    );
+                    name: "default",
+                    pattern: "{Controller=Home}/{Action=Index}/{id:Guid}");
+
                 endpoints.MapDefaultControllerRoute();
+
             });
 
             app.Run();

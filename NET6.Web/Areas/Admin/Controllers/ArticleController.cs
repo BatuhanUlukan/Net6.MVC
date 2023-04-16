@@ -18,14 +18,16 @@ namespace NET6.Web.Areas.Admin.Controllers
     {
         private readonly IArticleService articleService;
         private readonly ICategoryService categoryService;
+        private readonly ISeoService seoService;
         private readonly IMapper mapper;
         private readonly IValidator<Article> validator;
         private readonly IToastNotification toast;
 
-        public ArticleController(IArticleService articleService, ICategoryService categoryService, IMapper mapper, IValidator<Article> validator, IToastNotification toast)
+        public ArticleController(IArticleService articleService, ICategoryService categoryService, ISeoService seoService, IMapper mapper, IValidator<Article> validator, IToastNotification toast)
         {
             this.articleService = articleService;
             this.categoryService = categoryService;
+            this.seoService = seoService;
             this.mapper = mapper;
             this.validator = validator;
             this.toast = toast;
@@ -49,7 +51,15 @@ namespace NET6.Web.Areas.Admin.Controllers
         public async Task<IActionResult> Add()
         {
             var categories = await categoryService.GetAllCategoriesNonDeleted();
-            return View(new ArticleAddDto { Categories = categories });
+            var seos = await seoService.GetAllSeosNonDeleted();
+
+            var articleAddDto = new ArticleAddDto
+            {
+                Categories = categories,
+                Seos = seos
+            };
+
+            return View(articleAddDto);
         }
         [HttpPost]
         [Authorize(Roles = $"{RoleConsts.Superadmin}, {RoleConsts.Admin}")]
@@ -74,7 +84,8 @@ namespace NET6.Web.Areas.Admin.Controllers
             }
 
             var categories = await categoryService.GetAllCategoriesNonDeleted();
-            return View(new ArticleAddDto { Categories = categories });
+            var seos = await seoService.GetAllSeosNonDeleted();
+            return View(new ArticleAddDto { Categories = categories, Seos = seos });
         }
 
 
@@ -85,9 +96,14 @@ namespace NET6.Web.Areas.Admin.Controllers
         {
             var article = await articleService.GetArticleWithCategoryNonDeletedAsync(articleId);
             var categories = await categoryService.GetAllCategoriesNonDeleted();
+            var seos = await seoService.GetAllSeosNonDeleted();
+
 
             var articleUpdateDto = mapper.Map<ArticleUpdateDto>(article);
+
             articleUpdateDto.Categories = categories;
+            articleUpdateDto.Seos = seos;
+
 
             return View(articleUpdateDto);
         }
@@ -113,8 +129,15 @@ namespace NET6.Web.Areas.Admin.Controllers
 
 
             var categories = await categoryService.GetAllCategoriesNonDeleted();
+            var seos = await seoService.GetAllSeosNonDeleted();
+
+
             articleUpdateDto.Categories = categories;
+            articleUpdateDto.Seos = seos;
+
+
             return View(articleUpdateDto);
+
         }
         [Authorize(Roles = $"{RoleConsts.Superadmin}, {RoleConsts.Admin}")]
         public async Task<IActionResult> Delete(Guid articleId)

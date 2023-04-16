@@ -22,6 +22,7 @@ namespace NET6.Web.Controllers
             this.unitOfWork = unitOfWork;
         }
         [HttpGet]
+        [Route("Article")]
         public async Task<IActionResult> Index(Guid? categoryId, int currentPage = 1, int pageSize = 3, bool isAscending = false)
         {
             var articles = await articleService.GetAllByPagingAsync(categoryId, currentPage, pageSize, isAscending);
@@ -44,13 +45,14 @@ namespace NET6.Web.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-        public async Task<IActionResult> Detail(Guid articleId)
+        [Route("Article/{title}/{id}")]
+        public async Task<IActionResult> Detail(Guid id)
         {
             var ipAddress = httpContextAccessor.HttpContext.Connection.RemoteIpAddress.MapToIPv4().ToString();
             var articeVisitors = await unitOfWork.GetRepository<ArticleVisitor>().GetAllAsync(null, x => x.Visitor, y => y.Article);
-            var article = await unitOfWork.GetRepository<Article>().GetAsync(x => x.Id == articleId);
+            var article = await unitOfWork.GetRepository<Article>().GetAsync(x => x.Id == id);
 
-            var result = await articleService.GetArticleWithCategoryNonDeletedAsync(articleId);
+            var result = await articleService.GetArticleWithCategoryNonDeletedAsync(id);
 
             var visitor = await unitOfWork.GetRepository<Visitor>().GetAsync(x => x.IpAddress == ipAddress);
 

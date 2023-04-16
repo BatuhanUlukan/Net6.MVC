@@ -1,37 +1,21 @@
-﻿@using Microsoft.Extensions.Options
-@using NET6.Entity.Entities
-@using NET6.Core.Entities
-@{
-	Layout = "_LayoutError";
-	ViewBag.Title = "Sunucu Hatası (500)"; // Veritabanı Hatası
-	MvcErrorModel errorModel = ViewData["MvcErrorModel"] as MvcErrorModel;
-}
+﻿<!DOCTYPE html>
+<html
+<head>
+     <link rel="stylesheet" href="~/css/style.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet" />
 
-<link href="~\style.css" rel="stylesheet" />
-<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
-<link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet" />
-<section class="page_404">
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-12 ">
-				<div class="col-sm-10 col-sm-offset-1  text-center">
-					<div class="four_zero_four_bg">
-						<h1 class="text-center ">404</h1>
+</head>
 
-
-					</div>
-
-					<div class="contant_box_404">
-						<h3 class="h2">
-							Look like you're lost
-						</h3>
-
-						<p>the page you are looking for not avaible!</p>
-
-						<a asp-controller="Home" asp-action="Index" class="link_404">Go to Home</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
+<body>
+    <section class="page_404">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 ">
+                    @RenderBody();
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

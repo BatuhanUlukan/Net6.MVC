@@ -7,10 +7,9 @@
 
 <head>
 
-    @await Component.InvokeAsync("HtmlHead")
+    @await Component.InvokeAsync("Css")
 
 </head>
-
 
 
 <body>
@@ -40,31 +39,15 @@
                                     </header>
                                     <!-- .entry-header -->
                                     <!-- .entry-content -->
+
                                     <div class="entry-content">
                                         <!-- row -->
                                         <div class="row">
 
                                             <!-- col -->
                                             <div class="col-sm-6 col-lg-7">
-
-                                                <div class="event">
-                                                    <h2>WORK HISTORY</h2>
-                                                    <p>
-                                                        <i class="pw-icon-badge"></i>
-                                                        <!--<img src="images/site/icon-03.png" alt="image"/>-->
-                                                    </p>
-                                                @await Component.InvokeAsync("WorkHistory")
-
-
-                                                <div class="event">
-                                                    <h2>EDUCATION</h2>
-                                                    <p>
-                                                        <i class="pw-icon-education"></i>
-                                                        <!--<img src="images/site/icon-03.png" alt="image"/>-->
-                                                    </p>
-                                                </div>
-                                                @await Component.InvokeAsync("EduHistory")
-
+                                               
+                                                @await Component.InvokeAsync("Histories")
 
                                                 <p>
                                                     <a href="#" class="button  primary">
@@ -78,30 +61,9 @@
                                             <!-- col -->
                                             <div class="col-sm-6 col-lg-5">
 
+                                                @await Component.InvokeAsync("Skills")
 
-                                                <!-- section-title -->
-                                                <div class="section-title center">
-                                                    <h2>
-                                                        <i>Design Skills</i>
-                                                    </h2>
-                                                </div>
-                                                <!-- section-title -->
                                                 <!-- .skill-unit -->
-                                                @await Component.InvokeAsync("DesignSkill")
-                                                <!-- .skill-unit -->
-
-
-                                                <!-- section-title -->
-                                                <div class="section-title center">
-                                                    <h2>
-                                                        <i>Coding Skills</i>
-                                                    </h2>
-                                                </div>
-                                                <!-- section-title -->
-                                                <!-- .skill-unit -->
-                                                @await Component.InvokeAsync("CodingSkill")
-                                                <!-- .skill-unit -->
-
                                                 <!-- section-title -->
                                                 <div class="section-title center">
                                                     <h2>

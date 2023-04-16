@@ -12,8 +12,7 @@ namespace NET6.Service.FluentValidations
                 .NotNull()
                 .MinimumLength(3)
                 .MaximumLength(100)
-                .WithName("Kategori Adı");
-            RuleFor(c => c.Title)
+                .WithName("İş")
                 .NotEmpty()
                 .NotNull()
                 .MinimumLength(3)

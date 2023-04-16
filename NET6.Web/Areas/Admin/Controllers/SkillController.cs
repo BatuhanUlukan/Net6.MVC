@@ -39,7 +39,7 @@ namespace NET6.Web.Areas.Admin.Controllers
         }
         [HttpGet]
         [Authorize(Roles = $"{RoleConsts.Superadmin}, {RoleConsts.Admin}")]
-        public async Task<IActionResult> DeletedProcess()
+        public async Task<IActionResult> DeletedSkill()
         {
             var skills = await skillService.GetAllSkillsWithCategoryDeletedAsync();
             return View(skills);

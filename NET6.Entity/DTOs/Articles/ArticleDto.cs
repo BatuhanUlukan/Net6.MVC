@@ -1,4 +1,5 @@
 ﻿using NET6.Entity.DTOs.Categories;
+using NET6.Entity.DTOs.Seos;
 using NET6.Entity.Entities;
 
 namespace NET6.Entity.DTOs.Articles
@@ -8,6 +9,7 @@ namespace NET6.Entity.DTOs.Articles
         public Guid Id { get; set; }
         public string Title { get; set; }
         public string Content { get; set; }
+        public SeoDto Seo { get; set; }
         public CategoryDto Category { get; set; }
         public DateTime CreatedDate { get; set; }
         public Image Image { get; set; }

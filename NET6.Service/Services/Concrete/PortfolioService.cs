@@ -53,16 +53,11 @@ namespace NET6.Service.Services.Concrete
             var userId = _user.GetLoggedInUserId();
             var userEmail = _user.GetLoggedInEmail();
 
-            if (portfolioAddDto.Photo == null)
-            {
-                throw new Exception("Lütfen bir resim seçiniz.");
-            }
-
             var imageUpload = await imageHelper.Upload(portfolioAddDto.Title, portfolioAddDto.Photo, ImageType.Post);
             Image image = new(imageUpload.FullName, portfolioAddDto.Photo.ContentType, userEmail);
             await unitOfWork.GetRepository<Image>().AddAsync(image);
 
-            var portfolio = new Portfolio(portfolioAddDto.Title, portfolioAddDto.Content, userId, userEmail, portfolioAddDto.CategoryId, image.Id);
+            var portfolio = new Portfolio(portfolioAddDto.Title, portfolioAddDto.Content, userId, userEmail, portfolioAddDto.CategoryId, image.Id, portfolioAddDto.SeoId);
 
             await unitOfWork.GetRepository<Portfolio>().AddAsync(portfolio);
             await unitOfWork.SaveAsync();
@@ -73,7 +68,7 @@ namespace NET6.Service.Services.Concrete
         public async Task<List<PortfolioDto>> GetAllPortfoliosWithCategoryNonDeletedAsync()
         {
 
-            var portfolios = await unitOfWork.GetRepository<Portfolio>().GetAllAsync(x => !x.IsDeleted, x => x.Category);
+            var portfolios = await unitOfWork.GetRepository<Portfolio>().GetAllAsync(x => !x.IsDeleted, x => x.Category, s => s.Seo);
             var map = mapper.Map<List<PortfolioDto>>(portfolios);
 
             return map;
@@ -81,7 +76,7 @@ namespace NET6.Service.Services.Concrete
         public async Task<PortfolioDto> GetPortfolioWithCategoryNonDeletedAsync(Guid portfolioId)
         {
 
-            var portfolio = await unitOfWork.GetRepository<Portfolio>().GetAsync(x => !x.IsDeleted && x.Id == portfolioId, x => x.Category, i => i.Image, u => u.User);
+            var portfolio = await unitOfWork.GetRepository<Portfolio>().GetAsync(x => !x.IsDeleted && x.Id == portfolioId, x => x.Category, s => s.Seo, i => i.Image, u => u.User);
             var map = mapper.Map<PortfolioDto>(portfolio);
 
             return map;
@@ -90,7 +85,7 @@ namespace NET6.Service.Services.Concrete
         {
             var userEmail = _user.GetLoggedInEmail();
 
-            var portfolio = await unitOfWork.GetRepository<Portfolio>().GetAsync(x => !x.IsDeleted && x.Id == portfolioUpdateDto.Id, x => x.Category, i => i.Image);
+            var portfolio = await unitOfWork.GetRepository<Portfolio>().GetAsync(x => !x.IsDeleted && x.Id == portfolioUpdateDto.Id, x => x.Category, s => s.Seo, i => i.Image);
 
 
             if (portfolioUpdateDto.Photo != null)
@@ -143,7 +138,7 @@ namespace NET6.Service.Services.Concrete
 
         public async Task<List<PortfolioDto>> GetAllPortfoliosWithCategoryDeletedAsync()
         {
-            var portfolios = await unitOfWork.GetRepository<Portfolio>().GetAllAsync(x => x.IsDeleted, x => x.Category);
+            var portfolios = await unitOfWork.GetRepository<Portfolio>().GetAllAsync(x => x.IsDeleted, x => x.Category, s => s.Seo);
             var map = mapper.Map<List<PortfolioDto>>(portfolios);
 
             return map;
@@ -163,24 +158,5 @@ namespace NET6.Service.Services.Concrete
             return portfolio.Title;
         }
 
-        public async Task<PortfolioListDto> SearchAsync(string keyword, int currentPage = 1, int pageSize = 3, bool isAscending = false)
-        {
-            pageSize = pageSize > 20 ? 20 : pageSize;
-            var portfolios = await unitOfWork.GetRepository<Portfolio>().GetAllAsync(
-                a => !a.IsDeleted && (a.Title.Contains(keyword) || a.Content.Contains(keyword) || a.Category.Name.Contains(keyword)),
-            a => a.Category, i => i.Image, u => u.User);
-
-            var sortedPortfolios = isAscending
-                ? portfolios.OrderBy(a => a.CreatedDate).Skip((currentPage - 1) * pageSize).Take(pageSize).ToList()
-                : portfolios.OrderByDescending(a => a.CreatedDate).Skip((currentPage - 1) * pageSize).Take(pageSize).ToList();
-            return new PortfolioListDto
-            {
-                Portfolios = sortedPortfolios,
-                CurrentPage = currentPage,
-                PageSize = pageSize,
-                TotalCount = portfolios.Count,
-                IsAscending = isAscending
-            };
-        }
     }
 }

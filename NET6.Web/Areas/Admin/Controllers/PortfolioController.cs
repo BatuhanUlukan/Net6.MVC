@@ -2,6 +2,7 @@
 using FluentValidation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using NET6.Entity.DTOs.Articles;
 using NET6.Entity.DTOs.Portfolios;
 using NET6.Entity.Entities;
 using NET6.Service.Extensions;
@@ -19,14 +20,16 @@ namespace NET6.Web.Areas.Admin.Controllers
     {
         private readonly IPortfolioService portfolioService;
         private readonly ICategoryService categoryService;
+        private readonly ISeoService seoService;
         private readonly IMapper mapper;
         private readonly IValidator<Portfolio> validator;
         private readonly IToastNotification toast;
 
-        public PortfolioController(IPortfolioService portfolioService, ICategoryService categoryService, IMapper mapper, IValidator<Portfolio> validator, IToastNotification toast)
+        public PortfolioController(IPortfolioService portfolioService, ICategoryService categoryService, ISeoService seoService, IMapper mapper, IValidator<Portfolio> validator, IToastNotification toast)
         {
             this.portfolioService = portfolioService;
             this.categoryService = categoryService;
+            this.seoService = seoService;
             this.mapper = mapper;
             this.validator = validator;
             this.toast = toast;
@@ -50,7 +53,14 @@ namespace NET6.Web.Areas.Admin.Controllers
         public async Task<IActionResult> Add()
         {
             var categories = await categoryService.GetAllCategoriesNonDeleted();
-            return View(new PortfolioAddDto { Categories = categories });
+            var seos = await seoService.GetAllSeosNonDeleted();
+            var portfolioAddDto = new PortfolioAddDto
+            {
+                Categories = categories,
+                Seos = seos
+            };
+            return View(portfolioAddDto);
+
         }
         [HttpPost]
         [Authorize(Roles = $"{RoleConsts.Superadmin}, {RoleConsts.Admin}")]
@@ -72,7 +82,8 @@ namespace NET6.Web.Areas.Admin.Controllers
             }
 
             var categories = await categoryService.GetAllCategoriesNonDeleted();
-            return View(new PortfolioAddDto { Categories = categories });
+            var seos = await seoService.GetAllSeosNonDeleted();
+            return View(new PortfolioAddDto { Categories = categories, Seos = seos });
         }
 
         [HttpGet]
@@ -81,9 +92,13 @@ namespace NET6.Web.Areas.Admin.Controllers
         {
             var portfolio = await portfolioService.GetPortfolioWithCategoryNonDeletedAsync(portfolioId);
             var categories = await categoryService.GetAllCategoriesNonDeleted();
+            var seos = await seoService.GetAllSeosNonDeleted();
 
             var portfolioUpdateDto = mapper.Map<PortfolioUpdateDto>(portfolio);
+
             portfolioUpdateDto.Categories = categories;
+            portfolioUpdateDto.Seos = seos;
+
 
             return View(portfolioUpdateDto);
         }
@@ -109,7 +124,9 @@ namespace NET6.Web.Areas.Admin.Controllers
 
 
             var categories = await categoryService.GetAllCategoriesNonDeleted();
+            var seos = await seoService.GetAllSeosNonDeleted();
             portfolioUpdateDto.Categories = categories;
+            portfolioUpdateDto.Seos = seos;
             return View(portfolioUpdateDto);
         }
         [Authorize(Roles = $"{RoleConsts.Superadmin}, {RoleConsts.Admin}")]

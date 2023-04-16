@@ -1,12 +1,9 @@
-﻿@{
-    Layout = null;
-}
-@model NET6.Entity.DTOs.Email.EmailInfoDto
+﻿
 
 <!DOCTYPE html>
 <html lang="en" class="no-js classic-page-layout " data-audio-tick="audio/tick.mp3" data-click-ripple-animation="yes">
 <head>
-    @await Component.InvokeAsync("HtmlHead")
+    @await Component.InvokeAsync("Css")
     <script src="~/plainhtml/js/main.js"></script>
 </head>
 
@@ -164,7 +161,7 @@
                                             <form asp-controller="Home" asp-action="Contact" method="Post">
 
                                                 <p>
-                                                    <input placeholder="Email" type="text" class="required email" asp-for="EmailTo">
+                                                    <input placeholder="Email" type="text" class="required email" >
                                                 </p>
 
                                                 <p class="antispam">
@@ -172,11 +169,11 @@
                                                     <br /><input name="url" />
                                                 </p>
                                                 <p>
-                                                    <textarea placeholder="Subject" class="required" asp-for="Subject"></textarea>
+                                                    <textarea placeholder="Subject" class="required" ></textarea>
                                                 </p>
 
                                                 <p>
-                                                    <textarea placeholder="Message" class="required" asp-for="Body"></textarea>
+                                                    <textarea placeholder="Message" class="required"> </textarea>
                                                 </p>
 
                                                 <p>

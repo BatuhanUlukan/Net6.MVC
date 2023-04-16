@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using NET6.Entity.Entities;
 
 namespace NET6.Data.Concrete.EntityFramework.Mappings
 {
-   public class LogMap:IEntityTypeConfiguration<Log>
+    public class LogMap : IEntityTypeConfiguration<Log>
     {
         public void Configure(EntityTypeBuilder<Log> builder)
         {

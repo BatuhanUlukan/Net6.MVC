@@ -1,4 +1,5 @@
-﻿using NET6.Entity.Entities;
+﻿using NET6.Entity.DTOs.Seos;
+using NET6.Entity.Entities;
 
 namespace NET6.Entity.DTOs.Abouts
 {
@@ -11,6 +12,7 @@ namespace NET6.Entity.DTOs.Abouts
         public DateTime CreatedDate { get; set; }
         public Image Image { get; set; }
         public AppUser User { get; set; }
+        public SeoDto Seo { get; set; }
         public string CreatedBy { get; set; }
         public bool IsDeleted { get; set; }
     }

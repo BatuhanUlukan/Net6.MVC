@@ -116,7 +116,7 @@ namespace NET6.Service.Services.Concrete
 
             var getUserWithImage = await unitOfWork.GetRepository<AppUser>().GetAsync(x => x.Id == userId, x => x.Image);
             var map = mapper.Map<UserProfileDto>(getUserWithImage);
-            map.Image.FileName = getUserWithImage.Image.FileName;
+            map.Images.FileName = getUserWithImage.Image.FileName;
 
             return map;
         }
@@ -125,8 +125,8 @@ namespace NET6.Service.Services.Concrete
         {
             var userEmail = _user.GetLoggedInEmail();
 
-            var imageUpload = await imageHelper.Upload($"{userProfileDto.FirstName}{userProfileDto.LastName}", userProfileDto.Photo, ImageType.User);
-            Image image = new(imageUpload.FullName, userProfileDto.Photo.ContentType, userEmail);
+            var imageUpload = await imageHelper.Upload($"{userProfileDto.FirstName}{userProfileDto.LastName}", userProfileDto.Image, ImageType.User);
+            Image image = new(imageUpload.FullName, userProfileDto.Image.ContentType, userEmail);
             await unitOfWork.GetRepository<Image>().AddAsync(image);
 
             return image.Id;
@@ -149,7 +149,7 @@ namespace NET6.Service.Services.Concrete
 
                     mapper.Map(userProfileDto, user);
 
-                    if (userProfileDto.Photo != null)
+                    if (userProfileDto.Image != null)
                         user.ImageId = await UploadImageForUser(userProfileDto);
 
                     await userManager.UpdateAsync(user);
@@ -165,7 +165,7 @@ namespace NET6.Service.Services.Concrete
                 await userManager.UpdateSecurityStampAsync(user);
                 mapper.Map(userProfileDto, user);
 
-                if (userProfileDto.Photo != null)
+                if (userProfileDto.Image != null)
                     user.ImageId = await UploadImageForUser(userProfileDto);
 
                 await userManager.UpdateAsync(user);

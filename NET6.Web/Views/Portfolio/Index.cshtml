@@ -1,77 +1,122 @@
-﻿@model PortfolioListDto
+﻿@using NET6.Web.Extensions;
+@model PortfolioListDto
 
 @{
-    Layout = "_LayoutPortfolio";
+    Layout = null;
 }
-<!-- site-content -->
-<div id="content" class="site-content" role="main">
-    <!-- .page-single -->
-    <div class="page-single page-layout">
+<!DOCTYPE html>
+<html lang="en" class="no-js classic-page-layout " data-audio-tick="~/PlainHtml/audio/tick.mp3" data-click-ripple-animation="yes">
+<head>
+    @await Component.InvokeAsync("Css")
+</head>
+<body>
+    <div id="page" class="hfeed site">
+
+        <!-- .site-main -->
+        <main id="main" class="site-main cd-main">
+
+            <div class="site-middle">
+                <div class="layout-medium">
+                    <div id="primary" class="content-area ">
+                        <!-- site-content -->
+                        <div id="content" class="site-content" role="main">
+                            <!-- .page-single -->
+                            <div class="page-single page-layout">
 
 
-        <!-- .hentry -->
-        <article class="page hentry">
+                                <!-- .hentry -->
+                                <portfolio class="page hentry">
 
-            <!-- .entry-header -->
-            <header class="entry-header">
-                <h1 class="entry-title">Portfolio</h1>
-            </header>
-            <!-- .entry-header -->
-            <!-- .entry-content -->
-            <div class="entry-content">
+                                    <!-- .entry-header -->
+                                    <header class="entry-header">
+                                        <h1 class="entry-title">Portfolio</h1>
+                                    </header>
+                                    <!-- .entry-header -->
+                                    <!-- .entry-content -->
+                                    <div class="entry-content">
 
-                <!--FILTERS-->
-                <ul id="filters" class="filters">
-                    <li class="current">
-                        <a href="#" data-filter="*">all</a>
-                    </li>
+                                        <!--FILTERS-->
+                                        <ul id="filters" class="filters">
+                                            <li class="current">
+                                                <a href="#" data-filter="*">all</a>
+                                            </li>
 
-                    <li>
-                        <a href="#" data-filter=".media">Media</a>
-                    </li>
-                    <li>
-                        <a href="#" data-filter=".illustration">Illustration</a>
-                    </li>
-                    <li>
-                        <a href="#" data-filter=".video">Video</a>
-                    </li>
-                </ul>
-                <!--FILTERS-->
-                <!-- PORTFOLIO -->
-                <div class="portfolio-items media-grid masonry" data-layout="masonry" data-item-width="360">
-                    @foreach (var item in Model.Portfolios)
-                    {
-                        <!-- portfolio-item -->
-                        <div class="media-cell  hentry">
+                                            <li>
+                                                <a href="#" data-filter=".media">Media</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" data-filter=".illustration">Illustration</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" data-filter=".video">Video</a>
+                                            </li>
+                                        </ul>
+                                        <!--FILTERS-->
+                                        <!-- PORTFOLIO -->
+                                        <div class="portfolio-items media-grid masonry" data-layout="masonry" data-item-width="360">
+                                            @foreach (var item in Model.Portfolios)
+                                            {
+                                                <!-- portfolio-item -->
+                                                <div class="media-cell  hentry">
 
-                            <div class="media-box">
-                                <img src="~/images/@item.Image.FileName" alt="portfolio-post">
-                                <div class="mask"></div>
-                                <a asp-controller="Portfolio" asp-action="Detail" asp-route-id="@item.Id"> </a>
+                                                    <div class="media-box">
+                                                        <img src="~/images/@item.Image.FileName" alt="portfolio-post">
+                                                        <div class="mask"></div>
+                                                        <a href="/Portfolio/@(UrlExtensions.FriendlyUrlHelper(item.Title))/@item.Id"> </a>
+                                                    </div>
+
+                                                    <div class="media-cell-desc">
+                                                        <a href="/Portfolio/@(UrlExtensions.FriendlyUrlHelper(item.Title))/@item.Id">@item.Title</a>
+                                                        <p class="category">by @item.User.FirstName @item.User.LastName</p>
+                                                    </div>
+
+                                                </div>
+                                                <!-- portfolio-item -->
+                                            }
+
+                                        </div>
+                                        <!-- PORTFOLIO -->
+
+                                    </div>
+                                    <!-- .entry-content -->
+
+                                </portfolio>
+                                <!-- .hentry -->
+
+
                             </div>
+                            <!-- .page-single -->
 
-                            <div class="media-cell-desc">
-                                <h3>@item.Title</h3>
-                                <p class="category">by @item.User.FirstName @item.User.LastName</p>
-                            </div>
 
                         </div>
-                        <!-- portfolio-item -->
-                    }
+                        <!-- site-content -->
+                    </div>
 
                 </div>
-                <!-- PORTFOLIO -->
-
             </div>
-            <!-- .entry-content -->
+            <!-- #secondary -->
 
-        </article>
-        <!-- .hentry -->
-
-
+        </main>
     </div>
-    <!-- .page-single -->
 
 
-</div>
-<!-- site-content -->
+    <!-- ALERT : used for contact form mail delivery alert -->
+    <div class="site-alert animated"></div>
+    <!-- .site-footer -->
+    <footer id="colophon" class="site-footer" role="contentinfo">
+
+        <!-- .site-info -->
+        <div class="site-info">
+            <div class="textwidget">
+                <p><a href="http://pixelwars.org/">Copyright &copy; 2017 by Pixelwars</a></p>
+            </div>
+        </div>
+        <!-- .site-info -->
+
+    </footer>
+    <!-- .site-footer -->
+    <a href="#" id="back-to-top" class="show">↑ <span>Scroll to top</span></a>
+
+    @await Component.InvokeAsync("Script")
+</body>
+</html>

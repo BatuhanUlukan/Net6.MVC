@@ -3,6 +3,7 @@ using FluentValidation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NET6.Entity.DTOs.Abouts;
+using NET6.Entity.DTOs.Portfolios;
 using NET6.Entity.Entities;
 using NET6.Service.Extensions;
 using NET6.Service.Services.Abstractions;
@@ -10,19 +11,23 @@ using NET6.Web.Consts;
 using NET6.Web.ResultMessages;
 using NToastNotify;
 
+
+
 namespace NET6.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
     public class AboutController : Controller
     {
         private readonly IAboutService aboutService;
+        private readonly ISeoService seoService;
         private readonly IMapper mapper;
         private readonly IValidator<About> validator;
         private readonly IToastNotification toast;
 
-        public AboutController(IAboutService aboutService, IMapper mapper, IValidator<About> validator, IToastNotification toast)
+        public AboutController(IAboutService aboutService, IMapper mapper, ISeoService seoService, IValidator<About> validator, IToastNotification toast)
         {
             this.aboutService = aboutService;
+            this.seoService = seoService;
             this.mapper = mapper;
             this.validator = validator;
             this.toast = toast;
@@ -48,9 +53,14 @@ namespace NET6.Web.Areas.Admin.Controllers
         public async Task<IActionResult> Update(Guid aboutId)
         {
             var about = await aboutService.GetAboutsNonDeletedAsync(aboutId);
+            var seos = await seoService.GetAllSeosNonDeleted();
+
 
 
             var aboutUpdateDto = mapper.Map<AboutUpdateDto>(about);
+
+
+            aboutUpdateDto.Seos = seos;
 
 
             return View(aboutUpdateDto);
@@ -75,6 +85,8 @@ namespace NET6.Web.Areas.Admin.Controllers
                 result.AddToModelState(this.ModelState);
             }
 
+            var seos = await seoService.GetAllSeosNonDeleted();
+            aboutUpdateDto.Seos = seos;
             return View(aboutUpdateDto);
         }
         [Authorize(Roles = $"{RoleConsts.Superadmin}, {RoleConsts.Admin}")]
@@ -100,7 +112,12 @@ namespace NET6.Web.Areas.Admin.Controllers
         public async Task<IActionResult> Add()
         {
             var abouts = await aboutService.GetAllAboutsNonDeletedAsync();
-            return View();
+            var seos = await seoService.GetAllSeosNonDeleted();
+            var aboutAddDto = new AboutAddDto
+            {
+                Seos = seos
+            };
+            return View(aboutAddDto);
         }
         [HttpPost]
         [Authorize(Roles = $"{RoleConsts.Superadmin}, {RoleConsts.Admin}")]
@@ -124,11 +141,9 @@ namespace NET6.Web.Areas.Admin.Controllers
                 result.AddToModelState(this.ModelState);
             }
 
-            return View();
+            var seos = await seoService.GetAllSeosNonDeleted();
+            return View(new AboutAddDto {  Seos = seos });
         }
-
-
-
 
     }
 }

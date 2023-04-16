@@ -15,7 +15,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="Areas\Admin\Views\About\Add.cshtml" />
     <Content Remove="Areas\Admin\Views\About\DeletedAbout.cshtml" />
     <Content Remove="Areas\Admin\Views\About\Index.cshtml" />
     <Content Remove="Areas\Admin\Views\About\Update.cshtml" />
@@ -25,12 +24,9 @@
     <Content Remove="Areas\Admin\Views\Service\Update.cshtml" />
     <Content Remove="Areas\Admin\Views\Skill\Add.cshtml" />
     <Content Remove="Areas\Admin\Views\Skill\Update.cshtml" />
-    <Content Remove="Views\Shared\_LayoutAbout.cshtml" />
-    <Content Remove="Views\Shared\_LayoutHome.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Areas\Admin\Views\About\Add.cshtml" />
     <None Include="Areas\Admin\Views\About\DeletedAbout.cshtml" />
     <None Include="Areas\Admin\Views\About\Index.cshtml" />
     <None Include="Areas\Admin\Views\About\Update.cshtml" />
@@ -58,11 +54,11 @@
     <None Include="Areas\Admin\Views\User\Profile.cshtml" />
     <None Include="Areas\Admin\Views\User\Update.cshtml" />
     <None Include="Views\Article\Index.cshtml" />
-    <None Include="Views\Article\Privacy.cshtml" />
+    <None Include="Areas\Admin\Views\Seo\DeletedSeo.cshtml" />
+    <None Include="Areas\Admin\Views\Seo\Index.cshtml" />
+    <None Include="Areas\Admin\Views\Seo\Update.cshtml" />
     <None Include="Views\Shared\Error.cshtml" />
     <None Include="Views\Shared\_Layout.cshtml" />
-    <None Include="Views\Shared\_LayoutAbout.cshtml" />
-    <None Include="Views\Shared\_LayoutHome.cshtml" />
     <None Include="Views\Shared\_ValidationScriptsPartial.cshtml" />
     <None Include="Views\_ViewImports.cshtml" />
     <None Include="Views\_ViewStart.cshtml" />
@@ -195,25 +191,14 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\images\about-images\" />
+    <Folder Include="wwwroot\images\article-images\" />
+    <Folder Include="wwwroot\images\portfolio-images\" />
+    <Folder Include="wwwroot\images\service-images\" />
+    <Folder Include="wwwroot\images\testimonial-images\" />
     <Folder Include="wwwroot\images\user-images\" />
     <Folder Include="wwwroot\js\ckfinder\App_Data\" />
     <Folder Include="wwwroot\js\ckfinder\src\CKFinder.Connector.WebApp\userfiles\" />
     <Folder Include="wwwroot\js\ckfinder\userfiles\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Update="wwwroot\images\article-images\testimage.jpg">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-  </ItemGroup>
-
-  <ItemGroup>
-    <UpToDateCheckInput Remove="Views\Shared\_LayoutAbout.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <_ContentIncludedByDefault Remove="Views\Shared\_LayoutAbout.cshtml" />
   </ItemGroup>
 	
 

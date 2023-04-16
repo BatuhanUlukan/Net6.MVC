@@ -13,6 +13,8 @@ namespace NET6.Service.Services.Abstractions
         Task<string> SafeDeleteAboutAsync(Guid aboutId);
         Task<string> UndoDeleteAboutAsync(Guid aboutId);
         Task<AboutListDto> GetAllByPagingAsync();
+        Task<AboutDto> GetAboutsAsync();
+
 
 
     }

@@ -172,6 +172,25 @@
                 return $"{skillTitle} başlıklı yetenek  başarıyla geri alınmıştır.";
             }
         }
+        public static class Seo
+        {
+            public static string Add(string seoTitle)
+            {
+                return $"{seoTitle} başlıklı yetenek  başarıyla eklenmiştir.";
+            }
+            public static string Update(string seoTitle)
+            {
+                return $"{seoTitle} başlıklı yetenek  başarıyla güncellenmiştir.";
+            }
+            public static string Delete(string seoTitle)
+            {
+                return $"{seoTitle} başlıklı yetenek  başarıyla silinmiştir.";
+            }
+            public static string UndoDelete(string seoTitle)
+            {
+                return $"{seoTitle} başlıklı yetenek  başarıyla geri alınmıştır.";
+            }
+        }
     }
 
 }

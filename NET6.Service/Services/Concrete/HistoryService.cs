@@ -2,11 +2,9 @@
 using Microsoft.AspNetCore.Http;
 using NET6.Data.UnitOfWorks;
 using NET6.Entity.DTOs.Histories;
-using NET6.Entity.DTOs.Skills;
 using NET6.Entity.Entities;
 using NET6.Service.Extensions;
 using NET6.Service.Services.Abstractions;
-using System.Linq.Expressions;
 using System.Security.Claims;
 
 namespace NET6.Service.Services.Concrete
@@ -125,8 +123,19 @@ namespace NET6.Service.Services.Concrete
                 IsAscending = isAscending
             };
         }
+        public async Task<HistoryListDto> GetSkillsByCategoryName(string categoryName, bool isAscending = false)
+        {
+            var histories = categoryName == null
+            ? await unitOfWork.GetRepository<History>().GetAllAsync(a => !a.IsDeleted, a => a.Category, u => u.User)
+            : await unitOfWork.GetRepository<History>().GetAllAsync(a => a.Category.Name == categoryName && !a.IsDeleted, a => a.Category, u => u.User);
 
-
+            return new HistoryListDto
+            {
+                Histories = histories,
+                CategoryName = categoryName,
+                IsAscending = isAscending
+            };
+        }
 
     }
 }

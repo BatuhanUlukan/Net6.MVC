@@ -19,7 +19,8 @@ namespace NET6.Data.Mappings
                 CreatedBy = "Admin Test",
                 CreatedDate = DateTime.Now,
                 IsDeleted = false,
-                UserId = Guid.Parse("CB94223B-CCB8-4F2F-93D7-0DF96A7F065C")
+                UserId = Guid.Parse("CB94223B-CCB8-4F2F-93D7-0DF96A7F065C"),
+                SeoId = Guid.Parse("59D9A438-3E21-4163-A42D-A13003D76831")
             },
             new Article
             {
@@ -32,7 +33,8 @@ namespace NET6.Data.Mappings
                 CreatedBy = "Admin Test",
                 CreatedDate = DateTime.Now,
                 IsDeleted = false,
-                UserId = Guid.Parse("3AA42229-1C0F-4630-8C1A-DB879ECD0427")
+                UserId = Guid.Parse("3AA42229-1C0F-4630-8C1A-DB879ECD0427"),
+                SeoId = Guid.Parse("a7f5670d-31eb-4eea-ba51-a5e924135542")
             });
         }
     }

@@ -19,7 +19,6 @@ namespace NET6.Service.FluentValidations
                 .NotEmpty()
                 .NotNull()
                 .MinimumLength(3)
-                .MaximumLength(150)
                 .WithName("İçerik");
 
 

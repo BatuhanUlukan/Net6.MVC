@@ -16,13 +16,13 @@
                         <div class="form-group">
                             <label asp-for="CategoryId">Kategori</label>
 
-                            <a class="btn text-primary float-end" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
-                                Ekle <i class="bx bx-plus"></i>
-                            </a>
+                            @{
+                                // create a filtered list of categories
+                                var filteredCategories = Model.Categories.Where(c => c.Name == "Education" || c.Name == "Work");
+                            }
 
-                            <select id="categoryList" class="form-control" asp-for="CategoryId" asp-items="@(new SelectList(Model.Categories,"Id","Name"))"></select>
+                            <select id="categoryList" class="form-control" asp-for="CategoryId" asp-items="@(new SelectList(filteredCategories, "Id", "Name"))"></select>
                             <span asp-validation-for="CategoryId" class="text-danger"></span>
-
                         </div>
                         <div class="form-group" style="margin-top:10px">
                             <label asp-for="Title" id="defaultFormControlInput" class="form-label">İlgili Alanı</label>
@@ -95,7 +95,7 @@
 
         app.Urls.baseUrl = '@Url.Content("~")';
         app.Urls.categoryAddUrl = "@(Url.Action("AddWithAjax", "Category"))";
-        app.Urls.historyAddUrl = "@(Url.Action("Add", "History"))";
+        app.Urls.redirectUrl = "@(Url.Action("Add", "History"))";
     </script>
 
 }

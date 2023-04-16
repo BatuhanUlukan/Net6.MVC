@@ -13,8 +13,5 @@ namespace NET6.Service.Services.Abstractions
         Task<string> UndoDeletePortfolioAsync(Guid portfolioId);
         Task<PortfolioListDto> GetAllByPagingAsync(Guid? categoryId, int currentPage = 1, int pageSize = 3,
             bool isAscending = false);
-
-        Task<PortfolioListDto> SearchAsync(string keyword, int currentPage = 1, int pageSize = 3,
-            bool isAscending = false);
     }
 }

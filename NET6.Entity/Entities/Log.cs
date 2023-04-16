@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NET6.Core.Entities;
+﻿using NET6.Core.Entities;
 
 namespace NET6.Entity.Entities
 {
-    public class Log:IEntityBase
+    public class Log : IEntityBase
     {
         public int Id { get; set; }
         public string MachineName { get; set; }

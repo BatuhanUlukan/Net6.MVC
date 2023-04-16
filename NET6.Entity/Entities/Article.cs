@@ -1,4 +1,5 @@
 ﻿
+using Microsoft.AspNetCore.Http;
 using NET6.Core.Entities;
 
 namespace NET6.Entity.Entities
@@ -9,13 +10,14 @@ namespace NET6.Entity.Entities
         {
 
         }
-        public Article(string title, string content, Guid userId, string createdBy, Guid categoryId, Guid imageId)
+        public Article(string title, string content, Guid userId, string createdBy, Guid categoryId, Guid imageId, Guid seoId)
         {
             Title = title;
             Content = content;
             UserId = userId;
             CategoryId = categoryId;
             ImageId = imageId;
+            SeoId = seoId;
             CreatedBy = createdBy;
         }
 
@@ -26,6 +28,9 @@ namespace NET6.Entity.Entities
 
         public Guid CategoryId { get; set; }
         public Category Category { get; set; }
+
+        public Guid SeoId { get; set; }
+        public Seo Seo { get; set; }
 
         public Guid? ImageId { get; set; }
         public Image Image { get; set; }

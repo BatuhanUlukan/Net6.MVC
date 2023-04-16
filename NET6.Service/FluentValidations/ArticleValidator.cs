@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using NET6.Entity.DTOs.Articles;
 using NET6.Entity.Entities;
 
 
@@ -18,8 +19,10 @@ namespace NET6.Service.FluentValidations
             RuleFor(x => x.Content)
                 .NotEmpty()
                 .NotNull()
-                .MinimumLength(3)
+                .MinimumLength(50)
                 .WithName("İçerik");
+
+
 
         }
 

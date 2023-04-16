@@ -1,12 +1,10 @@
-﻿
+﻿$(document).ready(function () {
 
-$(document).ready(function () {
-
-    $("#btnSave").click(function (event) {
+    $("#categorySave").click(function (event) {
         event.preventDefault();
 
         var addUrl = app.Urls.categoryAddUrl;
-        var redirectUrl = app.Urls.articleAddUrl;
+        var redirectUrl = app.Urls.redirectUrl;
 
         var categoryAddDto = {
             Name: $("input[id=categoryName]").val()
@@ -19,7 +17,7 @@ $(document).ready(function () {
             url: addUrl,
             type: "POST",
             contentType: "application/json; charset=utf-8",
-            dataType : "json",
+            dataType: "json",
             data: jsonData,
             success: function (data) {
                 setTimeout(function () {

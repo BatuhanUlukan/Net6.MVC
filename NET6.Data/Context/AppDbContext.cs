@@ -25,9 +25,8 @@ namespace NET6.Data.Context
         public DbSet<Process> Processes { get; set; }
         public DbSet<Skill> Skills { get; set; }
         public DbSet<Log> Logs { get; set; }
-
         public DbSet<About> Abouts { get; set; }
-
+        public DbSet<Seo> Seos { get; set; }
         public DbSet<ArticleVisitor> ArticleVisitors { get; set; }
         public DbSet<PortfolioVisitor> PortfolioVisitors { get; set; }
 

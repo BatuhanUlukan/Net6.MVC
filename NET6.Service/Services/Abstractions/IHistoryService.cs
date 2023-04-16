@@ -12,6 +12,8 @@ namespace NET6.Service.Services.Abstractions
         Task<string> SafeDeleteHistoryAsync(Guid historyId);
         Task<string> UndoDeleteHistoryAsync(Guid historyId);
         Task<HistoryListDto> GetHistoriesByCategory(Guid? categoryId, bool isAscending = false);
+        Task<HistoryListDto> GetSkillsByCategoryName(string categoryName, bool isAscending = false);
+
 
     }
 }

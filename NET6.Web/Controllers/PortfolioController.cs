@@ -28,12 +28,6 @@ namespace NET6.Web.Controllers
             var portfolios = await portfolioService.GetAllByPagingAsync(categoryId, currentPage, pageSize, isAscending);
             return View(portfolios);
         }
-        [HttpGet]
-        public async Task<IActionResult> Search(string keyword, int currentPage = 1, int pageSize = 3, bool isAscending = false)
-        {
-            var portfolios = await portfolioService.SearchAsync(keyword, currentPage, pageSize, isAscending);
-            return View(portfolios);
-        }
 
         public IActionResult Privacy()
         {
@@ -45,6 +39,7 @@ namespace NET6.Web.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+        [Route("Portfolio/{title}/{id}")]
         public async Task<IActionResult> Detail(Guid id)
         {
             var ipAddress = httpContextAccessor.HttpContext.Connection.RemoteIpAddress.MapToIPv4().ToString();

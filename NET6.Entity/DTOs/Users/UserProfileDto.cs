@@ -11,7 +11,7 @@ namespace NET6.Entity.DTOs.Users
         public string PhoneNumber { get; set; }
         public string CurrentPassword { get; set; }
         public string? NewPassword { get; set; }
-        public IFormFile? Photo { get; set; }
-        public Image Image { get; set; }
+        public IFormFile? Image { get; set; }
+        public Image Images { get; set; }
     }
 }

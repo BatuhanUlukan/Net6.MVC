@@ -7,6 +7,7 @@ namespace NET6.Entity.DTOs.Histories
     {
         public IList<History> Histories { get; set; }
         public Guid? CategoryId { get; set; }
+        public string CategoryName { get; set; }
         public virtual bool IsAscending { get; set; } = false;
 
 
