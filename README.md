@@ -11,5 +11,5 @@ Portfolio Page +<br>
 Contact Page -<br>
 
 Smpt Setting not completed<br>
-Blog and Portfolio for seo will do.
+
 
