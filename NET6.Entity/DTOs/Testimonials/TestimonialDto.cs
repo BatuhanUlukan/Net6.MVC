@@ -1,4 +1,5 @@
-﻿using NET6.Entity.Entities;
+﻿using NET6.Entity.DTOs.Links;
+using NET6.Entity.Entities;
 
 namespace NET6.Entity.DTOs.Testimonials
 {
@@ -7,6 +8,8 @@ namespace NET6.Entity.DTOs.Testimonials
         public Guid Id { get; set; }
         public string Title { get; set; }
         public DateTime CreatedDate { get; set; }
+        public LinkDto Links { get; set; }
+
         public Image Image { get; set; }
         public AppUser User { get; set; }
         public string CreatedBy { get; set; }

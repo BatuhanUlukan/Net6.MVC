@@ -41,8 +41,24 @@ namespace NET6.Data.Mappings
                 CreatedDate = DateTime.Now,
                 IsDeleted = false
 
-            });
+            },
+            new Category
+            {
+                Id = Guid.Parse("2864CC7D-73FE-47B9-A5B1-BB58F6046D5C"),
+                Name = "Work",
+                CreatedBy = "Admin",
+                CreatedDate = DateTime.Now,
+                IsDeleted = false
 
+            },
+            new Category
+            {
+                Id = Guid.Parse("53BB0F44-9F0D-447B-9A18-84722B1ABDE5"),
+                Name = "Education",
+                CreatedBy = "Admin",
+                CreatedDate = DateTime.Now,
+                IsDeleted = false
+            });
         }
     }
 }

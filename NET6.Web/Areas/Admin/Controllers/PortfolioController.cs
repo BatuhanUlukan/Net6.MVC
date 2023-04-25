@@ -2,15 +2,14 @@
 using FluentValidation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using NET6.Entity.DTOs.Articles;
 using NET6.Entity.DTOs.Portfolios;
 using NET6.Entity.Entities;
 using NET6.Service.Extensions;
 using NET6.Service.Services.Abstractions;
+using NET6.Service.Services.Concrete;
 using NET6.Web.Consts;
 using NET6.Web.ResultMessages;
 using NToastNotify;
-
 
 
 namespace NET6.Web.Areas.Admin.Controllers
@@ -21,14 +20,16 @@ namespace NET6.Web.Areas.Admin.Controllers
         private readonly IPortfolioService portfolioService;
         private readonly ICategoryService categoryService;
         private readonly ISeoService seoService;
+        private readonly ILinkService linkService;
         private readonly IMapper mapper;
         private readonly IValidator<Portfolio> validator;
         private readonly IToastNotification toast;
 
-        public PortfolioController(IPortfolioService portfolioService, ICategoryService categoryService, ISeoService seoService, IMapper mapper, IValidator<Portfolio> validator, IToastNotification toast)
+        public PortfolioController(IPortfolioService portfolioService, ICategoryService categoryService, ILinkService linkService, ISeoService seoService, IMapper mapper, IValidator<Portfolio> validator, IToastNotification toast)
         {
             this.portfolioService = portfolioService;
             this.categoryService = categoryService;
+            this.linkService = linkService;
             this.seoService = seoService;
             this.mapper = mapper;
             this.validator = validator;
@@ -54,13 +55,16 @@ namespace NET6.Web.Areas.Admin.Controllers
         {
             var categories = await categoryService.GetAllCategoriesNonDeleted();
             var seos = await seoService.GetAllSeosNonDeleted();
+            var links = await linkService.GetAllLinksNonDeleted();
+
             var portfolioAddDto = new PortfolioAddDto
             {
                 Categories = categories,
-                Seos = seos
+                Seos = seos ,
+                Links = links
             };
-            return View(portfolioAddDto);
 
+            return View(portfolioAddDto);
         }
         [HttpPost]
         [Authorize(Roles = $"{RoleConsts.Superadmin}, {RoleConsts.Admin}")]
@@ -70,11 +74,14 @@ namespace NET6.Web.Areas.Admin.Controllers
             var map = mapper.Map<Portfolio>(portfolioAddDto);
             var result = await validator.ValidateAsync(map);
 
+
             if (result.IsValid)
             {
                 await portfolioService.CreatePortfolioAsync(portfolioAddDto);
                 toast.AddSuccessToastMessage(Messages.Portfolio.Add(portfolioAddDto.Title), new ToastrOptions { Title = "İşlem Başarılı" });
+
                 return RedirectToAction("Index", "Portfolio", new { Area = "Admin" });
+
             }
             else
             {
@@ -83,8 +90,12 @@ namespace NET6.Web.Areas.Admin.Controllers
 
             var categories = await categoryService.GetAllCategoriesNonDeleted();
             var seos = await seoService.GetAllSeosNonDeleted();
-            return View(new PortfolioAddDto { Categories = categories, Seos = seos });
+            var links = await linkService.GetAllLinksNonDeleted();
+
+            return View(new PortfolioAddDto { Categories = categories, Seos = seos, Links = links });
         }
+
+
 
         [HttpGet]
         [Authorize(Roles = $"{RoleConsts.Superadmin}, {RoleConsts.Admin}")]
@@ -93,11 +104,14 @@ namespace NET6.Web.Areas.Admin.Controllers
             var portfolio = await portfolioService.GetPortfolioWithCategoryNonDeletedAsync(portfolioId);
             var categories = await categoryService.GetAllCategoriesNonDeleted();
             var seos = await seoService.GetAllSeosNonDeleted();
+            var links = await linkService.GetAllLinksNonDeleted();
+
 
             var portfolioUpdateDto = mapper.Map<PortfolioUpdateDto>(portfolio);
 
             portfolioUpdateDto.Categories = categories;
             portfolioUpdateDto.Seos = seos;
+            portfolioUpdateDto.Links = links;
 
 
             return View(portfolioUpdateDto);
@@ -125,9 +139,18 @@ namespace NET6.Web.Areas.Admin.Controllers
 
             var categories = await categoryService.GetAllCategoriesNonDeleted();
             var seos = await seoService.GetAllSeosNonDeleted();
+            var links = await linkService.GetAllLinksNonDeleted();
+
+
+
             portfolioUpdateDto.Categories = categories;
             portfolioUpdateDto.Seos = seos;
+            portfolioUpdateDto.Links = links;
+
+
+
             return View(portfolioUpdateDto);
+
         }
         [Authorize(Roles = $"{RoleConsts.Superadmin}, {RoleConsts.Admin}")]
         public async Task<IActionResult> Delete(Guid portfolioId)
@@ -147,5 +170,9 @@ namespace NET6.Web.Areas.Admin.Controllers
 
             return RedirectToAction("Index", "Portfolio", new { Area = "Admin" });
         }
+
+
+
+
     }
 }

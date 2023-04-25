@@ -3,12 +3,15 @@ using FluentValidation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NET6.Entity.DTOs.Testimonials;
+
 using NET6.Entity.Entities;
 using NET6.Service.Extensions;
 using NET6.Service.Services.Abstractions;
+using NET6.Service.Services.Concrete;
 using NET6.Web.Consts;
 using NET6.Web.ResultMessages;
 using NToastNotify;
+
 
 
 namespace NET6.Web.Areas.Admin.Controllers
@@ -17,13 +20,15 @@ namespace NET6.Web.Areas.Admin.Controllers
     public class TestimonialController : Controller
     {
         private readonly ITestimonialService testimonialService;
+        private readonly ILinkService linkService;
         private readonly IMapper mapper;
         private readonly IValidator<Testimonial> validator;
         private readonly IToastNotification toast;
 
-        public TestimonialController(ITestimonialService testimonialService, IMapper mapper, IValidator<Testimonial> validator, IToastNotification toast)
+        public TestimonialController(ITestimonialService testimonialService,  ILinkService linkService, IMapper mapper, IValidator<Testimonial> validator, IToastNotification toast)
         {
             this.testimonialService = testimonialService;
+            this.linkService = linkService;
             this.mapper = mapper;
             this.validator = validator;
             this.toast = toast;
@@ -46,8 +51,14 @@ namespace NET6.Web.Areas.Admin.Controllers
         [Authorize(Roles = $"{RoleConsts.Superadmin}, {RoleConsts.Admin}")]
         public async Task<IActionResult> Add()
         {
-            var testimonials = await testimonialService.GetAllTestimonialsNonDeletedAsync();
-            return View();
+            var links = await linkService.GetAllLinksNonDeleted();
+
+            var testimonialAddDto = new TestimonialAddDto
+            {
+                Links = links
+            };
+
+            return View(testimonialAddDto);
         }
         [HttpPost]
         [Authorize(Roles = $"{RoleConsts.Superadmin}, {RoleConsts.Admin}")]
@@ -71,8 +82,8 @@ namespace NET6.Web.Areas.Admin.Controllers
                 result.AddToModelState(this.ModelState);
             }
 
-
-            return View();
+            var links = await linkService.GetAllLinksNonDeleted();
+            return View(new TestimonialAddDto { Links = links});
         }
 
 
@@ -82,8 +93,13 @@ namespace NET6.Web.Areas.Admin.Controllers
         public async Task<IActionResult> Update(Guid testimonialId)
         {
             var testimonial = await testimonialService.GetTestimonialNonDeletedAsync(testimonialId);
+            var links = await linkService.GetAllLinksNonDeleted();
+
 
             var testimonialUpdateDto = mapper.Map<TestimonialUpdateDto>(testimonial);
+
+            testimonialUpdateDto.Links  = links;
+
 
             return View(testimonialUpdateDto);
         }
@@ -108,7 +124,14 @@ namespace NET6.Web.Areas.Admin.Controllers
             }
 
 
+            var links = await linkService.GetAllLinksNonDeleted();
+
+
+            testimonialUpdateDto.Links = links;
+
+
             return View(testimonialUpdateDto);
+
         }
         [Authorize(Roles = $"{RoleConsts.Superadmin}, {RoleConsts.Admin}")]
         public async Task<IActionResult> Delete(Guid testimonialId)

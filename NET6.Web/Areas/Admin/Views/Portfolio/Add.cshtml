@@ -35,13 +35,24 @@
                             <span asp-validation-for="SeoId" class="text-danger"></span>
 
                         </div>
+                        <div class="form-group">
+                            <label asp-for="LinkId">Link</label>
+
+                            <a class="btn text-primary float-end" data-bs-toggle="modal" data-bs-target="#linkModalCenter">
+                                Link Ekle <i class="bx bx-plus"></i>
+                            </a>
+
+                            <select id="categoryList" class="form-control" asp-for="LinkId" asp-items="@(new SelectList(Model.Links,"Id","Name"))"></select>
+                            <span asp-validation-for="LinkId" class="text-danger"></span>
+
+                        </div>
                         <div class="form-group" style="margin-top:10px">
-                            <label asp-for="Title" id="defaultFormControlInput" class="form-label">Başlık</label>
-                            <input asp-for="Title" type="text" class="form-control mb-3" id="defaultFormControlInput" placeholder="Lütfen başlık giriniz." aria-describedby="defaultFormControlHelp">
+                            <label asp-for="Title" id="Title" class="form-label">Başlık</label>
+                            <input asp-for="Title" type="text" class="form-control mb-3" id="Title" placeholder="Lütfen başlık giriniz." aria-describedby="defaultFormControlHelp">
                             <span asp-validation-for="Title" class="text-danger"></span>
                         </div>
                         <div class="form-group">
-                            <label asp-for="Content" for="defaultFormControlInput" class="form-label">İçerik</label>
+                            <label asp-for="Content"  class="form-label">İçerik</label>
                             <textarea asp-for="Content" type="text" class="form-control" id="editor" style="min-height:300px;" placeholder="İçerik" aria-describedby="defaultFormControlHelp"></textarea>
                             <span asp-validation-for="Content" class="text-danger"></span>
                         </div>
@@ -121,6 +132,34 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="linkModalCenter" tabindex="-1" role="dialog" aria-labelledby="linkModalCenter" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Link Ekleme</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label class="d-block form-label">Name</label>
+                        <input class="form-control" type="text" id="Name" />
+                    </div>
+                    <div class="form-group">
+                        <label class="d-block form-label">Url</label>
+                        <input class="form-control" type="text" id="Url" />
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+                <button type="button" data-keyboard="false" class="btn btn-primary" id="linkSave">Kaydet</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 @section Scripts
     {
@@ -131,6 +170,9 @@
 
     <script src="~/js/categoryAdd.js"></script>
     <script src="~/js/seoAdd.js"></script>
+    <script src="~/js/linkAdd.js"></script>
+    <script src="~/js/remember.js"></script>
+
 
     <script>
         var app = app || {};
@@ -139,7 +181,7 @@
         app.Urls.baseUrl = '@Url.Content("~")';
         app.Urls.categoryAddUrl = "@(Url.Action("AddWithAjax", "Category"))";
         app.Urls.seoAddUrl = "@(Url.Action("AddWithAjax", "Seo"))";
-        app.Urls.redirectUrl = "@(Url.Action("Add", "Portfolio"))";
+        app.Urls.linkAddUrl = "@(Url.Action("AddWithAjax", "Link"))";
 
     </script>
 

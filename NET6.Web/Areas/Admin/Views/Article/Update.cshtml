@@ -44,6 +44,10 @@
                             <span asp-validation-for="Content" class="text-danger"></span>
                         </div>
                         <div class="row">
+                            <div class="form-group col-md-6">
+                                <label asp-for="Image.FileName" for="defaultFormControlInput" class="form-label d-block">Mevcut Resim</label>
+                                <img style="height:25em; " class="mb-3" src="~/images/@Model.Image.FileName" alt="@Model.Title" />
+                            </div>
 
                             <div class="form-group col-md-6">
                                 <label asp-for="Photo" for="defaultFormControlInput" class="form-label">Resim seçiniz</label>
@@ -60,6 +64,38 @@
         </div>
     </div>
 
+    <div class="modal fade" id="seoModalCenter" tabindex="-1" role="dialog" aria-labelledby="seoModalCenter" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Seo Ekleme</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label class="d-block form-label">Seo Author</label>
+                            <input class="form-control" type="text" id="seoAuthor" />
+                        </div>
+                        <div class="form-group">
+                            <label class="d-block form-label">Seo Description</label>
+                            <input class="form-control" type="text" id="seoDescription" />
+                        </div>
+                        <div class="form-group">
+                            <label class="d-block form-label">Seo Keywords</label>
+                            <input class="form-control" type="text" id="seoKeywords" />
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+                    <button type="button" data-keyboard="false" class="btn btn-primary" id="seoSave">Kaydet</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div>
 
@@ -67,5 +103,14 @@
     {
     <script>
         CKEDITOR.replace('editor');
+    </script>
+    <script src="~/js/seoAdd.js"></script>
+
+    <script>
+        var app = app || {};
+        app.Urls = app.Urls || {};
+
+        app.Urls.baseUrl = '@Url.Content("~")';
+        app.Urls.seoAddUrl = "@(Url.Action("AddWithAjax", "Seo"))";
     </script>
     }

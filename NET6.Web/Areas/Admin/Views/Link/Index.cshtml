@@ -1,0 +1,61 @@
+﻿@using NET6.Entity.DTOs.Links;
+@model List<LinkDto>
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4">
+        <span class="text-muted fw-light">Link Yönetimi /</span> Linkler
+    </h4>
+
+    <!-- Basic Bootstrap Table -->
+    <div class="card">
+        <div class="table-responsive text-nowrap m-5">
+
+            <a class="btn btn-success mb-3" asp-area="Admin" asp-controller="Link" asp-action="Add">
+                Link Ekle <i class="bx bx-plus"></i>
+            </a>
+
+            <table class="table table-bordered" id="T" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>İsim</th>
+                        <th>Oluşturulma Tarihi</th>
+                        <th>Oluşturan</th>
+                        <th>Durum</th>
+                        <th>İşlemler</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>İsim</th>
+                        <th>Oluşturulma Tarihi</th>
+                        <th>Oluşturan</th>
+                        <th>Durum</th>
+                        <th>İşlemler</th>
+                    </tr>
+                </tfoot>
+                <tbody class="table-border-bottom-0">
+                    @foreach (var link in Model)
+                    {
+                  
+                            <tr name="@link.Id">
+                            <td>@link.Name</td>
+                            <td>@link.CreatedDate.ToShortDateString()</td>
+                            <td>@link.CreatedBy</td>
+                            <td>@(link.IsDeleted ? "Aktif Değil" : "Aktif")</td>
+                                <td>
+                                <a class="btn btn-primary btn-sm" data-id="@link.Id" asp-area="Admin" asp-controller="Link" asp-action="Update" asp-route-linkId="@link.Id"><i class="bx bxs-edit"></i></a>
+                                <a class="btn btn-danger btn-sm" data-id="@link.Id" asp-area="Admin" asp-controller="Link" asp-action="Delete" asp-route-linkId="@link.Id"><i class="bx bx-minus-circle"></i></a>
+                                </td>
+                            </tr>
+                     
+                    }
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/js/tIndex.js" type="application/ecmascript"></script>
+}

@@ -62,14 +62,6 @@
     <None Include="Views\Shared\_ValidationScriptsPartial.cshtml" />
     <None Include="Views\_ViewImports.cshtml" />
     <None Include="Views\_ViewStart.cshtml" />
-    <None Include="wwwroot\js\ckfinder\src\CKFinder.Connector.Plugin.DiskQuota\CKFinder.Connector.Plugin.DiskQuota.csproj" />
-    <None Include="wwwroot\js\ckfinder\src\CKFinder.Connector.Plugin.GetFileInfo\CKFinder.Connector.Plugin.GetFileInfo.csproj" />
-    <None Include="wwwroot\js\ckfinder\src\CKFinder.Connector.Plugin.UserActionsLogger\CKFinder.Connector.Plugin.UserActionsLogger.csproj" />
-    <None Include="wwwroot\js\ckfinder\src\CKFinder.Connector.Plugin.Watermark\CKFinder.Connector.Plugin.Watermark.csproj" />
-    <None Include="wwwroot\js\ckfinder\src\CKFinder.Connector.Samples.sln" />
-    <None Include="wwwroot\js\ckfinder\src\CKFinder.Connector.WebApp\CKFinder.Connector.WebApp.csproj" />
-    <None Include="wwwroot\js\ckfinder\src\CKFinder.Connector.WebApp\CKFinder.Connector.WebApp.csproj.user" />
-    <None Include="wwwroot\js\ckfinder\src\CKFinder.Connector.WebApp\Properties\PublishProfiles\FolderProfile.pubxml.user" />
     <None Include="wwwroot\js\site.js" />
     <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map" />
     <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map" />
@@ -196,9 +188,6 @@
     <Folder Include="wwwroot\images\service-images\" />
     <Folder Include="wwwroot\images\testimonial-images\" />
     <Folder Include="wwwroot\images\user-images\" />
-    <Folder Include="wwwroot\js\ckfinder\App_Data\" />
-    <Folder Include="wwwroot\js\ckfinder\src\CKFinder.Connector.WebApp\userfiles\" />
-    <Folder Include="wwwroot\js\ckfinder\userfiles\" />
   </ItemGroup>
 	
 

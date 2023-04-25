@@ -40,8 +40,8 @@
 
 
                         <div class="form-group" style="margin-top:10px">
-                            <label asp-for="Title" id="defaultFormControlInput" class="form-label">Başlık</label>
-                            <input asp-for="Title" type="text" class="form-control mb-3" id="defaultFormControlInput" placeholder="Lütfen başlık giriniz." aria-describedby="defaultFormControlHelp">
+                            <label asp-for="Title" id="Title" class="form-label">Başlık</label>
+                            <input asp-for="Title" type="text" class="form-control mb-3" id="Title" placeholder="Lütfen başlık giriniz." aria-describedby="defaultFormControlHelp">
                             <span asp-validation-for="Title" class="text-danger"></span>
                         </div>
                         <div class="form-group">
@@ -139,6 +139,7 @@
 
     <script src="~/js/categoryAdd.js"></script>
     <script src="~/js/seoAdd.js"></script>
+    <script src="~/js/remember.js"></script>
 
     <script>
         var app = app || {};
@@ -147,7 +148,6 @@
         app.Urls.baseUrl = '@Url.Content("~")';
         app.Urls.categoryAddUrl = "@(Url.Action("AddWithAjax", "Category"))";
         app.Urls.seoAddUrl = "@(Url.Action("AddWithAjax", "Seo"))";
-        app.Urls.redirectUrl = "@(Url.Action("Add", "Article"))";
     </script>
 }
 

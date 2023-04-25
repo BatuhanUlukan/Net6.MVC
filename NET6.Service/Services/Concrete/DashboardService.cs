@@ -42,6 +42,16 @@ namespace NET6.Service.Services.Concrete
             var categoryCount = await unitOfWork.GetRepository<Category>().CountAsync();
             return categoryCount;
         }
+        public async Task<int> GetTotalPortfolioCount()
+        {
+            var portfolioCount = await unitOfWork.GetRepository<Portfolio>().CountAsync();
+            return portfolioCount;
+        }        
+        public async Task<int> GetTotalServiceCount()
+        {
+            var serviceCount = await unitOfWork.GetRepository<Process>().CountAsync();
+            return serviceCount;
+        }
 
     }
 }

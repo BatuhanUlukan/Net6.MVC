@@ -8,7 +8,7 @@ namespace NET6.Data.Mappings
     {
         public void Configure(EntityTypeBuilder<Portfolio> builder)
         {
-            builder.HasData(new Article
+            builder.HasData(new Portfolio
             {
                 Id = Guid.NewGuid(),
                 Title = "Asp.net Core Deneme Makalesi 1",
@@ -20,9 +20,10 @@ namespace NET6.Data.Mappings
                 CreatedDate = DateTime.Now,
                 IsDeleted = false,
                 UserId = Guid.Parse("CB94223B-CCB8-4F2F-93D7-0DF96A7F065C"),
-                SeoId = Guid.Parse("59D9A438-3E21-4163-A42D-A13003D76831")
+                SeoId = Guid.Parse("59D9A438-3E21-4163-A42D-A13003D76831"),
+                LinkId = Guid.Parse("49F708BF-48B1-4513-B8B0-0C087F6252AF")
             },
-            new Article
+            new Portfolio
             {
                 Id = Guid.NewGuid(),
                 Title = "Visual Studio Deneme Makalesi 1",
@@ -34,7 +35,9 @@ namespace NET6.Data.Mappings
                 CreatedDate = DateTime.Now,
                 IsDeleted = false,
                 UserId = Guid.Parse("3AA42229-1C0F-4630-8C1A-DB879ECD0427"),
-                SeoId = Guid.Parse("a7f5670d-31eb-4eea-ba51-a5e924135542")
+                SeoId = Guid.Parse("a7f5670d-31eb-4eea-ba51-a5e924135542"),
+                LinkId = Guid.Parse("49F708BF-48B1-4513-B8B0-0C087F6252AF")
+
             });
         }
     }

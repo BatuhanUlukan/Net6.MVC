@@ -374,7 +374,7 @@
   // ------------------------------
   // FIX MARQUEE
   function coolLinks() {
-    $('.bg-music-confirm a, .entry-title a, .entry-content > p:not(.more) > a:not(.button):not(.social-link), .nav-single a, .latest-posts a, .cat-links a, .media-cell-desc a, .comment-reply-link, .comment-meta .fn a, #filters a, .post-edit-link, .logged-in-as a, .widget_recent_entries a, .tptn_after_thumb .tptn_link, .widget_categories a, .widget_archive a, .widget_pages a, .widget_meta a, .widget_recent_comments a, .widget_rss a, .widget_nav_menu a, .wp-caption-text a').addClass('cool-link');
+    $('.bg-music-confirm a, .entry-title a, .nav-single a, .latest-posts a, .cat-links a, .media-cell-desc a, .comment-reply-link, .comment-meta .fn a, #filters a, .post-edit-link, .logged-in-as a, .widget_recent_entries a, .tptn_after_thumb .tptn_link, .widget_categories a, .widget_archive a, .widget_pages a, .widget_meta a, .widget_recent_comments a, .widget_rss a, .widget_nav_menu a, .wp-caption-text a').addClass('cool-link');
   }
   // ------------------------------
 
@@ -403,7 +403,6 @@
     const $textContainer = $(".home-text-container");
     const $text = $(".home-text");
     const $marquee = $(".home-marquee, .home-job-title");
-    const $social = $(".home-social");
     const $footer = $(".home-footer");
 
     //TIMELINE
@@ -436,7 +435,6 @@
       .to($textContainer, 0.8, { scaleX: 1, ease: Power3.easeOut }, "shiftLeft")
       .to($text, 1, { autoAlpha: 1, x: 0, ease: Power3.easeOut }, "shiftLeft")
       .to($marquee, 1, { autoAlpha: 1, ease: Power0.easeNone }, "shiftLeft")
-      .to($social, 1, { autoAlpha: 1, ease: Power0.easeNone }, "shiftLeft")
       .to($bg, 8, { x: "-=5%", ease: Power0.easeNone }, "shiftLeft")
       .to($logoInverted, 6, { x: "-=2.5%", ease: Power0.easeNone }, "shiftLeft");
 

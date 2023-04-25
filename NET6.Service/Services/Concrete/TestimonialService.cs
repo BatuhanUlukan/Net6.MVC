@@ -1,12 +1,14 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using NET6.Data.UnitOfWorks;
+using NET6.Entity.DTOs.Processes;
 using NET6.Entity.DTOs.Testimonials;
 using NET6.Entity.Entities;
 using NET6.Entity.Enums;
 using NET6.Service.Extensions;
 using NET6.Service.Helpers.Images;
 using NET6.Service.Services.Abstractions;
+using System.Diagnostics;
 using System.Security.Claims;
 
 
@@ -38,7 +40,7 @@ namespace NET6.Service.Services.Concrete
             Image image = new(imageUpload.FullName, testimonialAddDto.Photo.ContentType, userEmail);
             await unitOfWork.GetRepository<Image>().AddAsync(image);
 
-            var testimonial = new Testimonial(testimonialAddDto.Title, userId, userEmail, image.Id);
+            var testimonial = new Testimonial(testimonialAddDto.Title, userId, userEmail, image.Id,testimonialAddDto.LinkId);
 
             await unitOfWork.GetRepository<Testimonial>().AddAsync(testimonial);
             await unitOfWork.SaveAsync();
@@ -47,7 +49,7 @@ namespace NET6.Service.Services.Concrete
         public async Task<List<TestimonialDto>> GetAllTestimonialsNonDeletedAsync()
         {
 
-            var testimonials = await unitOfWork.GetRepository<Testimonial>().GetAllAsync(x => !x.IsDeleted);
+            var testimonials = await unitOfWork.GetRepository<Testimonial>().GetAllAsync(x => !x.IsDeleted,l=>l.Link);
             var map = mapper.Map<List<TestimonialDto>>(testimonials);
 
             return map;
@@ -55,7 +57,7 @@ namespace NET6.Service.Services.Concrete
         public async Task<TestimonialDto> GetTestimonialNonDeletedAsync(Guid testimonialId)
         {
 
-            var testimonial = await unitOfWork.GetRepository<Testimonial>().GetAsync(x => !x.IsDeleted && x.Id == testimonialId, i => i.Image, u => u.User);
+            var testimonial = await unitOfWork.GetRepository<Testimonial>().GetAsync(x => !x.IsDeleted && x.Id == testimonialId, i => i.Image, u => u.User, l => l.Link);
             var map = mapper.Map<TestimonialDto>(testimonial);
 
             return map;
@@ -78,7 +80,7 @@ namespace NET6.Service.Services.Concrete
 
         public async Task<List<TestimonialDto>> GetAllTestimonialsDeletedAsync()
         {
-            var testimonials = await unitOfWork.GetRepository<Testimonial>().GetAllAsync(x => x.IsDeleted);
+            var testimonials = await unitOfWork.GetRepository<Testimonial>().GetAllAsync(x => x.IsDeleted, l => l.Link);
             var map = mapper.Map<List<TestimonialDto>>(testimonials);
 
             return map;
@@ -102,7 +104,7 @@ namespace NET6.Service.Services.Concrete
         {
             var userEmail = _user.GetLoggedInEmail();
 
-            var testimonial = await unitOfWork.GetRepository<Testimonial>().GetAsync(x => !x.IsDeleted && x.Id == testimonialUpdateDto.Id, i => i.Image);
+            var testimonial = await unitOfWork.GetRepository<Testimonial>().GetAsync(x => !x.IsDeleted && x.Id == testimonialUpdateDto.Id, i => i.Image, l => l.Link);
 
 
             if (testimonialUpdateDto.Photo != null)
@@ -123,8 +125,10 @@ namespace NET6.Service.Services.Concrete
                 {
                     testimonialUpdateDto.Image = image;
                 }
-
-
+                else
+                {
+                    testimonialUpdateDto.Image = testimonial.Image; // Keep the existing image if no image is selected
+                }
             }
 
 
@@ -141,7 +145,7 @@ namespace NET6.Service.Services.Concrete
         }
         public async Task<TestimonialListDto> GetAllByPagingAsync()
         {
-            var testimonials = await unitOfWork.GetRepository<Testimonial>().GetAllAsync(a => !a.IsDeleted, i => i.Image, u => u.User);
+            var testimonials = await unitOfWork.GetRepository<Testimonial>().GetAllAsync(a => !a.IsDeleted, i => i.Image, u => u.User, l => l.Link);
 
             return new TestimonialListDto
             {

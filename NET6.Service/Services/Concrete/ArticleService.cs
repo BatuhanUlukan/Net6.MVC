@@ -82,12 +82,10 @@ namespace NET6.Service.Services.Concrete
         {
             var userEmail = _user.GetLoggedInEmail();
 
-            var article = await unitOfWork.GetRepository<Article>().GetAsync(x => !x.IsDeleted && x.Id == articleUpdateDto.Id, x => x.Category, i => i.Image,s=>s.Seo);
-
+            var article = await unitOfWork.GetRepository<Article>().GetAsync(x => !x.IsDeleted && x.Id == articleUpdateDto.Id, x => x.Category, i => i.Image, s => s.Seo);
 
             if (articleUpdateDto.Photo != null)
             {
-
                 imageHelper.Delete(article.Image.FileName);
 
                 var imageUpload = await imageHelper.Upload(articleUpdateDto.Title, articleUpdateDto.Photo, ImageType.Post);
@@ -100,22 +98,23 @@ namespace NET6.Service.Services.Concrete
                 {
                     articleUpdateDto.Image = image;
                 }
-
-
             }
-
+            else
+            {
+                articleUpdateDto.Image = article.Image; // Keep the existing image if no image is selected
+            }
 
             mapper.Map(articleUpdateDto, article);
 
             article.ModifiedDate = DateTime.Now;
             article.ModifiedBy = userEmail;
 
-
             await unitOfWork.GetRepository<Article>().UpdateAsync(article);
             await unitOfWork.SaveAsync();
 
             return article.Title;
         }
+
 
         public async Task<string> SafeDeleteArticleAsync(Guid articleId)
         {

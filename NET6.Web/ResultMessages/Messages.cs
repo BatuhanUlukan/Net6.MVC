@@ -191,6 +191,44 @@
                 return $"{seoTitle} başlıklı yetenek  başarıyla geri alınmıştır.";
             }
         }
+        public static class Link
+        {
+            public static string Add(string linkName)
+            {
+                return $"{linkName} başlıklı link başarıyla eklenmiştir.";
+            }
+            public static string Update(string linkName)
+            {
+                return $"{linkName} başlıklı link başarıyla güncellenmiştir.";
+            }
+            public static string Delete(string linkName)
+            {
+                return $"{linkName} başlıklı link başarıyla silinmiştir.";
+            }
+            public static string UndoDelete(string linkName)
+            {
+                return $"{linkName} başlıklı link başarıyla geri alınmıştır.";
+            }
+        }
+        public static class Social
+        {
+            public static string Add(string socialName)
+            {
+                return $"{socialName} başlıklı alan başarıyla eklenmiştir.";
+            }
+            public static string Update(string socialName)
+            {
+                return $"{socialName} başlıklı alan başarıyla güncellenmiştir.";
+            }
+            public static string Delete(string socialName)
+            {
+                return $"{socialName} başlıklı alan başarıyla silinmiştir.";
+            }
+            public static string UndoDelete(string socialName)
+            {
+                return $"{socialName} başlıklı alan başarıyla geri alınmıştır.";
+            }
+        }
     }
 
 }

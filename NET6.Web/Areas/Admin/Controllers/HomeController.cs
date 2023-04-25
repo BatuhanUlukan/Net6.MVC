@@ -11,11 +11,13 @@ namespace NET6.Web.Areas.Admin.Controllers
     {
         private readonly IArticleService articleService;
         private readonly IDashbordService dashbordService;
+        private readonly IPortfolioService portfolioService;
 
-        public HomeController(IArticleService articleService, IDashbordService dashbordService)
+        public HomeController(IArticleService articleService, IDashbordService dashbordService, IPortfolioService portfolioService)
         {
             this.articleService = articleService;
             this.dashbordService = dashbordService;
+            this.portfolioService = portfolioService;
         }
         public async Task<IActionResult> Index()
         {
@@ -39,6 +41,16 @@ namespace NET6.Web.Areas.Admin.Controllers
         public async Task<IActionResult> TotalCategoryCount()
         {
             var count = await dashbordService.GetTotalCategoryCount();
+            return Json(count);
+        }            [HttpGet]
+        public async Task<IActionResult> TotalPortfolioCount()
+        {
+            var count = await dashbordService.GetTotalPortfolioCount();
+            return Json(count);
+        }    
+        public async Task<IActionResult> TotalServiceCount()
+        {
+            var count = await dashbordService.GetTotalServiceCount();
             return Json(count);
         }
     }

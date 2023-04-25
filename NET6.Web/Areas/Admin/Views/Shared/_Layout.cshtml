@@ -189,6 +189,18 @@
                                     <i class='menu-icon bx bx-user-voice'></i>
                                     <div data-i18n="Analytics">Tavsiye Yönetimi</div>
                                 </a>
+                            </li>   
+                            <li class="menu-item">
+                                <a asp-area="Admin" asp-controller="Link" asp-action="Index" class="menu-link">
+                                    <i class='menu-icon bx bx-user-voice'></i>
+                                    <div data-i18n="Analytics">Link Yönetimi</div>
+                                </a>
+                            </li> 
+                            <li class="menu-item">
+                                <a asp-area="Admin" asp-controller="Social" asp-action="Index" class="menu-link">
+                                    <i class='menu-icon bx bx-user-voice'></i>
+                                    <div data-i18n="Analytics">Social Yönetimi</div>
+                                </a>
                             </li>
                         </ul>
                     </li>
@@ -264,6 +276,11 @@
                                     <div data-i18n="Notifications">Tavsiye</div>
                                 </a>
                             </li>
+                            <li class="menu-item">
+                                <a asp-area="Admin" asp-controller="Link" asp-action="DeletedLink" class="menu-link">
+                                    <div data-i18n="Notifications">Link</div>
+                                </a>
+                            </li>
 
                         </ul>
                     </li>
@@ -286,21 +303,9 @@
 
                     <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
 
-                        <!-- Search -->
-                        <div class="navbar-nav align-items-center">
-                            <div class="nav-item d-flex align-items-center">
-                                <i class="bx bx-search fs-4 lh-0"></i>
-                                <input type="text" class="form-control border-0 shadow-none" placeholder="Search..." aria-label="Search...">
-                            </div>
-                        </div>
-                        <!-- /Search -->
 
                         <ul class="navbar-nav flex-row align-items-center ms-auto">
 
-                            <!-- Place this tag where you want the button to render. -->
-                            <li class="nav-item lh-1 me-3">
-                                <a class="github-button" href="https://github.com/themeselection/sneat-html-admin-template-free" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star themeselection/sneat-html-admin-template-free on GitHub">Star</a>
-                            </li>
 
                             <!-- User -->
                             @await Component.InvokeAsync("DashboardHeader")

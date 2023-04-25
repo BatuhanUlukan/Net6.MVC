@@ -55,6 +55,9 @@ namespace NET6.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<Guid?>("LinkId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
 
@@ -75,6 +78,8 @@ namespace NET6.Data.Migrations
 
                     b.HasIndex("ImageId");
 
+                    b.HasIndex("LinkId");
+
                     b.HasIndex("SeoId");
 
                     b.HasIndex("UserId");
@@ -84,10 +89,10 @@ namespace NET6.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("8d9bdc14-eb22-43c7-85b2-5f83f755cff3"),
+                            Id = new Guid("1aabbb2b-36e3-4ef3-b49c-8ab837a2eb66"),
                             Content = "Asp.net Core Sed porttitor lectus nibh. Nulla porttitor accumsan tincidunt. Vivamus suscipit tortor eget felis porttitor volutpat. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Sed porttitor lectus nibh. Nulla porttitor accumsan tincidunt. Proin eget tortor risus. Donec rutrum congue leo eget malesuada. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Sed porttitor lectus nibh. Curabitur aliquet quam id dui posuere blandit. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Curabitur aliquet quam id dui posuere blandit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla porttitor accumsan tincidunt. Pellentesque in ipsum id orci porta dapibus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi.",
                             CreatedBy = "Admin Test",
-                            CreatedDate = new DateTime(2023, 4, 17, 0, 56, 5, 11, DateTimeKind.Local).AddTicks(3831),
+                            CreatedDate = new DateTime(2023, 4, 19, 3, 15, 52, 748, DateTimeKind.Local).AddTicks(3890),
                             ImageId = new Guid("f71f4b9a-aa60-461d-b398-de31001bf214"),
                             IsDeleted = false,
                             Job = "Web Developer",
@@ -128,21 +133,21 @@ namespace NET6.Data.Migrations
                         new
                         {
                             Id = new Guid("16ea936c-7a28-4c30-86a2-9a9704b6115e"),
-                            ConcurrencyStamp = "a818417c-f933-4582-bcaa-e157ebcda0d0",
+                            ConcurrencyStamp = "8eeb840f-1108-4fe7-909e-d185d51ae8c6",
                             Name = "Superadmin",
                             NormalizedName = "SUPERADMIN"
                         },
                         new
                         {
                             Id = new Guid("7cb750cf-3612-4fb4-9f7d-a38ba8f16bf4"),
-                            ConcurrencyStamp = "d06eebdc-30ba-4af2-b0a0-52050996e5f1",
+                            ConcurrencyStamp = "54f2b524-161d-4c6c-a182-919ef8c9080d",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = new Guid("edf6c246-41d8-475f-8d92-41dddac3aefb"),
-                            ConcurrencyStamp = "b7debde7-4edf-4757-99d8-622b420e26cb",
+                            ConcurrencyStamp = "e4496645-abb6-44b4-8f53-e2ec1baeafa6",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -255,7 +260,7 @@ namespace NET6.Data.Migrations
                         {
                             Id = new Guid("cb94223b-ccb8-4f2f-93d7-0df96a7f065c"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c77ce6a9-f969-4c6e-93fd-44aad60d6ba1",
+                            ConcurrencyStamp = "4d6926f2-efdd-422a-a609-28dde2da8394",
                             Email = "superadmin@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Batuhan",
@@ -264,10 +269,10 @@ namespace NET6.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "SUPERADMIN@GMAIL.COM",
                             NormalizedUserName = "SUPERADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEIyjoiJrHpbJcVkxWggjVoyr4FaljSHb1jMISRJesTvLzO0hpAafkEy+6RkopTOHZw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEMbxX2m90CnPsyJRS/D1Obcjb6o/ZuBu02C27OkxLJhEkqiIyrghpBpNOdHvdL/eWw==",
                             PhoneNumber = "+905439999999",
                             PhoneNumberConfirmed = true,
-                            SecurityStamp = "302006a0-ab26-4283-8106-183112417cc4",
+                            SecurityStamp = "53c63811-5a78-45f4-a4b1-96ea6ad4dc70",
                             TwoFactorEnabled = false,
                             UserName = "superadmin@gmail.com"
                         },
@@ -275,7 +280,7 @@ namespace NET6.Data.Migrations
                         {
                             Id = new Guid("3aa42229-1c0f-4630-8c1a-db879ecd0427"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "dee55078-0b17-4a76-b492-c05eec9448e7",
+                            ConcurrencyStamp = "9316e0d7-8c6b-4ea6-818e-8c915d86a77e",
                             Email = "admin@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Admin",
@@ -284,10 +289,10 @@ namespace NET6.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEIS43GqnOI2OC54Eaim7hHVIr9Nhq6K8mrk6FRzzTpSnBpDm9bxxGW7U9s7YDVpbPw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEFvzIdEZObHgdyKzgjd6DAiHH/E3z7d/iTzXGXWsWZLxeH8edWLjQdv1oNapXOXLvg==",
                             PhoneNumber = "+905439999988",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "21de468b-8803-4402-a903-a588b60a74cf",
+                            SecurityStamp = "9fa06ff1-9d0e-4adf-a05c-dfba06b9ef2c",
                             TwoFactorEnabled = false,
                             UserName = "admin@gmail.com"
                         });
@@ -452,11 +457,11 @@ namespace NET6.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("65946803-6fe4-4c15-84b7-1604bd4c0b78"),
+                            Id = new Guid("4bc26aac-ec76-48e1-89d2-4fb03cf52523"),
                             CategoryId = new Guid("4c569a9a-5f41-478f-9d17-69ac5b02ae0b"),
                             Content = "Asp.net Core Sed porttitor lectus nibh. Nulla porttitor accumsan tincidunt. Vivamus suscipit tortor eget felis porttitor volutpat. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Sed porttitor lectus nibh. Nulla porttitor accumsan tincidunt. Proin eget tortor risus. Donec rutrum congue leo eget malesuada. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Sed porttitor lectus nibh. Curabitur aliquet quam id dui posuere blandit. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Curabitur aliquet quam id dui posuere blandit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla porttitor accumsan tincidunt. Pellentesque in ipsum id orci porta dapibus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi.",
                             CreatedBy = "Admin Test",
-                            CreatedDate = new DateTime(2023, 4, 17, 0, 56, 5, 11, DateTimeKind.Local).AddTicks(4124),
+                            CreatedDate = new DateTime(2023, 4, 19, 3, 15, 52, 748, DateTimeKind.Local).AddTicks(4571),
                             ImageId = new Guid("f71f4b9a-aa60-461d-b398-de31001bf214"),
                             IsDeleted = false,
                             SeoId = new Guid("a7f5670d-31eb-4eea-ba51-a5e924135542"),
@@ -466,11 +471,11 @@ namespace NET6.Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("69e27937-d653-493d-8f55-0e7727fae1ef"),
+                            Id = new Guid("c158e20a-ba4e-4a7d-9154-bfdda75d8249"),
                             CategoryId = new Guid("d23e4f79-9600-4b5e-b3e9-756cdcacd2b1"),
                             Content = "Visual Studio Sed porttitor lectus nibh. Nulla porttitor accumsan tincidunt. Vivamus suscipit tortor eget felis porttitor volutpat. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Sed porttitor lectus nibh. Nulla porttitor accumsan tincidunt. Proin eget tortor risus. Donec rutrum congue leo eget malesuada. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Sed porttitor lectus nibh. Curabitur aliquet quam id dui posuere blandit. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Curabitur aliquet quam id dui posuere blandit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla porttitor accumsan tincidunt. Pellentesque in ipsum id orci porta dapibus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi.",
                             CreatedBy = "Admin Test",
-                            CreatedDate = new DateTime(2023, 4, 17, 0, 56, 5, 11, DateTimeKind.Local).AddTicks(4150),
+                            CreatedDate = new DateTime(2023, 4, 19, 3, 15, 52, 748, DateTimeKind.Local).AddTicks(4612),
                             ImageId = new Guid("d16a6ec7-8c50-4ab0-89a5-02b9a551f0fa"),
                             IsDeleted = false,
                             SeoId = new Guid("59d9a438-3e21-4163-a42d-a13003d76831"),
@@ -536,7 +541,7 @@ namespace NET6.Data.Migrations
                         {
                             Id = new Guid("4c569a9a-5f41-478f-9d17-69ac5b02ae0b"),
                             CreatedBy = "Admin Test",
-                            CreatedDate = new DateTime(2023, 4, 17, 0, 56, 5, 11, DateTimeKind.Local).AddTicks(5899),
+                            CreatedDate = new DateTime(2023, 4, 19, 3, 15, 52, 748, DateTimeKind.Local).AddTicks(8839),
                             IsDeleted = false,
                             Name = "ASP.NET Core"
                         },
@@ -544,7 +549,7 @@ namespace NET6.Data.Migrations
                         {
                             Id = new Guid("d23e4f79-9600-4b5e-b3e9-756cdcacd2b1"),
                             CreatedBy = "Admin Test",
-                            CreatedDate = new DateTime(2023, 4, 17, 0, 56, 5, 11, DateTimeKind.Local).AddTicks(5904),
+                            CreatedDate = new DateTime(2023, 4, 19, 3, 15, 52, 748, DateTimeKind.Local).AddTicks(8851),
                             IsDeleted = false,
                             Name = "Visual Studio 2022"
                         },
@@ -552,7 +557,7 @@ namespace NET6.Data.Migrations
                         {
                             Id = new Guid("1bd1d873-a5ff-43e1-aa04-f86dd78495ee"),
                             CreatedBy = "Admin Test",
-                            CreatedDate = new DateTime(2023, 4, 17, 0, 56, 5, 11, DateTimeKind.Local).AddTicks(5909),
+                            CreatedDate = new DateTime(2023, 4, 19, 3, 15, 52, 748, DateTimeKind.Local).AddTicks(8860),
                             IsDeleted = false,
                             Name = "Coding"
                         },
@@ -560,9 +565,25 @@ namespace NET6.Data.Migrations
                         {
                             Id = new Guid("1266ee22-b956-4fd2-bcd1-fa55d33a77da"),
                             CreatedBy = "Admin Test",
-                            CreatedDate = new DateTime(2023, 4, 17, 0, 56, 5, 11, DateTimeKind.Local).AddTicks(5913),
+                            CreatedDate = new DateTime(2023, 4, 19, 3, 15, 52, 748, DateTimeKind.Local).AddTicks(8868),
                             IsDeleted = false,
                             Name = "Design"
+                        },
+                        new
+                        {
+                            Id = new Guid("2864cc7d-73fe-47b9-a5b1-bb58f6046d5c"),
+                            CreatedBy = "Admin",
+                            CreatedDate = new DateTime(2023, 4, 19, 3, 15, 52, 748, DateTimeKind.Local).AddTicks(8875),
+                            IsDeleted = false,
+                            Name = "Work"
+                        },
+                        new
+                        {
+                            Id = new Guid("53bb0f44-9f0d-447b-9a18-84722b1abde5"),
+                            CreatedBy = "Admin",
+                            CreatedDate = new DateTime(2023, 4, 19, 3, 15, 52, 748, DateTimeKind.Local).AddTicks(8882),
+                            IsDeleted = false,
+                            Name = "Education"
                         });
                 });
 
@@ -627,11 +648,11 @@ namespace NET6.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("a8953947-82eb-471a-9ba0-ee495c5f6584"),
+                            Id = new Guid("252db136-f1cd-468e-8dd1-8415cf68f47e"),
                             CategoryId = new Guid("4c569a9a-5f41-478f-9d17-69ac5b02ae0b"),
                             Content = "Asp.net Core Sed porttitor lectus nibh. Nulla porttitor accumsan tincidunt. Vivamus suscipit tortor eget felis porttitor volutpat. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Sed porttitor lectus nibh. Nulla porttitor accumsan tincidunt. Proin eget tortor risus. Donec rutrum congue leo eget malesuada. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Sed porttitor lectus nibh. Curabitur aliquet quam id dui posuere blandit. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Curabitur aliquet quam id dui posuere blandit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla porttitor accumsan tincidunt. Pellentesque in ipsum id orci porta dapibus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi.",
                             CreatedBy = "Admin Test",
-                            CreatedDate = new DateTime(2023, 4, 17, 0, 56, 5, 11, DateTimeKind.Local).AddTicks(6103),
+                            CreatedDate = new DateTime(2023, 4, 19, 3, 15, 52, 748, DateTimeKind.Local).AddTicks(9328),
                             IsDeleted = false,
                             Name = "Resume",
                             SFDate = "December 24",
@@ -640,11 +661,11 @@ namespace NET6.Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("9c7bfabb-17ff-4859-b6f7-6434cf1b250f"),
+                            Id = new Guid("cc9c27e8-1f5a-4359-9215-42cb79c34526"),
                             CategoryId = new Guid("d23e4f79-9600-4b5e-b3e9-756cdcacd2b1"),
                             Content = "Visual Studio Sed porttitor lectus nibh. Nulla porttitor accumsan tincidunt. Vivamus suscipit tortor eget felis porttitor volutpat. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Sed porttitor lectus nibh. Nulla porttitor accumsan tincidunt. Proin eget tortor risus. Donec rutrum congue leo eget malesuada. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Sed porttitor lectus nibh. Curabitur aliquet quam id dui posuere blandit. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Curabitur aliquet quam id dui posuere blandit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla porttitor accumsan tincidunt. Pellentesque in ipsum id orci porta dapibus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi.",
                             CreatedBy = "Admin Test",
-                            CreatedDate = new DateTime(2023, 4, 17, 0, 56, 5, 11, DateTimeKind.Local).AddTicks(6116),
+                            CreatedDate = new DateTime(2023, 4, 19, 3, 15, 52, 748, DateTimeKind.Local).AddTicks(9340),
                             IsDeleted = false,
                             Name = "Educatıon",
                             SFDate = "December 24",
@@ -698,7 +719,7 @@ namespace NET6.Data.Migrations
                         {
                             Id = new Guid("f71f4b9a-aa60-461d-b398-de31001bf214"),
                             CreatedBy = "Admin Test",
-                            CreatedDate = new DateTime(2023, 4, 17, 0, 56, 5, 11, DateTimeKind.Local).AddTicks(6285),
+                            CreatedDate = new DateTime(2023, 4, 19, 3, 15, 52, 748, DateTimeKind.Local).AddTicks(9692),
                             FileName = "images/testimage.jpg",
                             FileType = "jpg",
                             IsDeleted = false
@@ -707,10 +728,71 @@ namespace NET6.Data.Migrations
                         {
                             Id = new Guid("d16a6ec7-8c50-4ab0-89a5-02b9a551f0fa"),
                             CreatedBy = "Admin Test",
-                            CreatedDate = new DateTime(2023, 4, 17, 0, 56, 5, 11, DateTimeKind.Local).AddTicks(6290),
+                            CreatedDate = new DateTime(2023, 4, 19, 3, 15, 52, 748, DateTimeKind.Local).AddTicks(9703),
                             FileName = "images/vstest.jpg",
                             FileType = "png",
                             IsDeleted = false
+                        });
+                });
+
+            modelBuilder.Entity("NET6.Entity.Entities.Link", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeletedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("DeletedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Url")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Links");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("8c68d329-a387-4e55-b04e-17fcad8cab47"),
+                            CreatedBy = "Admin Test",
+                            CreatedDate = new DateTime(2023, 4, 19, 3, 15, 52, 749, DateTimeKind.Local).AddTicks(16),
+                            IsDeleted = false,
+                            Name = "Instagram",
+                            Url = "www.instagram.com"
+                        },
+                        new
+                        {
+                            Id = new Guid("49f708bf-48b1-4513-b8b0-0c087f6252af"),
+                            CreatedBy = "Admin Test",
+                            CreatedDate = new DateTime(2023, 4, 19, 3, 15, 52, 749, DateTimeKind.Local).AddTicks(48),
+                            IsDeleted = false,
+                            Name = "Google",
+                            Url = "www.google.com"
                         });
                 });
 
@@ -786,6 +868,9 @@ namespace NET6.Data.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
+                    b.Property<Guid?>("LinkId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
 
@@ -811,6 +896,8 @@ namespace NET6.Data.Migrations
 
                     b.HasIndex("ImageId");
 
+                    b.HasIndex("LinkId");
+
                     b.HasIndex("SeoId");
 
                     b.HasIndex("UserId");
@@ -820,13 +907,14 @@ namespace NET6.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("7d18f908-8b6e-4082-a370-125e5a9c4444"),
+                            Id = new Guid("ffd09bae-6ea2-43ef-a482-14ad5dc4a4bd"),
                             CategoryId = new Guid("4c569a9a-5f41-478f-9d17-69ac5b02ae0b"),
                             Content = "Asp.net Core Sed porttitor lectus nibh. Nulla porttitor accumsan tincidunt. Vivamus suscipit tortor eget felis porttitor volutpat. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Sed porttitor lectus nibh. Nulla porttitor accumsan tincidunt. Proin eget tortor risus. Donec rutrum congue leo eget malesuada. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Sed porttitor lectus nibh. Curabitur aliquet quam id dui posuere blandit. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Curabitur aliquet quam id dui posuere blandit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla porttitor accumsan tincidunt. Pellentesque in ipsum id orci porta dapibus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi.",
                             CreatedBy = "Admin Test",
-                            CreatedDate = new DateTime(2023, 4, 17, 0, 56, 5, 11, DateTimeKind.Local).AddTicks(6449),
+                            CreatedDate = new DateTime(2023, 4, 19, 3, 15, 52, 749, DateTimeKind.Local).AddTicks(3040),
                             ImageId = new Guid("f71f4b9a-aa60-461d-b398-de31001bf214"),
                             IsDeleted = false,
+                            LinkId = new Guid("49f708bf-48b1-4513-b8b0-0c087f6252af"),
                             SeoId = new Guid("59d9a438-3e21-4163-a42d-a13003d76831"),
                             Title = "Asp.net Core Deneme Makalesi 1",
                             UserId = new Guid("cb94223b-ccb8-4f2f-93d7-0df96a7f065c"),
@@ -834,13 +922,14 @@ namespace NET6.Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("1ab11d93-303a-4a21-9b4f-eb4710dfa373"),
+                            Id = new Guid("95d8c43d-d9db-4e4d-a091-0153caeead76"),
                             CategoryId = new Guid("d23e4f79-9600-4b5e-b3e9-756cdcacd2b1"),
                             Content = "Visual Studio Sed porttitor lectus nibh. Nulla porttitor accumsan tincidunt. Vivamus suscipit tortor eget felis porttitor volutpat. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Sed porttitor lectus nibh. Nulla porttitor accumsan tincidunt. Proin eget tortor risus. Donec rutrum congue leo eget malesuada. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Sed porttitor lectus nibh. Curabitur aliquet quam id dui posuere blandit. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Curabitur aliquet quam id dui posuere blandit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla porttitor accumsan tincidunt. Pellentesque in ipsum id orci porta dapibus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi.",
                             CreatedBy = "Admin Test",
-                            CreatedDate = new DateTime(2023, 4, 17, 0, 56, 5, 11, DateTimeKind.Local).AddTicks(6458),
+                            CreatedDate = new DateTime(2023, 4, 19, 3, 15, 52, 749, DateTimeKind.Local).AddTicks(3098),
                             ImageId = new Guid("d16a6ec7-8c50-4ab0-89a5-02b9a551f0fa"),
                             IsDeleted = false,
+                            LinkId = new Guid("49f708bf-48b1-4513-b8b0-0c087f6252af"),
                             SeoId = new Guid("a7f5670d-31eb-4eea-ba51-a5e924135542"),
                             Title = "Visual Studio Deneme Makalesi 1",
                             UserId = new Guid("3aa42229-1c0f-4630-8c1a-db879ecd0427"),
@@ -916,10 +1005,10 @@ namespace NET6.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("f6a9e525-ebc8-4967-b5db-91663ddc0628"),
-                            Content = "Asp.net Core Sed porttitor lectus nibh. Nulla porttitor accumsan tincidunt. Vivamus suscipit tortor eget felis porttitor volutpat. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Sed porttitor lectus nibh. Nulla porttitor accumsan tincidunt. Proin eget tortor risus. Donec rutrum congue leo eget malesuada. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Sed porttitor lectus nibh. Curabitur aliquet quam id dui posuere blandit. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Curabitur aliquet quam id dui posuere blandit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla porttitor accumsan tincidunt. Pellentesque in ipsum id orci porta dapibus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi.",
+                            Id = new Guid("86509d6f-6dc4-4fb4-a2b3-3f49db7e2c04"),
+                            Content = "Asp.net Core Sed porttitor lectus nibh. Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt.",
                             CreatedBy = "Admin Test",
-                            CreatedDate = new DateTime(2023, 4, 17, 0, 56, 5, 11, DateTimeKind.Local).AddTicks(8314),
+                            CreatedDate = new DateTime(2023, 4, 19, 3, 15, 52, 749, DateTimeKind.Local).AddTicks(8412),
                             ImageId = new Guid("f71f4b9a-aa60-461d-b398-de31001bf214"),
                             IsDeleted = false,
                             Title = "Batuhan Ulukan",
@@ -977,7 +1066,7 @@ namespace NET6.Data.Migrations
                             Id = new Guid("59d9a438-3e21-4163-a42d-a13003d76831"),
                             Author = "ASP.NET Core",
                             CreatedBy = "Admin Test",
-                            CreatedDate = new DateTime(2023, 4, 17, 0, 56, 5, 12, DateTimeKind.Local).AddTicks(5656),
+                            CreatedDate = new DateTime(2023, 4, 19, 3, 15, 52, 751, DateTimeKind.Local).AddTicks(2548),
                             Description = "ASP.NET Core",
                             IsDeleted = false,
                             Keywords = "ASP.NET Core"
@@ -987,7 +1076,7 @@ namespace NET6.Data.Migrations
                             Id = new Guid("a7f5670d-31eb-4eea-ba51-a5e924135542"),
                             Author = "ASP.NET Core",
                             CreatedBy = "Admin Test",
-                            CreatedDate = new DateTime(2023, 4, 17, 0, 56, 5, 12, DateTimeKind.Local).AddTicks(5669),
+                            CreatedDate = new DateTime(2023, 4, 19, 3, 15, 52, 751, DateTimeKind.Local).AddTicks(2556),
                             Description = "ASP.NET Core",
                             IsDeleted = false,
                             Keywords = "ASP.NET Core"
@@ -1047,10 +1136,10 @@ namespace NET6.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("891d617d-f1df-431a-a636-5b0c5d164d87"),
+                            Id = new Guid("9eae1fdf-860d-4627-8952-174c6ce343d8"),
                             CategoryId = new Guid("1bd1d873-a5ff-43e1-aa04-f86dd78495ee"),
                             CreatedBy = "Admin Test",
-                            CreatedDate = new DateTime(2023, 4, 17, 0, 56, 5, 12, DateTimeKind.Local).AddTicks(5876),
+                            CreatedDate = new DateTime(2023, 4, 19, 3, 15, 52, 751, DateTimeKind.Local).AddTicks(2896),
                             IsDeleted = false,
                             Percent = "90",
                             Title = "Coder",
@@ -1058,14 +1147,82 @@ namespace NET6.Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("4f2e1b59-a5cb-42c2-86c1-7970238e77f7"),
+                            Id = new Guid("57788611-154f-4881-9641-610501ee953f"),
                             CategoryId = new Guid("1266ee22-b956-4fd2-bcd1-fa55d33a77da"),
                             CreatedBy = "Admin Test",
-                            CreatedDate = new DateTime(2023, 4, 17, 0, 56, 5, 12, DateTimeKind.Local).AddTicks(5883),
+                            CreatedDate = new DateTime(2023, 4, 19, 3, 15, 52, 751, DateTimeKind.Local).AddTicks(2905),
                             IsDeleted = false,
                             Percent = "90",
                             Title = "Designer",
                             UserId = new Guid("3aa42229-1c0f-4630-8c1a-db879ecd0427")
+                        });
+                });
+
+            modelBuilder.Entity("NET6.Entity.Entities.Social", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeletedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("DeletedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Icon")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<Guid?>("LinkId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LinkId");
+
+                    b.ToTable("Socials");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("e79a3dae-33a9-492c-aa54-0a5395b040a5"),
+                            CreatedBy = "Admin Test",
+                            CreatedDate = new DateTime(2023, 4, 19, 3, 15, 52, 751, DateTimeKind.Local).AddTicks(3266),
+                            Icon = "instagram",
+                            IsDeleted = false,
+                            LinkId = new Guid("8c68d329-a387-4e55-b04e-17fcad8cab47"),
+                            Name = "Instagram"
+                        },
+                        new
+                        {
+                            Id = new Guid("8b5dbf9a-6330-4b26-b61d-ebb0094d031e"),
+                            CreatedBy = "Admin Test",
+                            CreatedDate = new DateTime(2023, 4, 19, 3, 15, 52, 751, DateTimeKind.Local).AddTicks(3278),
+                            Icon = "google",
+                            IsDeleted = false,
+                            LinkId = new Guid("49f708bf-48b1-4513-b8b0-0c087f6252af"),
+                            Name = "Google"
                         });
                 });
 
@@ -1094,6 +1251,9 @@ namespace NET6.Data.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
+                    b.Property<Guid?>("LinkId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
 
@@ -1111,6 +1271,8 @@ namespace NET6.Data.Migrations
 
                     b.HasIndex("ImageId");
 
+                    b.HasIndex("LinkId");
+
                     b.HasIndex("UserId");
 
                     b.ToTable("Testimonials");
@@ -1118,21 +1280,23 @@ namespace NET6.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("5b7d640d-123d-4437-8d53-c58f4ce6858f"),
+                            Id = new Guid("87d4d71b-b449-4135-aa34-6c70828d2171"),
                             CreatedBy = "Admin Test",
-                            CreatedDate = new DateTime(2023, 4, 17, 0, 56, 5, 12, DateTimeKind.Local).AddTicks(6041),
+                            CreatedDate = new DateTime(2023, 4, 19, 3, 15, 52, 751, DateTimeKind.Local).AddTicks(3542),
                             ImageId = new Guid("f71f4b9a-aa60-461d-b398-de31001bf214"),
                             IsDeleted = false,
+                            LinkId = new Guid("8c68d329-a387-4e55-b04e-17fcad8cab47"),
                             Title = "A Firması",
                             UserId = new Guid("cb94223b-ccb8-4f2f-93d7-0df96a7f065c")
                         },
                         new
                         {
-                            Id = new Guid("6df40233-998b-4760-baf0-8a5eecf0e9c7"),
+                            Id = new Guid("c13e5203-efc9-4e5e-a1d0-3c7feb856be2"),
                             CreatedBy = "Admin Test",
-                            CreatedDate = new DateTime(2023, 4, 17, 0, 56, 5, 12, DateTimeKind.Local).AddTicks(6053),
+                            CreatedDate = new DateTime(2023, 4, 19, 3, 15, 52, 751, DateTimeKind.Local).AddTicks(3559),
                             ImageId = new Guid("d16a6ec7-8c50-4ab0-89a5-02b9a551f0fa"),
                             IsDeleted = false,
+                            LinkId = new Guid("8c68d329-a387-4e55-b04e-17fcad8cab47"),
                             Title = "B Firması",
                             UserId = new Guid("3aa42229-1c0f-4630-8c1a-db879ecd0427")
                         });
@@ -1168,6 +1332,10 @@ namespace NET6.Data.Migrations
                         .WithMany("Abouts")
                         .HasForeignKey("ImageId");
 
+                    b.HasOne("NET6.Entity.Entities.Link", "Links")
+                        .WithMany()
+                        .HasForeignKey("LinkId");
+
                     b.HasOne("NET6.Entity.Entities.Seo", "Seo")
                         .WithMany("Abouts")
                         .HasForeignKey("SeoId")
@@ -1181,6 +1349,8 @@ namespace NET6.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Image");
+
+                    b.Navigation("Links");
 
                     b.Navigation("Seo");
 
@@ -1332,6 +1502,10 @@ namespace NET6.Data.Migrations
                         .WithMany("Portfolios")
                         .HasForeignKey("ImageId");
 
+                    b.HasOne("NET6.Entity.Entities.Link", "Links")
+                        .WithMany("Portfolios")
+                        .HasForeignKey("LinkId");
+
                     b.HasOne("NET6.Entity.Entities.Seo", "Seo")
                         .WithMany("Portfolios")
                         .HasForeignKey("SeoId")
@@ -1347,6 +1521,8 @@ namespace NET6.Data.Migrations
                     b.Navigation("Category");
 
                     b.Navigation("Image");
+
+                    b.Navigation("Links");
 
                     b.Navigation("Seo");
 
@@ -1408,11 +1584,24 @@ namespace NET6.Data.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("NET6.Entity.Entities.Social", b =>
+                {
+                    b.HasOne("NET6.Entity.Entities.Link", "Links")
+                        .WithMany("Socials")
+                        .HasForeignKey("LinkId");
+
+                    b.Navigation("Links");
+                });
+
             modelBuilder.Entity("NET6.Entity.Entities.Testimonial", b =>
                 {
                     b.HasOne("NET6.Entity.Entities.Image", "Image")
                         .WithMany()
                         .HasForeignKey("ImageId");
+
+                    b.HasOne("NET6.Entity.Entities.Link", "Links")
+                        .WithMany("Testimonials")
+                        .HasForeignKey("LinkId");
 
                     b.HasOne("NET6.Entity.Entities.AppUser", "User")
                         .WithMany("Testimonials")
@@ -1421,6 +1610,8 @@ namespace NET6.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Image");
+
+                    b.Navigation("Links");
 
                     b.Navigation("User");
                 });
@@ -1467,6 +1658,15 @@ namespace NET6.Data.Migrations
                     b.Navigation("Processes");
 
                     b.Navigation("Users");
+                });
+
+            modelBuilder.Entity("NET6.Entity.Entities.Link", b =>
+                {
+                    b.Navigation("Portfolios");
+
+                    b.Navigation("Socials");
+
+                    b.Navigation("Testimonials");
                 });
 
             modelBuilder.Entity("NET6.Entity.Entities.Seo", b =>

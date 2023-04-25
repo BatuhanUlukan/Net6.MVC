@@ -5,6 +5,7 @@ $(document).ready(function () {
     var yearlyArticlesUrl = app.Urls.yearlyArticlesUrl;
     var totalArticleCountUrl = app.Urls.totalArticleCountUrl;
     var totalCategoryCountUrl = app.Urls.totalCategoryCountUrl;
+    var totalPortfolioCountUrl = app.Urls.totalPortfolioCountUrl;
 
     $.ajax({
         type: "GET",
@@ -30,6 +31,29 @@ $(document).ready(function () {
         }
 
     });
+    $.ajax({
+        type: "GET",
+        url: totalPortfolioCountUrl,
+        dataType: "json",
+        success: function (data) {
+            $("h3#totalPortfolioCount").append(data);
+        },
+        error: function () {
+            toastr.error("Portfolio Analizleri yüklenirken hata oluştu", "Hata");
+        }
+    });
+    $.ajax({
+        type: "GET",
+        url: totalServiceCountUrl,
+        dataType: "json",
+        success: function (data) {
+            $("h3#totalServiceCount").append(data);
+        },
+        error: function () {
+            toastr.error("Servis Analizleri yüklenirken hata oluştu", "Hata");
+        }
+    });
+
 
     $.ajax({
         type: "GET",

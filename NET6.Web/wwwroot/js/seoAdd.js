@@ -4,7 +4,6 @@
         event.preventDefault();
 
         var addUrl = app.Urls.seoAddUrl;
-        var redirectUrl = app.Urls.portfolioAddUrl || app.Urls.articleAddUrl || app.Urls.aboutAddUrl; // use articleAddUrl if portfolioAddUrl is empty
 
         var seoAddDto = {
             Author: $("input[id=seoAuthor]").val(),
@@ -22,7 +21,7 @@
             data: jsonData,
             success: function (data) {
                 setTimeout(function () {
-                    window.location.href = redirectUrl;
+                    location.reload();
                 }, 1500);
             },
             error: function () {
@@ -30,4 +29,4 @@
             }
         });
     });
-}); 
+});

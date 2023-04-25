@@ -10,7 +10,7 @@ namespace NET6.Entity.Entities
         {
 
         }
-        public Portfolio(string title, string content, Guid userId, string createdBy, Guid categoryId, Guid imageId, Guid seoId)
+        public Portfolio(string title, string content, Guid userId, string createdBy, Guid categoryId, Guid imageId, Guid seoId,Guid linkId)
         {
             Title = title;
             Content = content;
@@ -18,6 +18,8 @@ namespace NET6.Entity.Entities
             CategoryId = categoryId;
             ImageId = imageId;
             SeoId = seoId;
+            LinkId = linkId;
+
             CreatedBy = createdBy;
         }
 
@@ -30,6 +32,8 @@ namespace NET6.Entity.Entities
         public Category Category { get; set; }
         public Guid? ImageId { get; set; }
         public Image Image { get; set; }
+        public Guid? LinkId { get; set; }
+        public Link Link { get; set; }
         public Guid UserId { get; set; }
         public AppUser User { get; set; }
 

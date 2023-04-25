@@ -5,5 +5,7 @@
         Task<List<int>> GetYearlyArticleCounts();
         Task<int> GetTotalArticleCount();
         Task<int> GetTotalCategoryCount();
+        Task<int> GetTotalPortfolioCount();
+        Task<int> GetTotalServiceCount();
     }
 }

@@ -20,14 +20,16 @@ namespace NET6.Web.Areas.Admin.Controllers
     {
         private readonly IAboutService aboutService;
         private readonly ISeoService seoService;
+        private readonly ILinkService linkService;
         private readonly IMapper mapper;
         private readonly IValidator<About> validator;
         private readonly IToastNotification toast;
 
-        public AboutController(IAboutService aboutService, IMapper mapper, ISeoService seoService, IValidator<About> validator, IToastNotification toast)
+        public AboutController(IAboutService aboutService, IMapper mapper, ISeoService seoService, ILinkService linkService, IValidator<About> validator, IToastNotification toast)
         {
             this.aboutService = aboutService;
             this.seoService = seoService;
+            this.linkService = linkService;
             this.mapper = mapper;
             this.validator = validator;
             this.toast = toast;
@@ -54,6 +56,7 @@ namespace NET6.Web.Areas.Admin.Controllers
         {
             var about = await aboutService.GetAboutsNonDeletedAsync(aboutId);
             var seos = await seoService.GetAllSeosNonDeleted();
+            var links = await linkService.GetAllLinksNonDeleted();
 
 
 
@@ -61,6 +64,7 @@ namespace NET6.Web.Areas.Admin.Controllers
 
 
             aboutUpdateDto.Seos = seos;
+            aboutUpdateDto.Links = links;
 
 
             return View(aboutUpdateDto);
@@ -86,7 +90,10 @@ namespace NET6.Web.Areas.Admin.Controllers
             }
 
             var seos = await seoService.GetAllSeosNonDeleted();
+            var links = await linkService.GetAllLinksNonDeleted();
             aboutUpdateDto.Seos = seos;
+            aboutUpdateDto.Links = links;
+
             return View(aboutUpdateDto);
         }
         [Authorize(Roles = $"{RoleConsts.Superadmin}, {RoleConsts.Admin}")]
@@ -113,9 +120,12 @@ namespace NET6.Web.Areas.Admin.Controllers
         {
             var abouts = await aboutService.GetAllAboutsNonDeletedAsync();
             var seos = await seoService.GetAllSeosNonDeleted();
+            var links = await linkService.GetAllLinksNonDeleted();
+
             var aboutAddDto = new AboutAddDto
             {
-                Seos = seos
+                Seos = seos ,
+                Links = links
             };
             return View(aboutAddDto);
         }
@@ -142,7 +152,8 @@ namespace NET6.Web.Areas.Admin.Controllers
             }
 
             var seos = await seoService.GetAllSeosNonDeleted();
-            return View(new AboutAddDto {  Seos = seos });
+            var links = await linkService.GetAllLinksNonDeleted();
+            return View(new AboutAddDto {  Seos = seos,Links = links });
         }
 
     }

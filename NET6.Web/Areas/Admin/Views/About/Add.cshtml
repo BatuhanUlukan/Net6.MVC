@@ -92,8 +92,7 @@
     </div>
 </div>
 
-
-
+                                                                                                      
 
 @section Scripts
     {
@@ -109,7 +108,7 @@
 
             app.Urls.baseUrl = '@Url.Content("~")';
             app.Urls.seoAddUrl = "@(Url.Action("AddWithAjax", "Seo"))";
-                app.Urls.redirectUrl = "@(Url.Action("Add", "About"))";
+                app.Urls.aboutAddUrl = "@(Url.Action("Index", "About"))";
         </script>
 }
 

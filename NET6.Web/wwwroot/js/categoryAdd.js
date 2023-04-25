@@ -4,7 +4,7 @@
         event.preventDefault();
 
         var addUrl = app.Urls.categoryAddUrl;
-        var redirectUrl = app.Urls.redirectUrl;
+        var redirectUrl = app.Urls.portfolioAddUrl || app.Urls.articleAddUrl || app.Urls.aboutAddUrl || app.Urls.historyAddUrl || app.Urls.skillAddUrl;
 
         var categoryAddDto = {
             Name: $("input[id=categoryName]").val()

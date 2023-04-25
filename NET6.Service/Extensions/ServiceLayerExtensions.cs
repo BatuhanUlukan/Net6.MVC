@@ -27,7 +27,9 @@ namespace NET6.Service.Extensions
             services.AddScoped<ITestimonialService, TestimonialService>();
             services.AddScoped<IProcessService, ProcessService>();
             services.AddScoped<ISkillService, SkillService>();
+            services.AddScoped<ISocialService, SocialService>();
             services.AddScoped<ISeoService, SeoService>();
+            services.AddScoped<ILinkService, LinkService>();
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
