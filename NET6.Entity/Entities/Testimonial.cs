@@ -9,7 +9,7 @@ namespace NET6.Entity.Entities
         {
 
         }
-        public Testimonial(string title, Guid userId, string createdBy, Guid imageId,Guid linkId)
+        public Testimonial(string title, Guid userId, string createdBy, Guid imageId, Guid linkId)
         {
             Title = title;
             UserId = userId;
@@ -21,7 +21,7 @@ namespace NET6.Entity.Entities
         public string Title { get; set; }
 
         public Guid? ImageId { get; set; }
-        public Image Image { get; set; }    
+        public Image Image { get; set; }
         public Guid LinkId { get; set; }
         public Link Link { get; set; }
 

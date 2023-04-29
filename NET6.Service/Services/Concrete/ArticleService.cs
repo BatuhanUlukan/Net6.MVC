@@ -56,7 +56,7 @@ namespace NET6.Service.Services.Concrete
             Image image = new(imageUpload.FullName, articleAddDto.Photo.ContentType, userEmail);
             await unitOfWork.GetRepository<Image>().AddAsync(image);
 
-            var article = new Article(articleAddDto.Title, articleAddDto.Content, userId, userEmail, articleAddDto.CategoryId, image.Id,articleAddDto.SeoId);
+            var article = new Article(articleAddDto.Title, articleAddDto.Content, userId, userEmail, articleAddDto.CategoryId, image.Id, articleAddDto.SeoId);
 
             await unitOfWork.GetRepository<Article>().AddAsync(article);
             await unitOfWork.SaveAsync();
@@ -65,7 +65,7 @@ namespace NET6.Service.Services.Concrete
         public async Task<List<ArticleDto>> GetAllArticlesWithCategoryNonDeletedAsync()
         {
 
-            var articles = await unitOfWork.GetRepository<Article>().GetAllAsync(x => !x.IsDeleted, s => s.Seo ,x => x.Category);
+            var articles = await unitOfWork.GetRepository<Article>().GetAllAsync(x => !x.IsDeleted, s => s.Seo, x => x.Category);
             var map = mapper.Map<List<ArticleDto>>(articles);
 
             return map;
@@ -73,7 +73,7 @@ namespace NET6.Service.Services.Concrete
         public async Task<ArticleDto> GetArticleWithCategoryNonDeletedAsync(Guid articleId)
         {
 
-            var article = await unitOfWork.GetRepository<Article>().GetAsync(x => !x.IsDeleted && x.Id == articleId, x => x.Category,s=>s.Seo, i => i.Image, u => u.User);
+            var article = await unitOfWork.GetRepository<Article>().GetAsync(x => !x.IsDeleted && x.Id == articleId, x => x.Category, s => s.Seo, i => i.Image, u => u.User);
             var map = mapper.Map<ArticleDto>(article);
 
             return map;
@@ -133,7 +133,7 @@ namespace NET6.Service.Services.Concrete
 
         public async Task<List<ArticleDto>> GetAllArticlesWithCategoryDeletedAsync()
         {
-            var articles = await unitOfWork.GetRepository<Article>().GetAllAsync(x => x.IsDeleted, s => s.Seo ,x => x.Category);
+            var articles = await unitOfWork.GetRepository<Article>().GetAllAsync(x => x.IsDeleted, s => s.Seo, x => x.Category);
             var map = mapper.Map<List<ArticleDto>>(articles);
 
             return map;

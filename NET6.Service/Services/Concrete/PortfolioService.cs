@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using ImageProcessor.Imaging.Colors;
 using Microsoft.AspNetCore.Http;
 using NET6.Data.UnitOfWorks;
 using NET6.Entity.DTOs.Portfolios;
@@ -57,7 +56,7 @@ namespace NET6.Service.Services.Concrete
             Image image = new(imageUpload.FullName, portfolioAddDto.Photo.ContentType, userEmail);
             await unitOfWork.GetRepository<Image>().AddAsync(image);
 
-            var portfolio = new Portfolio(portfolioAddDto.Title, portfolioAddDto.Content, userId, userEmail, portfolioAddDto.CategoryId, image.Id, portfolioAddDto.SeoId,portfolioAddDto.LinkId);
+            var portfolio = new Portfolio(portfolioAddDto.Title, portfolioAddDto.Content, userId, userEmail, portfolioAddDto.CategoryId, image.Id, portfolioAddDto.SeoId, portfolioAddDto.LinkId);
 
             await unitOfWork.GetRepository<Portfolio>().AddAsync(portfolio);
             await unitOfWork.SaveAsync();
@@ -66,7 +65,7 @@ namespace NET6.Service.Services.Concrete
         public async Task<List<PortfolioDto>> GetAllPortfoliosWithCategoryNonDeletedAsync()
         {
 
-            var portfolios = await unitOfWork.GetRepository<Portfolio>().GetAllAsync(x => !x.IsDeleted, s => s.Seo, x => x.Category,l=>l.Link);
+            var portfolios = await unitOfWork.GetRepository<Portfolio>().GetAllAsync(x => !x.IsDeleted, s => s.Seo, x => x.Category, l => l.Link);
             var map = mapper.Map<List<PortfolioDto>>(portfolios);
 
             return map;

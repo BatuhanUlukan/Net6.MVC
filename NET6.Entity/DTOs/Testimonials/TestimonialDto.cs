@@ -8,7 +8,7 @@ namespace NET6.Entity.DTOs.Testimonials
         public Guid Id { get; set; }
         public string Title { get; set; }
         public DateTime CreatedDate { get; set; }
-        public LinkDto Links { get; set; }
+        public LinkDto Link { get; set; }
 
         public Image Image { get; set; }
         public AppUser User { get; set; }

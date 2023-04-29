@@ -14,7 +14,7 @@ namespace NET6.Web.ViewComponents
         }
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var socials = await socialService.GetAllSocialsNonDeleted();
+            var socials = await socialService.GetAllSocialsNonDeletedAsync();
 
             return View(socials);
         }

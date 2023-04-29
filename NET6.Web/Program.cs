@@ -8,8 +8,9 @@ using NET6.Service.Extensions;
 using NET6.Web.Filters.ArticleVisitors;
 using NToastNotify;
 using NLog;
-using NET6.Web.Filters.ExceptionFilter;
+
 using NLog.Web;
+using Microsoft.AspNetCore.Rewrite;
 
 internal class Program
 {
@@ -28,7 +29,7 @@ internal class Program
             // Add services to the container.
             builder.Services.AddControllersWithViews(opt =>
             {
-                opt.Filters.Add<MvcExceptionFilter>();
+
                 opt.Filters.Add<ArticleVisitorFilter>();
                 opt.Filters.Add<PortfolioVisitorFilter>();
 
@@ -86,7 +87,7 @@ internal class Program
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSession();
-
+            app.UseStaticFiles();
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
@@ -98,6 +99,7 @@ internal class Program
                     name: "Admin",
                     areaName: "Admin",
                     pattern: "Admin/{controller=Home}/{action=Index}/{id?}");
+
 
                 endpoints.MapControllerRoute(
                     name: "default",

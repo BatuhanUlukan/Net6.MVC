@@ -110,4 +110,7 @@ namespace NET6.Service.Services.Concrete
 
 
     }
+
+
 }
+

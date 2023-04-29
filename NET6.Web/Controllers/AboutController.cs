@@ -18,6 +18,8 @@ namespace NET6.Web.Controllers
             this.httpContextAccessor = httpContextAccessor;
             this.unitOfWork = unitOfWork;
         }
+        [HttpGet]
+        [Route("about")]
         public async Task<IActionResult> Index()
         {
             var abouts = await aboutService.GetAboutsAsync();

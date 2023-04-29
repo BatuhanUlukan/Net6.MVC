@@ -1,6 +1,5 @@
 ﻿
 using NET6.Core.Entities;
-using NET6.Entity.DTOs.Seos;
 
 namespace NET6.Entity.Entities
 {
@@ -10,7 +9,7 @@ namespace NET6.Entity.Entities
         {
 
         }
-        public Portfolio(string title, string content, Guid userId, string createdBy, Guid categoryId, Guid imageId, Guid seoId,Guid linkId)
+        public Portfolio(string title, string content, Guid userId, string createdBy, Guid categoryId, Guid imageId, Guid seoId, Guid linkId)
         {
             Title = title;
             Content = content;

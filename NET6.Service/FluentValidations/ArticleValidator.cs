@@ -1,5 +1,4 @@
 ﻿using FluentValidation;
-using NET6.Entity.DTOs.Articles;
 using NET6.Entity.Entities;
 
 

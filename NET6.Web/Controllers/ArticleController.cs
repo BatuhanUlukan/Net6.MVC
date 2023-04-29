@@ -22,7 +22,7 @@ namespace NET6.Web.Controllers
             this.unitOfWork = unitOfWork;
         }
         [HttpGet]
-        [Route("Article")]
+        [Route("article")]
         public async Task<IActionResult> Index(Guid? categoryId, int currentPage = 1, int pageSize = 3, bool isAscending = false)
         {
             var articles = await articleService.GetAllByPagingAsync(categoryId, currentPage, pageSize, isAscending);
@@ -45,7 +45,7 @@ namespace NET6.Web.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-        [Route("Article/{title}/{id}")]
+        [Route("article/{title}/{id}")]
         public async Task<IActionResult> Detail(Guid id)
         {
             var ipAddress = httpContextAccessor.HttpContext.Connection.RemoteIpAddress.MapToIPv4().ToString();

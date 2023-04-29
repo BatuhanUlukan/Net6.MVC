@@ -14,7 +14,6 @@ namespace NET6.Entity.DTOs.Abouts
         public Image Image { get; set; }
         public AppUser User { get; set; }
         public SeoDto Seo { get; set; }
-        public LinkDto Links { get; set; }
         public string CreatedBy { get; set; }
         public bool IsDeleted { get; set; }
     }

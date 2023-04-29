@@ -1,5 +1,4 @@
 ﻿using NET6.Core.Entities;
-using NET6.Entity.DTOs.Articles;
 
 namespace NET6.Entity.Entities
 {

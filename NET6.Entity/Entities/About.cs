@@ -9,7 +9,7 @@ namespace NET6.Entity.Entities
         {
 
         }
-        public About(string title, string content, string job, Guid userId, string createdBy, Guid imageId, Guid seoId, Guid linkId)
+        public About(string title, string content, string job, Guid userId, string createdBy, Guid imageId, Guid seoId)
         {
             Title = title;
             Content = content;
@@ -18,7 +18,6 @@ namespace NET6.Entity.Entities
             ImageId = imageId;
             SeoId = seoId;
             CreatedBy = createdBy;
-            LinkId = linkId;
 
         }
 
@@ -32,9 +31,6 @@ namespace NET6.Entity.Entities
 
         public Guid UserId { get; set; }
         public AppUser User { get; set; }
-
-        public Guid? LinkId { get; set; }
-        public Link Links { get; set; }
 
         public Guid SeoId { get; set; }
         public Seo Seo { get; set; }

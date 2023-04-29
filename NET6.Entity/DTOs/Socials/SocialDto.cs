@@ -10,7 +10,7 @@ namespace NET6.Entity.DTOs.Socials
         public string CreatedBy { get; set; }
         public DateTime CreatedDate { get; set; }
         public bool IsDeleted { get; set; }
-        public LinkDto Links { get; set; }
+        public LinkDto Link { get; set; }
 
     }
 

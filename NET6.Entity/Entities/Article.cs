@@ -1,6 +1,4 @@
-﻿
-using Microsoft.AspNetCore.Http;
-using NET6.Core.Entities;
+﻿using NET6.Core.Entities;
 
 namespace NET6.Entity.Entities
 {

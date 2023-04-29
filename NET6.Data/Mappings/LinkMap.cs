@@ -26,7 +26,7 @@ namespace NET6.Data.Mappings
                 CreatedDate = DateTime.Now,
                 IsDeleted = false
 
-            
+
             });
 
         }

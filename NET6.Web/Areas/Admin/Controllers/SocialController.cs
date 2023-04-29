@@ -11,23 +11,23 @@ using NET6.Web.ResultMessages;
 using NToastNotify;
 
 
+
 namespace NET6.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
     public class SocialController : Controller
     {
         private readonly ISocialService socialService;
+        private readonly ILinkService linkService;
         private readonly IMapper mapper;
         private readonly IValidator<Social> validator;
         private readonly IToastNotification toast;
-        private readonly ILinkService linkService;
-
 
         public SocialController(ISocialService socialService, ILinkService linkService, IMapper mapper, IValidator<Social> validator, IToastNotification toast)
         {
             this.socialService = socialService;
-            this.mapper = mapper;
             this.linkService = linkService;
+            this.mapper = mapper;
             this.validator = validator;
             this.toast = toast;
         }
@@ -35,27 +35,27 @@ namespace NET6.Web.Areas.Admin.Controllers
         [Authorize(Roles = $"{RoleConsts.Superadmin}, {RoleConsts.Admin}, {RoleConsts.User}")]
         public async Task<IActionResult> Index()
         {
-            var socials = await socialService.GetAllSocialsNonDeleted();
+            var socials = await socialService.GetAllSocialsNonDeletedAsync();
             return View(socials);
         }
         [HttpGet]
         [Authorize(Roles = $"{RoleConsts.Superadmin}, {RoleConsts.Admin}")]
         public async Task<IActionResult> DeletedSocial()
         {
-            var socials = await socialService.GetAllSocialsDeleted();
+            var socials = await socialService.GetAllSocialsDeletedAsync();
             return View(socials);
         }
         [HttpGet]
         [Authorize(Roles = $"{RoleConsts.Superadmin}, {RoleConsts.Admin}")]
         public async Task<IActionResult> Add()
         {
-            var socials = await socialService.GetAllSocialsNonDeleted();
             var links = await linkService.GetAllLinksNonDeleted();
 
             var socialAddDto = new SocialAddDto
             {
                 Links = links
             };
+
             return View(socialAddDto);
         }
         [HttpPost]
@@ -81,7 +81,6 @@ namespace NET6.Web.Areas.Admin.Controllers
             }
 
             var links = await linkService.GetAllLinksNonDeleted();
-
             return View(new SocialAddDto { Links = links });
         }
 
@@ -91,7 +90,7 @@ namespace NET6.Web.Areas.Admin.Controllers
         [Authorize(Roles = $"{RoleConsts.Superadmin}, {RoleConsts.Admin}")]
         public async Task<IActionResult> Update(Guid socialId)
         {
-            var social = await socialService.GetSocialByGuid(socialId);
+            var social = await socialService.GetSocialNonDeletedAsync(socialId);
             var links = await linkService.GetAllLinksNonDeleted();
 
 
@@ -99,9 +98,9 @@ namespace NET6.Web.Areas.Admin.Controllers
 
             socialUpdateDto.Links = links;
 
+
             return View(socialUpdateDto);
         }
-
         [HttpPost]
         [Authorize(Roles = $"{RoleConsts.Superadmin}, {RoleConsts.Admin}")]
         public async Task<IActionResult> Update(SocialUpdateDto socialUpdateDto)
@@ -121,12 +120,16 @@ namespace NET6.Web.Areas.Admin.Controllers
             {
                 result.AddToModelState(this.ModelState);
             }
+
+
             var links = await linkService.GetAllLinksNonDeleted();
+
 
             socialUpdateDto.Links = links;
 
 
             return View(socialUpdateDto);
+
         }
         [Authorize(Roles = $"{RoleConsts.Superadmin}, {RoleConsts.Admin}")]
         public async Task<IActionResult> Delete(Guid socialId)

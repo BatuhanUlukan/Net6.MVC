@@ -42,12 +42,13 @@ namespace NET6.Web.Areas.Admin.Controllers
         {
             var count = await dashbordService.GetTotalCategoryCount();
             return Json(count);
-        }            [HttpGet]
+        }
+        [HttpGet]
         public async Task<IActionResult> TotalPortfolioCount()
         {
             var count = await dashbordService.GetTotalPortfolioCount();
             return Json(count);
-        }    
+        }
         public async Task<IActionResult> TotalServiceCount()
         {
             var count = await dashbordService.GetTotalServiceCount();

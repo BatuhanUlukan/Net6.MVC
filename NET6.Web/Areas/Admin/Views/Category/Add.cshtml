@@ -13,10 +13,10 @@
                 <form asp-controller="Category" asp-action="Add" method="post" enctype="multipart/form-data">
                     <div asp-validation-summary="ModelOnly"></div>
                     <div class="card-body">
-                        
+
                         <div class="form-group">
                             <label asp-for="Name" id="defaultFormControlInput" class="form-label">Kategori ismi</label>
-                            <input asp-for="Name" type="text" class="form-control mb-3" id="editor" placeholder="Lütfen kategori ismini giriniz." aria-describedby="defaultFormControlHelp">
+                            <input asp-for="Name" type="text" class="form-control mb-3" id="defaultFormControlInput" placeholder="Lütfen kategori ismini giriniz." aria-describedby="defaultFormControlHelp">
                             <span asp-validation-for="Name" class="text-danger"></span>
                         </div>
 

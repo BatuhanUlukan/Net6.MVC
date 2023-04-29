@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Http;
 using NET6.Data.UnitOfWorks;
 using NET6.Entity.DTOs.Abouts;
-using NET6.Entity.DTOs.Articles;
 using NET6.Entity.Entities;
 using NET6.Entity.Enums;
 using NET6.Service.Extensions;
@@ -44,7 +43,7 @@ namespace NET6.Service.Services.Concrete
         public async Task<AboutDto> GetAboutsNonDeletedAsync(Guid aboutId)
         {
 
-            var abouts = await unitOfWork.GetRepository<About>().GetAsync(x => !x.IsDeleted && x.Id == aboutId,l=>l.Links,s=>s.Seo, i => i.Image, u => u.User);
+            var abouts = await unitOfWork.GetRepository<About>().GetAsync(x => !x.IsDeleted && x.Id == aboutId,  s => s.Seo, i => i.Image, u => u.User);
             var map = mapper.Map<AboutDto>(abouts);
 
             return map;
@@ -53,7 +52,7 @@ namespace NET6.Service.Services.Concrete
         {
             var userEmail = _user.GetLoggedInEmail();
 
-            var about = await unitOfWork.GetRepository<About>().GetAsync(x => !x.IsDeleted && x.Id == aboutUpdateDto.Id, i => i.Image, s => s.Seo, l => l.Links);
+            var about = await unitOfWork.GetRepository<About>().GetAsync(x => !x.IsDeleted && x.Id == aboutUpdateDto.Id, i => i.Image, s => s.Seo);
 
 
             if (aboutUpdateDto.Photo != null)
@@ -122,7 +121,7 @@ namespace NET6.Service.Services.Concrete
 
         public async Task<List<AboutDto>> GetAllAboutsDeletedAsync()
         {
-            var abouts = await unitOfWork.GetRepository<About>().GetAllAsync(x => x.IsDeleted,s=>s.Seo, l => l.Links);
+            var abouts = await unitOfWork.GetRepository<About>().GetAllAsync(x => x.IsDeleted, s => s.Seo);
             var map = mapper.Map<List<AboutDto>>(abouts);
 
             return map;
@@ -137,7 +136,7 @@ namespace NET6.Service.Services.Concrete
             Image image = new(imageUpload.FullName, aboutAddDto.Photo.ContentType, userEmail);
             await unitOfWork.GetRepository<Image>().AddAsync(image);
 
-            var about = new About(aboutAddDto.Title, aboutAddDto.Content, aboutAddDto.Job, userId, userEmail, image.Id,aboutAddDto.SeoId,aboutAddDto.LinkId);
+            var about = new About(aboutAddDto.Title, aboutAddDto.Content, aboutAddDto.Job, userId, userEmail, image.Id, aboutAddDto.SeoId);
 
             await unitOfWork.GetRepository<About>().AddAsync(about);
             await unitOfWork.SaveAsync();
@@ -145,7 +144,7 @@ namespace NET6.Service.Services.Concrete
 
         public async Task<AboutListDto> GetAllByPagingAsync()
         {
-            var abouts = await unitOfWork.GetRepository<About>().GetAllAsync(a => !a.IsDeleted, i => i.Image,s=>s.Seo ,u => u.User, l => l.Links);
+            var abouts = await unitOfWork.GetRepository<About>().GetAllAsync(a => !a.IsDeleted, i => i.Image, s => s.Seo, u => u.User);
 
             return new AboutListDto
             {
@@ -155,7 +154,7 @@ namespace NET6.Service.Services.Concrete
 
         public async Task<AboutDto> GetAboutsAsync()
         {
-            var abouts = await unitOfWork.GetRepository<About>().GetAsync(x => !x.IsDeleted, s => s.Seo, i => i.Image, u => u.User, l => l.Links);
+            var abouts = await unitOfWork.GetRepository<About>().GetAsync(x => !x.IsDeleted, s => s.Seo, i => i.Image, u => u.User);
             var map = mapper.Map<AboutDto>(abouts);
 
             return map;

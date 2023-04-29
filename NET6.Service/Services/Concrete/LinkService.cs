@@ -44,7 +44,7 @@ namespace NET6.Service.Services.Concrete
         {
             var userEmail = _user.GetLoggedInEmail();
 
-            Link link = new(linkAddDto.Name,linkAddDto.Url, userEmail);
+            Link link = new(linkAddDto.Name, linkAddDto.Url, userEmail);
             await unitOfWork.GetRepository<Link>().AddAsync(link);
             await unitOfWork.SaveAsync();
 

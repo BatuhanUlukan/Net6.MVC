@@ -1,5 +1,4 @@
-﻿using NET6.Entity.DTOs.Articles;
-using NET6.Entity.Entities;
+﻿using NET6.Entity.Entities;
 
 namespace NET6.Entity.DTOs.Seos
 {

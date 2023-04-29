@@ -11,10 +11,7 @@ namespace NET6.Entity.DTOs.Abouts
         public string Content { get; set; }
         public IFormFile Photo { get; set; }
         public Guid SeoId { get; set; }
-        public Guid LinkId { get; set; }
-        public IList<LinkDto> Links { get; set; }
         public IList<SeoDto> Seos { get; set; }
-   
 
     }
 }

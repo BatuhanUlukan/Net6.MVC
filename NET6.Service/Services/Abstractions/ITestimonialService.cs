@@ -10,8 +10,8 @@ namespace NET6.Service.Services.Abstractions
         Task<TestimonialDto> GetTestimonialNonDeletedAsync(Guid testimonialId);
         Task CreateTestimonialAsync(TestimonialAddDto testimonialAddDto);
         Task<string> UpdateTestimonialAsync(TestimonialUpdateDto testimonialUpdateDto);
-        Task<string> SafeDeleteTestimonialAsync(Guid articleId);
-        Task<string> UndoDeleteTestimonialAsync(Guid articleId);
+        Task<string> SafeDeleteTestimonialAsync(Guid testimonialId);
+        Task<string> UndoDeleteTestimonialAsync(Guid testimonialId);
         Task<TestimonialListDto> GetAllByPagingAsync();
 
 

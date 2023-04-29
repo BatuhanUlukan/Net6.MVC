@@ -27,7 +27,7 @@
 
 
                     <!-- .entry-title -->
-                    <h2 class="entry-title"><a href="/Article/@(UrlExtensions.FriendlyUrlHelper(item.Title))/@item.Id"> @item.Title</a> </h2>
+                    <h2 class="entry-title"><a href="/article/@(UrlExtensions.FriendlyUrlHelper(item.Title))/@item.Id"> @item.Title</a> </h2>
 
                     <!-- .entry-meta -->
                     <div class="entry-meta">
@@ -52,7 +52,7 @@
                 <!-- .featured-image -->
                 <div class="featured-image">
 
-                    <a href="/Article/@(UrlExtensions.FriendlyUrlHelper(item.Title))/@item.Id">
+                    <a href="/article/@(UrlExtensions.FriendlyUrlHelper(item.Title))/@item.Id">
                         <img src="~/images/@item.Image.FileName" alt="blog-image">
                     </a>
                 </div>
@@ -62,7 +62,7 @@
                     <p>
                         @Html.Raw(item.Content.Length > 280 ? item.Content.Substring(0, 280) : item.Content)
                     </p>
-                    <p><a href="/Article/@(UrlExtensions.FriendlyUrlHelper(item.Title))/@item.Id">Read More</a></p>
+                    <p><a href="/article/@(UrlExtensions.FriendlyUrlHelper(item.Title))/@item.Id">Read More</a></p>
                 </div>
                 <!-- .entry-content -->
 

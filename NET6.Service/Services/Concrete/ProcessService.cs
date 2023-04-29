@@ -1,8 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
-using NET6.Data.Migrations;
 using NET6.Data.UnitOfWorks;
-using NET6.Entity.DTOs.Portfolios;
 using NET6.Entity.DTOs.Processes;
 using NET6.Entity.Entities;
 using NET6.Entity.Enums;

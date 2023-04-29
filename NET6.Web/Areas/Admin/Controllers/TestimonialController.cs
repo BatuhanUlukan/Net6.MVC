@@ -7,7 +7,6 @@ using NET6.Entity.DTOs.Testimonials;
 using NET6.Entity.Entities;
 using NET6.Service.Extensions;
 using NET6.Service.Services.Abstractions;
-using NET6.Service.Services.Concrete;
 using NET6.Web.Consts;
 using NET6.Web.ResultMessages;
 using NToastNotify;
@@ -25,7 +24,7 @@ namespace NET6.Web.Areas.Admin.Controllers
         private readonly IValidator<Testimonial> validator;
         private readonly IToastNotification toast;
 
-        public TestimonialController(ITestimonialService testimonialService,  ILinkService linkService, IMapper mapper, IValidator<Testimonial> validator, IToastNotification toast)
+        public TestimonialController(ITestimonialService testimonialService, ILinkService linkService, IMapper mapper, IValidator<Testimonial> validator, IToastNotification toast)
         {
             this.testimonialService = testimonialService;
             this.linkService = linkService;
@@ -83,7 +82,7 @@ namespace NET6.Web.Areas.Admin.Controllers
             }
 
             var links = await linkService.GetAllLinksNonDeleted();
-            return View(new TestimonialAddDto { Links = links});
+            return View(new TestimonialAddDto { Links = links });
         }
 
 
@@ -98,7 +97,7 @@ namespace NET6.Web.Areas.Admin.Controllers
 
             var testimonialUpdateDto = mapper.Map<TestimonialUpdateDto>(testimonial);
 
-            testimonialUpdateDto.Links  = links;
+            testimonialUpdateDto.Links = links;
 
 
             return View(testimonialUpdateDto);
